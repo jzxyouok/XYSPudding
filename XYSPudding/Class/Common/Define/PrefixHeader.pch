@@ -1,0 +1,32 @@
+/*
+    项目全局文件定义
+*/
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "XYSMacro.h"            //自定义宏
+
+#import "UIViewCategory.h"        //自定义类别
+#import "UIColorCategory.h"
+#import "UIImageViewCategory.h"
+#import "UIButtonCategory.h"
+#import "UIImageCategory.h"
+
+#import "ReactiveCocoa.h"       //RAC库
+#import "BlocksKit.h"           //BlockKit库
+#import "BlocksKit+UIKit.h"
+
+#import "MJRefresh.h"           //上拉下拉刷新控件类库
+#import "UIKit+AFNetworking.h"
+#import "SVProgressHUD.h"
+#import "Masonry.h"             //自动布局改善代码
+
+#import "CocoaLumberjack.h"     //DDlog输处库（性能比NSLog好）
+#ifdef DEBUG
+static const int ddLogLevel = DDLogLevelVerbose;
+#else
+static const int ddLogLevel = DDLogLevelError;
+#endif
+
+#endif /* PrefixHeader_pch */

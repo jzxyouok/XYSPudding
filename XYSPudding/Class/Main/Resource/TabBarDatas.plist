@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>viewController</key>
+		<string>XYSEssenceViewController</string>
+		<key>normalImage</key>
+		<string>global_footer_btn_new_normal_80x49_</string>
+		<key>selectedImage</key>
+		<string>global_footer_btn_new_selected_80x49_</string>
+		<key>title</key>
+		<string>首页</string>
+	</dict>
+	<dict>
+		<key>viewController</key>
+		<string>XYSLatestViewController</string>
+		<key>normalImage</key>
+		<string>global_footer_btn_timeline_normal_80x49_</string>
+		<key>selectedImage</key>
+		<string>global_footer_btn_timeline_selected_80x49_</string>
+		<key>title</key>
+		<string>时间线</string>
+	</dict>
+	<dict>
+		<key>viewController</key>
+		<string>XYSConcernViewController</string>
+		<key>normalImage</key>
+		<string>global_footer_btn_dimension_normal_80x49_</string>
+		<key>selectedImage</key>
+		<string>global_footer_btn_dimension_selected_80x49_</string>
+		<key>title</key>
+		<string>异次元</string>
+	</dict>
+	<dict>
+		<key>viewController</key>
+		<string>XYSMeViewController</string>
+		<key>normalImage</key>
+		<string>global_footer_btn_shop_normal_80x49_</string>
+		<key>selectedImage</key>
+		<string>global_footer_btn_shop_selected_80x49_</string>
+		<key>title</key>
+		<string>道具屋</string>
+	</dict>
+    <dict>
+        <key>viewController</key>
+        <string>XYSMeViewController</string>
+        <key>normalImage</key>
+        <string>global_footer_btn_user_normal_80x49_</string>
+        <key>selectedImage</key>
+        <string>global_footer_btn_user_selected_80x49_</string>
+        <key>title</key>
+        <string>私宅</string>
+    </dict>
+</array>
+</plist>

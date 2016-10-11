@@ -1,0 +1,6 @@
+framework module Pods_XYSPudding {
+  umbrella header "Pods-XYSPudding-umbrella.h"
+
+  export *
+  module * { export * }
+}
