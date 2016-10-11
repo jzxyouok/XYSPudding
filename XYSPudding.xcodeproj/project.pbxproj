@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C10133B1DACADDF001C5D9C /* PDLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C10133A1DACADDF001C5D9C /* PDLoginButton.m */; };
+		5C1013611DACBC60001C5D9C /* PDPrivateHomeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1013601DACBC60001C5D9C /* PDPrivateHomeButton.m */; };
+		5C1013671DACBD70001C5D9C /* PDPrivateHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1013661DACBD70001C5D9C /* PDPrivateHomeCell.m */; };
+		5C10136A1DACC252001C5D9C /* PrivateButtonDatas.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C1013691DACC252001C5D9C /* PrivateButtonDatas.plist */; };
+		5C10136D1DACE123001C5D9C /* PDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C10136C1DACE123001C5D9C /* PDLoginViewController.m */; };
+		5C1013711DACE20F001C5D9C /* UINavigationController+Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1013701DACE20F001C5D9C /* UINavigationController+Item.m */; };
+		5C1013761DACE7C0001C5D9C /* UIViewController+NavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1013751DACE7C0001C5D9C /* UIViewController+NavigationItem.m */; };
+		5C10137D1DAD08DF001C5D9C /* PDShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C10137C1DAD08DF001C5D9C /* PDShowViewController.m */; };
+		5C1013801DAD1076001C5D9C /* PDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C10137F1DAD1076001C5D9C /* PDNavigationController.m */; };
+		5C1013831DAD19D3001C5D9C /* PDDegTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1013821DAD19D3001C5D9C /* PDDegTableController.m */; };
+		5C1013861DAD1B90001C5D9C /* PDDegNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1013851DAD1B90001C5D9C /* PDDegNormalCell.m */; };
+		5C1013AC1DAD3691001C5D9C /* PDDegGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1013AB1DAD3691001C5D9C /* PDDegGroupModel.m */; };
 		5C1C3D131DAC631F0030ACCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C3D121DAC631F0030ACCA /* main.m */; };
 		5C1C3D211DAC631F0030ACCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C1C3D1F1DAC631F0030ACCA /* LaunchScreen.storyboard */; };
 		5C1C3D851DAC648A0030ACCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C3D2B1DAC648A0030ACCA /* AppDelegate.m */; };
@@ -28,11 +40,36 @@
 		5C1C3D961DAC648A0030ACCA /* XYSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C3D711DAC648A0030ACCA /* XYSTabBarController.m */; };
 		5C1C3D971DAC648A0030ACCA /* XYSTabBarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C3D741DAC648A0030ACCA /* XYSTabBarModel.m */; };
 		5C1C3D991DAC675F0030ACCA /* TabBarDatas.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C1C3D981DAC675F0030ACCA /* TabBarDatas.plist */; };
-		5C1C3D9F1DAC84FA0030ACCA /* PrivateHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C3D9E1DAC84FA0030ACCA /* PrivateHomeViewController.m */; };
+		5C1C3DA81DACA06E0030ACCA /* PrivateHomeTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C3DA71DACA06E0030ACCA /* PrivateHomeTableController.m */; };
+		5C1C3DAC1DACAA980030ACCA /* PDTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C3DAB1DACAA980030ACCA /* PDTitleView.m */; };
+		5C8871461DADB41600842D23 /* PDDegNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871451DADB41600842D23 /* PDDegNetwork.m */; };
 		AADCEEEDCCB5E402AD124978 /* Pods_XYSPudding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9485070025555F7E3D49F7A5 /* Pods_XYSPudding.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C1013391DACADDF001C5D9C /* PDLoginButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLoginButton.h; sourceTree = "<group>"; };
+		5C10133A1DACADDF001C5D9C /* PDLoginButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLoginButton.m; sourceTree = "<group>"; };
+		5C10135F1DACBC60001C5D9C /* PDPrivateHomeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPrivateHomeButton.h; sourceTree = "<group>"; };
+		5C1013601DACBC60001C5D9C /* PDPrivateHomeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPrivateHomeButton.m; sourceTree = "<group>"; };
+		5C1013651DACBD70001C5D9C /* PDPrivateHomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPrivateHomeCell.h; sourceTree = "<group>"; };
+		5C1013661DACBD70001C5D9C /* PDPrivateHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPrivateHomeCell.m; sourceTree = "<group>"; };
+		5C1013691DACC252001C5D9C /* PrivateButtonDatas.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PrivateButtonDatas.plist; sourceTree = "<group>"; };
+		5C10136B1DACE123001C5D9C /* PDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLoginViewController.h; sourceTree = "<group>"; };
+		5C10136C1DACE123001C5D9C /* PDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLoginViewController.m; sourceTree = "<group>"; };
+		5C10136F1DACE20F001C5D9C /* UINavigationController+Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Item.h"; path = "XYSPudding/Class/Common/Category/UINavigationController+Item.h"; sourceTree = SOURCE_ROOT; };
+		5C1013701DACE20F001C5D9C /* UINavigationController+Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Item.m"; path = "XYSPudding/Class/Common/Category/UINavigationController+Item.m"; sourceTree = SOURCE_ROOT; };
+		5C1013741DACE7C0001C5D9C /* UIViewController+NavigationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationItem.h"; sourceTree = "<group>"; };
+		5C1013751DACE7C0001C5D9C /* UIViewController+NavigationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavigationItem.m"; sourceTree = "<group>"; };
+		5C10137B1DAD08DF001C5D9C /* PDShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDShowViewController.h; sourceTree = "<group>"; };
+		5C10137C1DAD08DF001C5D9C /* PDShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDShowViewController.m; sourceTree = "<group>"; };
+		5C10137E1DAD1076001C5D9C /* PDNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDNavigationController.h; sourceTree = "<group>"; };
+		5C10137F1DAD1076001C5D9C /* PDNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDNavigationController.m; sourceTree = "<group>"; };
+		5C1013811DAD19D3001C5D9C /* PDDegTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegTableController.h; sourceTree = "<group>"; };
+		5C1013821DAD19D3001C5D9C /* PDDegTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegTableController.m; sourceTree = "<group>"; };
+		5C1013841DAD1B90001C5D9C /* PDDegNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegNormalCell.h; sourceTree = "<group>"; };
+		5C1013851DAD1B90001C5D9C /* PDDegNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegNormalCell.m; sourceTree = "<group>"; };
+		5C1013AA1DAD3691001C5D9C /* PDDegGroupModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupModel.h; sourceTree = "<group>"; };
+		5C1013AB1DAD3691001C5D9C /* PDDegGroupModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupModel.m; sourceTree = "<group>"; };
 		5C1C3D0E1DAC631F0030ACCA /* XYSPudding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XYSPudding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C1C3D121DAC631F0030ACCA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5C1C3D201DAC631F0030ACCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -82,8 +119,12 @@
 		5C1C3D731DAC648A0030ACCA /* XYSTabBarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSTabBarModel.h; sourceTree = "<group>"; };
 		5C1C3D741DAC648A0030ACCA /* XYSTabBarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYSTabBarModel.m; sourceTree = "<group>"; };
 		5C1C3D981DAC675F0030ACCA /* TabBarDatas.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TabBarDatas.plist; sourceTree = "<group>"; };
-		5C1C3D9D1DAC84FA0030ACCA /* PrivateHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateHomeViewController.h; sourceTree = "<group>"; };
-		5C1C3D9E1DAC84FA0030ACCA /* PrivateHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateHomeViewController.m; sourceTree = "<group>"; };
+		5C1C3DA61DACA06E0030ACCA /* PrivateHomeTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateHomeTableController.h; sourceTree = "<group>"; };
+		5C1C3DA71DACA06E0030ACCA /* PrivateHomeTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateHomeTableController.m; sourceTree = "<group>"; };
+		5C1C3DAA1DACAA980030ACCA /* PDTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDTitleView.h; sourceTree = "<group>"; };
+		5C1C3DAB1DACAA980030ACCA /* PDTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDTitleView.m; sourceTree = "<group>"; };
+		5C8871441DADB41600842D23 /* PDDegNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegNetwork.h; sourceTree = "<group>"; };
+		5C8871451DADB41600842D23 /* PDDegNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegNetwork.m; sourceTree = "<group>"; };
 		9485070025555F7E3D49F7A5 /* Pods_XYSPudding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XYSPudding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA20ED9A354F228259B89D52 /* Pods-XYSPudding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYSPudding.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XYSPudding/Pods-XYSPudding.debug.xcconfig"; sourceTree = "<group>"; };
 		DF586045B22D060146DD5CED /* Pods-XYSPudding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYSPudding.release.xcconfig"; path = "Pods/Target Support Files/Pods-XYSPudding/Pods-XYSPudding.release.xcconfig"; sourceTree = "<group>"; };
@@ -107,6 +148,52 @@
 				9485070025555F7E3D49F7A5 /* Pods_XYSPudding.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5C1013681DACC224001C5D9C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				5C1013691DACC252001C5D9C /* PrivateButtonDatas.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		5C10136E1DACE1C6001C5D9C /* UINavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				5C10136F1DACE20F001C5D9C /* UINavigationController+Item.h */,
+				5C1013701DACE20F001C5D9C /* UINavigationController+Item.m */,
+			);
+			name = UINavigationController;
+			path = NavigationViewController;
+			sourceTree = "<group>";
+		};
+		5C1013721DACE7A1001C5D9C /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				5C1013731DACE7A1001C5D9C /* Factory */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		5C1013731DACE7A1001C5D9C /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				5C1013741DACE7C0001C5D9C /* UIViewController+NavigationItem.h */,
+				5C1013751DACE7C0001C5D9C /* UIViewController+NavigationItem.m */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		5C10137A1DAD088A001C5D9C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5C10137B1DAD08DF001C5D9C /* PDShowViewController.h */,
+				5C10137C1DAD08DF001C5D9C /* PDShowViewController.m */,
+				5C10137E1DAD1076001C5D9C /* PDNavigationController.h */,
+				5C10137F1DAD1076001C5D9C /* PDNavigationController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		5C1C3D051DAC631F0030ACCA = {
@@ -173,6 +260,8 @@
 		5C1C3D2C1DAC648A0030ACCA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5C10137A1DAD088A001C5D9C /* ViewController */,
+				5C1013721DACE7A1001C5D9C /* Vendor */,
 				5C1C3D2D1DAC648A0030ACCA /* Category */,
 				5C1C3D501DAC648A0030ACCA /* Define */,
 				5C1C3D531DAC648A0030ACCA /* Model */,
@@ -186,6 +275,7 @@
 		5C1C3D2D1DAC648A0030ACCA /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				5C10136E1DACE1C6001C5D9C /* UINavigationController */,
 				5C1C3D2E1DAC648A0030ACCA /* AppDelegate */,
 				5C1C3D311DAC648A0030ACCA /* NSObject */,
 				5C1C3D361DAC648A0030ACCA /* UIButton */,
@@ -332,6 +422,8 @@
 		5C1C3D611DAC648A0030ACCA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5C1013811DAD19D3001C5D9C /* PDDegTableController.h */,
+				5C1013821DAD19D3001C5D9C /* PDDegTableController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -339,6 +431,8 @@
 		5C1C3D621DAC648A0030ACCA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5C1013AA1DAD3691001C5D9C /* PDDegGroupModel.h */,
+				5C1013AB1DAD3691001C5D9C /* PDDegGroupModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -346,6 +440,8 @@
 		5C1C3D631DAC648A0030ACCA /* NetManager */ = {
 			isa = PBXGroup;
 			children = (
+				5C8871441DADB41600842D23 /* PDDegNetwork.h */,
+				5C8871451DADB41600842D23 /* PDDegNetwork.m */,
 			);
 			path = NetManager;
 			sourceTree = "<group>";
@@ -353,6 +449,8 @@
 		5C1C3D641DAC648A0030ACCA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5C1013841DAD1B90001C5D9C /* PDDegNormalCell.h */,
+				5C1013851DAD1B90001C5D9C /* PDDegNormalCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -414,6 +512,7 @@
 		5C1C3D6C1DAC648A0030ACCA /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				5C1C3DA91DACAA760030ACCA /* View */,
 				5C1C3D6D1DAC648A0030ACCA /* Controller */,
 				5C1C3D721DAC648A0030ACCA /* Model */,
 				5C1C3D751DAC648A0030ACCA /* Resource */,
@@ -452,6 +551,7 @@
 		5C1C3D761DAC648A0030ACCA /* PrivateHome */ = {
 			isa = PBXGroup;
 			children = (
+				5C1013681DACC224001C5D9C /* Resource */,
 				5C1C3D771DAC648A0030ACCA /* Controller */,
 				5C1C3D781DAC648A0030ACCA /* View */,
 			);
@@ -461,8 +561,10 @@
 		5C1C3D771DAC648A0030ACCA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5C1C3D9D1DAC84FA0030ACCA /* PrivateHomeViewController.h */,
-				5C1C3D9E1DAC84FA0030ACCA /* PrivateHomeViewController.m */,
+				5C1C3DA61DACA06E0030ACCA /* PrivateHomeTableController.h */,
+				5C1C3DA71DACA06E0030ACCA /* PrivateHomeTableController.m */,
+				5C10136B1DACE123001C5D9C /* PDLoginViewController.h */,
+				5C10136C1DACE123001C5D9C /* PDLoginViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -470,6 +572,12 @@
 		5C1C3D781DAC648A0030ACCA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5C1013391DACADDF001C5D9C /* PDLoginButton.h */,
+				5C10133A1DACADDF001C5D9C /* PDLoginButton.m */,
+				5C10135F1DACBC60001C5D9C /* PDPrivateHomeButton.h */,
+				5C1013601DACBC60001C5D9C /* PDPrivateHomeButton.m */,
+				5C1013651DACBD70001C5D9C /* PDPrivateHomeCell.h */,
+				5C1013661DACBD70001C5D9C /* PDPrivateHomeCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -568,6 +676,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		5C1C3DA91DACAA760030ACCA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5C1C3DAA1DACAA980030ACCA /* PDTitleView.h */,
+				5C1C3DAB1DACAA980030ACCA /* PDTitleView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		AB2460D6AF598A0703380B40 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -640,6 +757,7 @@
 			files = (
 				5C1C3D931DAC648A0030ACCA /* Assets.xcassets in Resources */,
 				5C1C3D211DAC631F0030ACCA /* LaunchScreen.storyboard in Resources */,
+				5C10136A1DACC252001C5D9C /* PrivateButtonDatas.plist in Resources */,
 				5C1C3D991DAC675F0030ACCA /* TabBarDatas.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -700,24 +818,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C1C3D891DAC648A0030ACCA /* UIButton+setState.m in Sources */,
+				5C10133B1DACADDF001C5D9C /* PDLoginButton.m in Sources */,
 				5C1C3D8F1DAC648A0030ACCA /* UIImageView+Avatar.m in Sources */,
 				5C1C3D851DAC648A0030ACCA /* AppDelegate.m in Sources */,
+				5C1013611DACBC60001C5D9C /* PDPrivateHomeButton.m in Sources */,
+				5C1013861DAD1B90001C5D9C /* PDDegNormalCell.m in Sources */,
+				5C1013831DAD19D3001C5D9C /* PDDegTableController.m in Sources */,
 				5C1C3D881DAC648A0030ACCA /* NSObject+XYSFactory.m in Sources */,
+				5C10136D1DACE123001C5D9C /* PDLoginViewController.m in Sources */,
 				5C1C3D901DAC648A0030ACCA /* UIView+Frame.m in Sources */,
 				5C1C3D8E1DAC648A0030ACCA /* UIImage+Size.m in Sources */,
 				5C1C3D8C1DAC648A0030ACCA /* UIImage+Circle.m in Sources */,
+				5C1C3DAC1DACAA980030ACCA /* PDTitleView.m in Sources */,
+				5C1013671DACBD70001C5D9C /* PDPrivateHomeCell.m in Sources */,
 				5C1C3D941DAC648A0030ACCA /* XYSBaseViewModel.m in Sources */,
+				5C10137D1DAD08DF001C5D9C /* PDShowViewController.m in Sources */,
 				5C1C3D8B1DAC648A0030ACCA /* UIImage+Capture.m in Sources */,
 				5C1C3D961DAC648A0030ACCA /* XYSTabBarController.m in Sources */,
 				5C1C3D861DAC648A0030ACCA /* AppDelegate+Launch.m in Sources */,
-				5C1C3D9F1DAC84FA0030ACCA /* PrivateHomeViewController.m in Sources */,
 				5C1C3D921DAC648A0030ACCA /* XYSBaseNetwork.m in Sources */,
+				5C1013AC1DAD3691001C5D9C /* PDDegGroupModel.m in Sources */,
+				5C1013761DACE7C0001C5D9C /* UIViewController+NavigationItem.m in Sources */,
 				5C1C3D8D1DAC648A0030ACCA /* UIImage+QRCode.m in Sources */,
+				5C8871461DADB41600842D23 /* PDDegNetwork.m in Sources */,
 				5C1C3D8A1DAC648A0030ACCA /* UIColor+Hex_255.m in Sources */,
+				5C1013711DACE20F001C5D9C /* UINavigationController+Item.m in Sources */,
 				5C1C3D131DAC631F0030ACCA /* main.m in Sources */,
 				5C1C3D911DAC648A0030ACCA /* XYSBaseModel.m in Sources */,
 				5C1C3D971DAC648A0030ACCA /* XYSTabBarModel.m in Sources */,
 				5C1C3D951DAC648A0030ACCA /* XYSNavigationController.m in Sources */,
+				5C1C3DA81DACA06E0030ACCA /* PrivateHomeTableController.m in Sources */,
+				5C1013801DAD1076001C5D9C /* PDNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

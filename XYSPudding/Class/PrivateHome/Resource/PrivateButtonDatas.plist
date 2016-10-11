@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<dict>
+			<key>imageName</key>
+			<string>mine_list_icon_history_60x60_</string>
+			<key>title</key>
+			<string>追番记录</string>
+		</dict>
+		<dict>
+			<key>imageName</key>
+			<string>mine_list_icon_cache_60x60_</string>
+			<key>title</key>
+			<string>离线缓存</string>
+		</dict>
+		<dict>
+			<key>imageName</key>
+			<string>mine_list_icon_statistics_60x60_</string>
+			<key>title</key>
+			<string>布丁统计</string>
+		</dict>
+	</array>
+	<array>
+        <dict>
+            <key>imageName</key>
+            <string>mine_list_icon_notification_60x60_</string>
+            <key>title</key>
+            <string>通知</string>
+        </dict>
+        <dict>
+            <key>imageName</key>
+            <string>mine_list_icon_money_60x60_</string>
+            <key>title</key>
+            <string>订单</string>
+        </dict>
+        <dict>
+            <key>imageName</key>
+            <string>mine_list_icon_setting_60x60_</string>
+            <key>title</key>
+            <string>设置</string>
+        </dict>
+	</array>
+</array>
+</plist>

@@ -26,7 +26,7 @@
     
     for (XYSTabBarModel *model in _models)
     {
-        UIViewController *vc = [UIViewController new];//[NSClassFromString(obj.viewController) new];
+        UIViewController *vc = [NSClassFromString(model.viewController) new];
         XYSNavigationController *nav = [XYSNavigationController navigationWithRootViewController:vc];
         
         UITabBarItem *tabBarItem = [UITabBarItem new];

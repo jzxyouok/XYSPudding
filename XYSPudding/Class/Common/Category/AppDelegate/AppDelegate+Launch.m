@@ -121,4 +121,11 @@ static NSNumber *isOnlineWifi = nil;
     [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
 }
 
+/** 全局横屏设置 */
+- (UIInterfaceOrientationMask)application:(UIApplication *)application
+  supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return UIInterfaceOrientationMaskLandscape;
+}
+
 @end

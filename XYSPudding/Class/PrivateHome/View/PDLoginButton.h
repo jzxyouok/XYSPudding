@@ -1,5 +1,5 @@
 //
-//  PrivateHomeViewController.h
+//  PDLoginButton.h
 //  XYSPudding
 //
 //  Created by 徐玉珊 on 2016/10/11.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PrivateHomeViewController : UIViewController
+@interface PDLoginButton : UIButton
 
 @end

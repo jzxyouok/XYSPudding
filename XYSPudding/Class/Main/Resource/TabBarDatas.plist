@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>viewController</key>
-		<string>XYSEssenceViewController</string>
+		<string>PrivateHomeTableController</string>
 		<key>normalImage</key>
 		<string>global_footer_btn_new_normal_80x49_</string>
 		<key>selectedImage</key>
@@ -14,7 +14,7 @@
 	</dict>
 	<dict>
 		<key>viewController</key>
-		<string>XYSLatestViewController</string>
+		<string>PrivateHomeTableController</string>
 		<key>normalImage</key>
 		<string>global_footer_btn_timeline_normal_80x49_</string>
 		<key>selectedImage</key>
@@ -24,7 +24,7 @@
 	</dict>
 	<dict>
 		<key>viewController</key>
-		<string>XYSConcernViewController</string>
+		<string>PDDegTableController</string>
 		<key>normalImage</key>
 		<string>global_footer_btn_dimension_normal_80x49_</string>
 		<key>selectedImage</key>
@@ -34,7 +34,7 @@
 	</dict>
 	<dict>
 		<key>viewController</key>
-		<string>XYSMeViewController</string>
+		<string>PrivateHomeTableController</string>
 		<key>normalImage</key>
 		<string>global_footer_btn_shop_normal_80x49_</string>
 		<key>selectedImage</key>
@@ -42,15 +42,15 @@
 		<key>title</key>
 		<string>道具屋</string>
 	</dict>
-    <dict>
-        <key>viewController</key>
-        <string>XYSMeViewController</string>
-        <key>normalImage</key>
-        <string>global_footer_btn_user_normal_80x49_</string>
-        <key>selectedImage</key>
-        <string>global_footer_btn_user_selected_80x49_</string>
-        <key>title</key>
-        <string>私宅</string>
-    </dict>
+	<dict>
+		<key>viewController</key>
+		<string>PrivateHomeTableController</string>
+		<key>normalImage</key>
+		<string>global_footer_btn_user_normal_80x49_</string>
+		<key>selectedImage</key>
+		<string>global_footer_btn_user_selected_80x49_</string>
+		<key>title</key>
+		<string>私宅</string>
+	</dict>
 </array>
 </plist>

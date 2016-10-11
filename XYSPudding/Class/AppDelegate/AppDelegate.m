@@ -53,10 +53,8 @@
     if (!_window)
     {
         _window = [UIWindow viewWithFrame:kScreenBounds];
-        [_window setBackgroundColor:[UIColor whiteColor]];
         [_window makeKeyAndVisible];
     }
     return _window;
 }
-
 @end
