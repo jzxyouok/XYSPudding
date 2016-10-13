@@ -29,4 +29,12 @@
     return _datas ? _datas.count : 0;
 }
 
+- (NSMutableArray *)datas
+{
+    if (!_datas)
+    {
+        _datas = [NSMutableArray array];
+    }
+    return _datas;
+}
 @end

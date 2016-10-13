@@ -10,13 +10,16 @@
 
 @implementation PDDegGroupModel
 
-@end
-
-@implementation PDDegGroupIconModel
-
++ (NSDictionary *)specialClasses
+{
+    return @{@"background" : @"PDDegGroupBackgroundModel", @"icon" : @"PDDegGroupIconModel"};
+}
 @end
 
 @implementation PDDegGroupBackgroundModel
+
+@end
+@implementation PDDegGroupIconModel
 
 @end
 

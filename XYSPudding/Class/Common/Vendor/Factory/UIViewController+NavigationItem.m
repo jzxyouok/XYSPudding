@@ -24,6 +24,8 @@
         }
     }
     [button sizeToFit];
+    [button setImageEdgeInsets:UIEdgeInsetsMake(7, 0, -7, 0)];
+    [button setTitleEdgeInsets:UIEdgeInsetsMake(7, 0, -7, 0)];
     [button bk_addEventHandler:^(id sender)
      {
          clickHandler();
@@ -42,6 +44,7 @@
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button normalTitleColor:[UIColor orangeColor]];
+    [button.titleLabel setFont:[UIFont systemFontOfSize:16]];
     switch (style)
     {
         case PDRightItemStyleTitle1:
@@ -49,8 +52,16 @@
             [button normalTitle:@"用户协议"];
             break;
         }
+        case PDRightItemStyleSearchImage:
+        {
+            [button normalImage:[UIImage imageNamed:@"global_header_btn_search_normal_44x44_"]];
+            break;
+        }
     }
     [button sizeToFit];
+    [button setImageEdgeInsets:UIEdgeInsetsMake(7, 0, -7, 0)];
+    [button setTitleEdgeInsets:UIEdgeInsetsMake(7, 0, -7, 0)];
+
     [button bk_addEventHandler:^(id sender)
      {
          clickHandler();
@@ -59,7 +70,7 @@
     UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                                                                target:nil
                                                                                action:nil];
-    spaceItem.width = -20;
+    spaceItem.width = -10;
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.rightBarButtonItems = @[spaceItem, rightItem];
 }

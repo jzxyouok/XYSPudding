@@ -11,12 +11,16 @@
 /** 导航栏左侧标签类型 */
 typedef NS_ENUM(NSInteger, PDLeftItemStyle)
 {
+    /** 返回按钮 */
     PDLeftItemStyleBackImage
 };
 /** 导航栏右侧标签类型 */
 typedef NS_ENUM(NSInteger, PDRightItemStyle)
 {
-    PDRightItemStyleTitle1
+    /** 标题：用户协议 */
+    PDRightItemStyleTitle1,
+    /** 搜索框按钮 */
+    PDRightItemStyleSearchImage
 };
 
 @interface UIViewController (NavigationItem)

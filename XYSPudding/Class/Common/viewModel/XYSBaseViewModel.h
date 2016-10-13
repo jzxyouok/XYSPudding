@@ -24,7 +24,7 @@
 /*!
  *  记录模型数据对象
  */
-@property (nonatomic, copy) NSArray *datas;
+@property (nonatomic, copy) NSMutableArray *datas;
 /*!
  *  模型数据对象数目
  */

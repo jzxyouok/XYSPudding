@@ -14,7 +14,8 @@
  *
  *  @param url 图片资源网络定位符
  */
-- (void)setCircleAvatarWithURL:(NSURL *)url;
+- (void)setCircleAvatarWithURL:(NSURL *)url
+              placeholderImage:(UIImage *)placeholderImage;
 
 /*!
  *  设置视图圆形

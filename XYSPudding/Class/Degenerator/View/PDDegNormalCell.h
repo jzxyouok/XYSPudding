@@ -14,5 +14,7 @@
 @property (nonatomic, strong) NSString *title_;
 /** 图片资源本地名称 */
 @property (nonatomic, strong) NSString *imageName_;
+/** 描述信息 */
+@property (nonatomic, strong) NSString *describe;
 
 @end

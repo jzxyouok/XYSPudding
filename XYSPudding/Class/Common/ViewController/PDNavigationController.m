@@ -22,7 +22,7 @@
         UINavigationBar *appearance = [UINavigationBar appearance];
         
         NSMutableDictionary *attributes = [NSMutableDictionary dictionary]; //设置导航栏标签字体属性
-        attributes[NSFontAttributeName] = [UIFont systemFontOfSize:20];
+        attributes[NSFontAttributeName] = [UIFont systemFontOfSize:17];
         attributes[NSForegroundColorAttributeName] = [UIColor orangeColor];
         appearance.titleTextAttributes = attributes;
     }
@@ -31,6 +31,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view setBackgroundColor:kBGDColor];
+    [self.navigationBar setTitleVerticalPositionAdjustment:7 //调整导航栏标题竖向位置
+                                             forBarMetrics:UIBarMetricsDefault];
+    
+    [self.view.layer setCornerRadius:7];
+    [self.view setClipsToBounds:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,5 +68,11 @@
      }];
 }
 
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    self.navigationBar.height = 30; //修改导航栏高度
+}
 
 @end

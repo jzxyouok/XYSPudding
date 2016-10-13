@@ -50,6 +50,8 @@ completionHandler:(void(^)(id responseObject, NSError *error))completionHandler
         path = [requestPath mutableCopy];
     }
     
+    NSLog(@"%@", path);
+    
     NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:path]
                                                                  completionHandler:^(NSData * _Nullable data,
                                                                                      NSURLResponse * _Nullable response,

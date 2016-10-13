@@ -13,6 +13,7 @@
         attributes[NSFontAttributeName] = [UIFont systemFontOfSize:20];
         attributes[NSForegroundColorAttributeName] = [UIColor blackColor];
         barAppearance.titleTextAttributes = attributes;
+        [barAppearance setTranslucent:NO];
     }
 }
 

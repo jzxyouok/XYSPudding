@@ -32,4 +32,23 @@ static const int ddLogLevel = DDLogLevelError;
 /** 全局背景色 */
 #define kBGDColor kRGBColor(236, 239, 243)
 
+
+
+
+/** 通用请求参数 */
+#define apiKey_ @"yuki_ios"
+#define brand_ @"Apple"
+#define channelId_ @"channelId=App%20Store"
+#define deviceKey_ @"AF662624-D596-4906-B643-717B90C3C623"
+#define model_ @"iPad"
+#define os_ @"iOS"
+#define osv_ @"9.3.2"
+#define sort_ @"lastCommentedTime%20DESC"
+#define version_ @"3.2.1"
+
+/** 更新参数 */
+#define auth1_ @"5f40b3dee9e03b5e6f40bd1b2a210671"
+#define timestamp_ @"1476249937"
+
+
 #endif /* PrefixHeader_pch */

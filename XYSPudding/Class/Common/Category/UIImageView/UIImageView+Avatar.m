@@ -7,18 +7,21 @@
 /*!
  *  设置圆形头像
  */
-- (void)setCircleAvatarWithURL:(NSURL *)url;
+- (void)setCircleAvatarWithURL:(NSURL *)url
+              placeholderImage:(UIImage *)placeholderImage
 {
-    UIImage *placeHolderImage = [[UIImage imageNamed:@"defaultUserIcon"] circleImage]; //设置预留图片
-    
     [self sd_setImageWithURL:url
-            placeholderImage:placeHolderImage
+            placeholderImage:[placeholderImage circleImage]
                    completed:^(UIImage *image,
                                NSError *error,
                                SDImageCacheType cacheType,
-                               NSURL *imageURL) {
-                       self.image = image ? [image circleImage] : placeHolderImage; //加载结束后，设置图片
-                   }];
+                               NSURL *imageURL)
+     {
+         if (image)
+         {
+             self.image = [image circleImage];
+         }
+     }];
 }
 
 /*!

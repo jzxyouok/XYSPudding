@@ -94,6 +94,12 @@
     }];
     imageView.image = [UIImage imageNamed:@"fruit-check-in-1_117x65_"];
     imageView.tag = 10;
+    [imageView setUserInteractionEnabled:YES];
+    [imageView bk_whenTapped:^
+    {
+        PDLoginViewController *loginVC = [PDLoginViewController defaultController];
+        [kKeyWindow addSubview:loginVC.view];
+    }];
     [NSTimer bk_scheduledTimerWithTimeInterval:0.5
                                          block:^(NSTimer *timer)
      {

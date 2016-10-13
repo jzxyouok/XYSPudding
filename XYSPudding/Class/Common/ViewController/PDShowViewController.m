@@ -41,6 +41,7 @@
          make.top.mas_equalTo(75);
          make.bottom.mas_equalTo(-75);
      }];
+    [_navigationController.navigationBar setTranslucent:NO];
 }
 
 /** 视图出现透明度动画 */
@@ -71,6 +72,5 @@
          [self.view removeFromSuperview];
      }];
 }
-
 
 @end

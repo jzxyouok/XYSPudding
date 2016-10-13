@@ -43,6 +43,17 @@
 		5C1C3DA81DACA06E0030ACCA /* PrivateHomeTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C3DA71DACA06E0030ACCA /* PrivateHomeTableController.m */; };
 		5C1C3DAC1DACAA980030ACCA /* PDTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C3DAB1DACAA980030ACCA /* PDTitleView.m */; };
 		5C8871461DADB41600842D23 /* PDDegNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871451DADB41600842D23 /* PDDegNetwork.m */; };
+		5C8871491DADB9F000842D23 /* PDDegGroupViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871481DADB9F000842D23 /* PDDegGroupViewModel.m */; };
+		5C88714C1DADC6DA00842D23 /* PDDegGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88714B1DADC6DA00842D23 /* PDDegGroupCell.m */; };
+		5C88714F1DADCDC700842D23 /* PDDegGroupItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88714E1DADCDC700842D23 /* PDDegGroupItem.m */; };
+		5C88715C1DADED1400842D23 /* PDDegImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88715B1DADED1400842D23 /* PDDegImageModel.m */; };
+		5C8871821DAE03B300842D23 /* PDDegImageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871811DAE03B300842D23 /* PDDegImageViewModel.m */; };
+		5C8871911DAE23AA00842D23 /* PDImageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871901DAE23AA00842D23 /* PDImageListCell.m */; };
+		5C8871981DAE579F00842D23 /* PDDegImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871971DAE579F00842D23 /* PDDegImageController.m */; };
+		5C88719D1DAE586800842D23 /* PSCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88719A1DAE586800842D23 /* PSCollectionView.m */; };
+		5C88719E1DAE586800842D23 /* PSCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88719C1DAE586800842D23 /* PSCollectionViewCell.m */; };
+		5C8871A11DAE65F900842D23 /* PDDegGroupsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871A01DAE65F900842D23 /* PDDegGroupsController.m */; };
+		5C8871A41DAE8D2200842D23 /* PDDegGroupsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871A31DAE8D2200842D23 /* PDDegGroupsCell.m */; };
 		AADCEEEDCCB5E402AD124978 /* Pods_XYSPudding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9485070025555F7E3D49F7A5 /* Pods_XYSPudding.framework */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +136,28 @@
 		5C1C3DAB1DACAA980030ACCA /* PDTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDTitleView.m; sourceTree = "<group>"; };
 		5C8871441DADB41600842D23 /* PDDegNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegNetwork.h; sourceTree = "<group>"; };
 		5C8871451DADB41600842D23 /* PDDegNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegNetwork.m; sourceTree = "<group>"; };
+		5C8871471DADB9F000842D23 /* PDDegGroupViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupViewModel.h; sourceTree = "<group>"; };
+		5C8871481DADB9F000842D23 /* PDDegGroupViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupViewModel.m; sourceTree = "<group>"; };
+		5C88714A1DADC6DA00842D23 /* PDDegGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupCell.h; sourceTree = "<group>"; };
+		5C88714B1DADC6DA00842D23 /* PDDegGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupCell.m; sourceTree = "<group>"; };
+		5C88714D1DADCDC700842D23 /* PDDegGroupItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupItem.h; sourceTree = "<group>"; };
+		5C88714E1DADCDC700842D23 /* PDDegGroupItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupItem.m; sourceTree = "<group>"; };
+		5C88715A1DADED1400842D23 /* PDDegImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegImageModel.h; sourceTree = "<group>"; };
+		5C88715B1DADED1400842D23 /* PDDegImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegImageModel.m; sourceTree = "<group>"; };
+		5C8871801DAE03B300842D23 /* PDDegImageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegImageViewModel.h; sourceTree = "<group>"; };
+		5C8871811DAE03B300842D23 /* PDDegImageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegImageViewModel.m; sourceTree = "<group>"; };
+		5C88718F1DAE23AA00842D23 /* PDImageListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDImageListCell.h; sourceTree = "<group>"; };
+		5C8871901DAE23AA00842D23 /* PDImageListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDImageListCell.m; sourceTree = "<group>"; };
+		5C8871961DAE579F00842D23 /* PDDegImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegImageController.h; sourceTree = "<group>"; };
+		5C8871971DAE579F00842D23 /* PDDegImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegImageController.m; sourceTree = "<group>"; };
+		5C8871991DAE586800842D23 /* PSCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSCollectionView.h; sourceTree = "<group>"; };
+		5C88719A1DAE586800842D23 /* PSCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSCollectionView.m; sourceTree = "<group>"; };
+		5C88719B1DAE586800842D23 /* PSCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSCollectionViewCell.h; sourceTree = "<group>"; };
+		5C88719C1DAE586800842D23 /* PSCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSCollectionViewCell.m; sourceTree = "<group>"; };
+		5C88719F1DAE65F900842D23 /* PDDegGroupsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupsController.h; sourceTree = "<group>"; };
+		5C8871A01DAE65F900842D23 /* PDDegGroupsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupsController.m; sourceTree = "<group>"; };
+		5C8871A21DAE8D2200842D23 /* PDDegGroupsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupsCell.h; sourceTree = "<group>"; };
+		5C8871A31DAE8D2200842D23 /* PDDegGroupsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupsCell.m; sourceTree = "<group>"; };
 		9485070025555F7E3D49F7A5 /* Pods_XYSPudding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XYSPudding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA20ED9A354F228259B89D52 /* Pods-XYSPudding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYSPudding.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XYSPudding/Pods-XYSPudding.debug.xcconfig"; sourceTree = "<group>"; };
 		DF586045B22D060146DD5CED /* Pods-XYSPudding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYSPudding.release.xcconfig"; path = "Pods/Target Support Files/Pods-XYSPudding/Pods-XYSPudding.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +204,7 @@
 		5C1013721DACE7A1001C5D9C /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				5C8871951DAE578400842D23 /* CollectionView */,
 				5C1013731DACE7A1001C5D9C /* Factory */,
 			);
 			path = Vendor;
@@ -410,9 +444,9 @@
 		5C1C3D601DAC648A0030ACCA /* Degenerator */ = {
 			isa = PBXGroup;
 			children = (
+				5C1C3D631DAC648A0030ACCA /* NetManager */,
 				5C1C3D611DAC648A0030ACCA /* Controller */,
 				5C1C3D621DAC648A0030ACCA /* Model */,
-				5C1C3D631DAC648A0030ACCA /* NetManager */,
 				5C1C3D641DAC648A0030ACCA /* View */,
 				5C1C3D651DAC648A0030ACCA /* ViewModel */,
 			);
@@ -424,6 +458,10 @@
 			children = (
 				5C1013811DAD19D3001C5D9C /* PDDegTableController.h */,
 				5C1013821DAD19D3001C5D9C /* PDDegTableController.m */,
+				5C8871961DAE579F00842D23 /* PDDegImageController.h */,
+				5C8871971DAE579F00842D23 /* PDDegImageController.m */,
+				5C88719F1DAE65F900842D23 /* PDDegGroupsController.h */,
+				5C8871A01DAE65F900842D23 /* PDDegGroupsController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -433,6 +471,8 @@
 			children = (
 				5C1013AA1DAD3691001C5D9C /* PDDegGroupModel.h */,
 				5C1013AB1DAD3691001C5D9C /* PDDegGroupModel.m */,
+				5C88715A1DADED1400842D23 /* PDDegImageModel.h */,
+				5C88715B1DADED1400842D23 /* PDDegImageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -451,6 +491,14 @@
 			children = (
 				5C1013841DAD1B90001C5D9C /* PDDegNormalCell.h */,
 				5C1013851DAD1B90001C5D9C /* PDDegNormalCell.m */,
+				5C88714A1DADC6DA00842D23 /* PDDegGroupCell.h */,
+				5C88714B1DADC6DA00842D23 /* PDDegGroupCell.m */,
+				5C88714D1DADCDC700842D23 /* PDDegGroupItem.h */,
+				5C88714E1DADCDC700842D23 /* PDDegGroupItem.m */,
+				5C88718F1DAE23AA00842D23 /* PDImageListCell.h */,
+				5C8871901DAE23AA00842D23 /* PDImageListCell.m */,
+				5C8871A21DAE8D2200842D23 /* PDDegGroupsCell.h */,
+				5C8871A31DAE8D2200842D23 /* PDDegGroupsCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -458,6 +506,10 @@
 		5C1C3D651DAC648A0030ACCA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				5C8871471DADB9F000842D23 /* PDDegGroupViewModel.h */,
+				5C8871481DADB9F000842D23 /* PDDegGroupViewModel.m */,
+				5C8871801DAE03B300842D23 /* PDDegImageViewModel.h */,
+				5C8871811DAE03B300842D23 /* PDDegImageViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -685,6 +737,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		5C8871951DAE578400842D23 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				5C8871991DAE586800842D23 /* PSCollectionView.h */,
+				5C88719A1DAE586800842D23 /* PSCollectionView.m */,
+				5C88719B1DAE586800842D23 /* PSCollectionViewCell.h */,
+				5C88719C1DAE586800842D23 /* PSCollectionViewCell.m */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
 		AB2460D6AF598A0703380B40 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -826,10 +889,17 @@
 				5C1013831DAD19D3001C5D9C /* PDDegTableController.m in Sources */,
 				5C1C3D881DAC648A0030ACCA /* NSObject+XYSFactory.m in Sources */,
 				5C10136D1DACE123001C5D9C /* PDLoginViewController.m in Sources */,
+				5C8871911DAE23AA00842D23 /* PDImageListCell.m in Sources */,
 				5C1C3D901DAC648A0030ACCA /* UIView+Frame.m in Sources */,
+				5C88714F1DADCDC700842D23 /* PDDegGroupItem.m in Sources */,
+				5C8871821DAE03B300842D23 /* PDDegImageViewModel.m in Sources */,
+				5C88714C1DADC6DA00842D23 /* PDDegGroupCell.m in Sources */,
+				5C8871A41DAE8D2200842D23 /* PDDegGroupsCell.m in Sources */,
 				5C1C3D8E1DAC648A0030ACCA /* UIImage+Size.m in Sources */,
 				5C1C3D8C1DAC648A0030ACCA /* UIImage+Circle.m in Sources */,
 				5C1C3DAC1DACAA980030ACCA /* PDTitleView.m in Sources */,
+				5C88715C1DADED1400842D23 /* PDDegImageModel.m in Sources */,
+				5C8871A11DAE65F900842D23 /* PDDegGroupsController.m in Sources */,
 				5C1013671DACBD70001C5D9C /* PDPrivateHomeCell.m in Sources */,
 				5C1C3D941DAC648A0030ACCA /* XYSBaseViewModel.m in Sources */,
 				5C10137D1DAD08DF001C5D9C /* PDShowViewController.m in Sources */,
@@ -838,6 +908,7 @@
 				5C1C3D861DAC648A0030ACCA /* AppDelegate+Launch.m in Sources */,
 				5C1C3D921DAC648A0030ACCA /* XYSBaseNetwork.m in Sources */,
 				5C1013AC1DAD3691001C5D9C /* PDDegGroupModel.m in Sources */,
+				5C8871491DADB9F000842D23 /* PDDegGroupViewModel.m in Sources */,
 				5C1013761DACE7C0001C5D9C /* UIViewController+NavigationItem.m in Sources */,
 				5C1C3D8D1DAC648A0030ACCA /* UIImage+QRCode.m in Sources */,
 				5C8871461DADB41600842D23 /* PDDegNetwork.m in Sources */,
@@ -846,6 +917,9 @@
 				5C1C3D131DAC631F0030ACCA /* main.m in Sources */,
 				5C1C3D911DAC648A0030ACCA /* XYSBaseModel.m in Sources */,
 				5C1C3D971DAC648A0030ACCA /* XYSTabBarModel.m in Sources */,
+				5C8871981DAE579F00842D23 /* PDDegImageController.m in Sources */,
+				5C88719E1DAE586800842D23 /* PSCollectionViewCell.m in Sources */,
+				5C88719D1DAE586800842D23 /* PSCollectionView.m in Sources */,
 				5C1C3D951DAC648A0030ACCA /* XYSNavigationController.m in Sources */,
 				5C1C3DA81DACA06E0030ACCA /* PrivateHomeTableController.m in Sources */,
 				5C1013801DAD1076001C5D9C /* PDNavigationController.m in Sources */,
