@@ -10,6 +10,7 @@
 #import "PDLoginButton.h"
 #import "PDPrivateHomeCell.h"
 #import "PDLoginViewController.h"
+#import "PDPrivSetController.h"
 
 @interface PrivateHomeTableController ()
 {
@@ -59,7 +60,7 @@
 /** 添加头部视图 */
 - (void)addHeadView
 {
-    UIImageView *headView = [UIImageView viewWithFrame:CGRectMake(0, 0, 0, 100)];
+    UIImageView *headView = [UIImageView viewWithFrame:CGRectMake(0, 0, 0, 100*kScale)];
     [self.tableView setTableHeaderView:headView];
     [headView setImage:[UIImage imageNamed:@"mine_list_icon_bg_1024x140_@1x"]];
     [headView setUserInteractionEnabled:YES];
@@ -71,13 +72,12 @@
     [loginButton mas_makeConstraints:^(MASConstraintMaker *make)
     {
         make.top.left.bottom.mas_equalTo(0);
-        make.width.mas_equalTo(300);
+        make.width.mas_equalTo(300*kScale);
     }];
-#warning 按钮高亮状态问题
     [loginButton bk_addEventHandler:^(id sender)
     {
-        PDLoginViewController *loginVC = [PDLoginViewController defaultController];
-        [kKeyWindow addSubview:loginVC.view];
+        PDWindow *loginVCWindow = [PDLoginViewController standardWindowWithController];
+        [kKeyWindow addSubview:loginVCWindow.view];
 
     } forControlEvents:UIControlEventTouchUpInside];
 }
@@ -86,19 +86,21 @@
 - (void)addSignInAnimation
 {
     UIImageView *imageView = [UIImageView new];
-    [self.navigationController.view addSubview:imageView];
-    [imageView mas_makeConstraints:^(MASConstraintMaker *make)
-    {
-        make.centerX.mas_equalTo(kScreenWidth*0.5-70);
-        make.centerY.mas_equalTo(kScreenHeight*0.5-100);
-    }];
     imageView.image = [UIImage imageNamed:@"fruit-check-in-1_117x65_"];
     imageView.tag = 10;
     [imageView setUserInteractionEnabled:YES];
+    [self.navigationController.view addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make)
+    {
+        make.right.mas_equalTo(-20*kScale);
+        make.bottom.mas_equalTo(-25*kScale-self.tabBarController.tabBar.height);
+        make.width.mas_equalTo(117*kScale);
+        make.height.mas_equalTo(65*kScale);
+    }];
     [imageView bk_whenTapped:^
     {
-        PDLoginViewController *loginVC = [PDLoginViewController defaultController];
-        [kKeyWindow addSubview:loginVC.view];
+        PDWindow *loginVCWindow = [PDLoginViewController standardWindowWithController];
+        [kKeyWindow addSubview:loginVCWindow.view];
     }];
     [NSTimer bk_scheduledTimerWithTimeInterval:0.5
                                          block:^(NSTimer *timer)
@@ -129,27 +131,55 @@
     return self.buttonDatas.count;
 }
 
-
+/** 配置cell视图 */
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    /** 通过复用的方式获取cell */
     PDPrivateHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (!cell)
     {
         cell = [[PDPrivateHomeCell alloc] initWithStyle:UITableViewCellStyleDefault
                                         reuseIdentifier:@"Cell"];
-        [cell setBackgroundColor:kBGDColor];
-        [cell setSelected:NO];
     }
     
-    [cell setCellDatas:self.buttonDatas[indexPath.row]];
+    /** 传入数据，设置cell界面 */
+    [cell setCellDatas:self.buttonDatas[indexPath.row] clickHandler:^(NSInteger index)
+    {
+        /** 推出系统设置参数视图 */
+        if (indexPath.row == 1 && index == 2)
+        {
+            PDWindow *setVCWindow = [PDPrivSetController standardWindowWithController];
+            [kKeyWindow addSubview:setVCWindow.view];
+        }
+        else //推出登录界面
+        {
+            PDWindow *loginVCWindow = [PDLoginViewController standardWindowWithController];
+            [kKeyWindow addSubview:loginVCWindow.view];
+        }
+    }];
+    
+    /** 为第一个cell添加底线 */
+    if (indexPath.row == 0)
+    {
+        UIView *lineView = [UIView new];
+        [lineView setBackgroundColor:kRGBColor(217, 217, 218)];
+        [cell addSubview:lineView];
+        [lineView mas_makeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.bottom.right.mas_equalTo(0);
+             make.height.mas_equalTo(1);
+         }];
+    }
     
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+/** cell高度 */
+- (CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 150;
+    return 150*kScale;
 }
 
 @end

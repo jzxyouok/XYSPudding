@@ -29,11 +29,35 @@ static const int ddLogLevel = DDLogLevelVerbose;
 static const int ddLogLevel = DDLogLevelError;
 #endif
 
+
+
+#import "UIViewController+NavigationItem.h"
+#import "PDWindow.h"
+
 /** 全局背景色 */
 #define kBGDColor kRGBColor(236, 239, 243)
 
+/** 定义全局文字颜色 */
+#define kTextColor [[UIColor blackColor] colorWithAlphaComponent:0.6]
 
+/** 定义全局导航栏文字颜色 */
+#define kNaviTextColor kRGBColor(251, 84, 29)
 
+/** 按比例适配的比例 */
+#define kScale  kScreenHeight/736
+
+/** 导航栏高度 */
+#define kNavigationBarH 44*kScale
+
+/** 重布局自定义window中的根视图 */
+#define kLayoutView \
+- (void)viewWillLayoutSubviews \
+{ \
+    [super viewWillLayoutSubviews]; \
+    \
+    self.view.y = kNavigationBarH; \
+    self.view.height = 620*kScale; \
+}
 
 /** 通用请求参数 */
 #define apiKey_ @"yuki_ios"

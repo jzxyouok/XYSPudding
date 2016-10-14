@@ -1,14 +1,17 @@
-//
-//  PDDegGroupViewModel.h
-//  XYSPudding
-//
-//  Created by 徐玉珊 on 2016/10/12.
-//  Copyright © 2016年 XYS. All rights reserved.
-//
+/**
+ *  展示小组信息的视图模型
+ */
 
 #import "XYSBaseViewModel.h"
 
 @interface PDDegGroupViewModel : XYSBaseViewModel
+
+/** 单例 */
++ (id)defaultGroupViewModel;
+/** 刷新数据 */
+- (void)refreshDataWithGrupStyle:(NSInteger)style
+               CompletionHandler:(void (^)(NSError *error))completionHandler;
+
 
 /** 分组数目 */
 @property (nonatomic, assign) NSInteger groupNumber;
@@ -19,4 +22,11 @@
 
 /** 分组详情展示背景图URL */
 - (NSURL *)backgroundImageURLWithIndex:(NSInteger)index;
+
+/** 小组成员数目 */
+- (NSString *)memberCountWithIndex:(NSInteger)index;
+/** 今日主题数目 */
+- (NSString *)todayTopicCountWithIndex:(NSInteger)index;
+
+
 @end

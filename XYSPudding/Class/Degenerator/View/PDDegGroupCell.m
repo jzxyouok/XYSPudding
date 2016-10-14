@@ -9,6 +9,7 @@
 #import "PDDegGroupCell.h"
 #import "UIButton+WebCache.h"
 #import "PDDegGroupItem.h"
+#import "PDDegGroupTopicListController.h"
 
 @implementation PDDegGroupCell
 
@@ -18,6 +19,7 @@
     if (self == [super initWithStyle:style
                      reuseIdentifier:reuseIdentifier])
     {
+        self.selected = NO;
         [self addGroups];
     }
     return self;
@@ -25,10 +27,10 @@
 /** 添加分组视图 */
 - (void)addGroups
 {
-    UIButton *lastView = nil;
+    PDDegGroupItem *lastView = nil;
     for (int i = 0; i<8; i++)
     {
-        PDDegGroupItem *button = [PDDegGroupItem buttonWithType:UIButtonTypeCustom];
+        PDDegGroupItem *button = [PDDegGroupItem new];
         button.tag = 100+i;
         [self.contentView addSubview:button];
         
@@ -37,7 +39,7 @@
             [button mas_makeConstraints:^(MASConstraintMaker *make)
             {
                 make.left.top.mas_equalTo(0);
-                make.size.mas_equalTo(CGSizeMake(130*kScreenWidth/1024.0, 130*kScreenWidth/1024.0));
+                make.size.mas_equalTo(CGSizeMake(148*kScale, 148*kScale));
             }];
         }
         else
@@ -53,7 +55,8 @@
     }
 }
 
-- (void)setGroupViewModel:(PDDegGroupViewModel *)groupViewModel
+- (void)setDataWithViewModel:(PDDegGroupViewModel *)groupViewModel
+                clickHandler:(void(^)(NSInteger))handler
 {
     _groupViewModel = groupViewModel;
     
@@ -61,9 +64,16 @@
     for (NSInteger i = 0; i < count; i++)
     {
         PDDegGroupItem *button = [self.contentView viewWithTag:100+i];
-        [button sd_setImageWithURL:[_groupViewModel imageURLWithIndex:i]
-                          forState:UIControlStateNormal];
-        [button normalTitle:[_groupViewModel nameWithIndex:i]];
+//        [button sd_setImageWithURL:[_groupViewModel imageURLWithIndex:i]
+//                          forState:UIControlStateNormal];
+//        [button normalTitle:[_groupViewModel nameWithIndex:i]];
+//        [button bk_addEventHandler:^(UIButton *sender)
+//        {
+//            handler(sender.tag-100);
+//        } forControlEvents:UIControlEventTouchUpInside];
+        
+        [button setImageURL:[_groupViewModel imageURLWithIndex:i]];
+        [button setTitle:[_groupViewModel nameWithIndex:i]];
     }
 }
 @end

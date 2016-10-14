@@ -8,31 +8,103 @@
 
 #import "PDDegGroupItem.h"
 
+@interface PDDegGroupItem ()
+
+/** 图片视图 */
+@property (nonatomic, strong) UIImageView *imageView;
+/** 标题标签 */
+@property (nonatomic, strong) UILabel *titleLabel;
+
+@property (nonatomic, strong) UIButton *button;
+@end
+
 @implementation PDDegGroupItem
 
+#pragma mark - getter
 
-- (void)willMoveToSuperview:(UIView *)newSuperview
+/** 图片视图 */
+- (UIImageView *)imageView
 {
-    self.imageView.layer.cornerRadius = 5;
-    [self.titleLabel setTextAlignment:NSTextAlignmentCenter];
-    [self.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [self setTitleColor:[UIColor lightGrayColor]
-               forState:UIControlStateNormal];
+    if (!_imageView)
+    {
+        _imageView = [UIImageView new];
+        [_imageView setContentMode:UIViewContentModeScaleAspectFill];
+        [_imageView setClipsToBounds:YES];
+        [_imageView.layer setCornerRadius:5];
+        [self addSubview:_imageView];
+        [_imageView mas_makeConstraints:^(MASConstraintMaker *make)
+        {
+            make.centerX.mas_equalTo(0);
+            make.centerY.mas_equalTo(-11*kScale);
+            make.width.mas_equalTo(100*kScale);
+            make.height.mas_equalTo(100*kScale);
+        }];
+    }
+    return _imageView;
+}
+/** 标题标签 */
+- (UILabel *)titleLabel
+{
+    if (!_titleLabel)
+    {
+        _titleLabel = [UILabel new];
+        [_titleLabel setTextColor:[UIColor lightGrayColor]];
+        [_titleLabel setFont:[UIFont systemFontOfSize:12*kScale]];
+        [self addSubview:_titleLabel];
+        [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make)
+        {
+            make.centerX.mas_equalTo(0);
+            make.top.mas_equalTo(self.imageView.mas_bottom).mas_equalTo(10);
+        }];
+    }
+    return _titleLabel;
 }
 
-- (void)layoutSubviews
+/** 按钮 */
+- (UIButton *)button
 {
-    [super layoutSubviews];
+    if (!_button)
+    {
+        _button = [UIButton buttonWithType:UIButtonTypeSystem];
+        [_button setBackgroundColor:[UIColor clearColor]];
+        [self addSubview:_button];
     
-    // 调整图片
-    self.imageView.x = 15;
-    self.imageView.y = 0;
-    self.imageView.width = self.width-30;
-    self.imageView.height = self.height-30;
-    //调整文字
-    self.titleLabel.x = 0;
-    self.titleLabel.y = self.imageView.height + 5;
-    self.titleLabel.width = self.width;
-    self.titleLabel.height = self.height-self.imageView.height-5;
+        [_button mas_makeConstraints:^(MASConstraintMaker *make)
+        {
+            make.edges.mas_equalTo(0);
+        }];
+        [_button bk_addEventHandler:^(id sender)
+        {
+            if (_clickHandler)
+            {
+                _clickHandler(self.tag);
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _button;
 }
+
+#pragma mark - setter
+
+- (void)setImageURL:(NSURL *)imageURL
+{
+    _imageURL = imageURL;
+    [self.button setHidden:NO];
+    self.userInteractionEnabled = YES;
+    [self.imageView setImageWithURL:_imageURL
+                   placeholderImage:[UIImage imageNamed:@"global_thumb_60x60_"]];
+}
+
+- (void)setTitle:(NSString *)title
+{
+    _title = title;
+
+    [self.titleLabel setText:_title];
+}
+
+- (void)clickHandler:(ClickHandler)clickHandler
+{
+    _clickHandler = clickHandler;
+}
+
 @end

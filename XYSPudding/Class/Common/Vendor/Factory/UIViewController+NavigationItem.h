@@ -32,4 +32,9 @@ typedef NS_ENUM(NSInteger, PDRightItemStyle)
 - (void)addRightItemWithStyle:(PDRightItemStyle)style
                  clickHandler:(void(^)())clickHandler;
 
+
+/** 带动态图片的上拉刷新页面, 默认自动刷新 */
+- (MJRefreshGifHeader *)gifHeaderWithRefreshingBlock:(void(^)())block;
+
+
 @end

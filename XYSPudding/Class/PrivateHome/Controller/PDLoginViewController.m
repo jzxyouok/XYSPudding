@@ -7,8 +7,6 @@
 //
 
 #import "PDLoginViewController.h"
-#import "UIViewController+NavigationItem.h"
-#import "PDShowViewController.h"
 
 @interface PDLoginViewController ()
 
@@ -23,24 +21,12 @@
 
 @implementation PDLoginViewController
 
-/** 自定义视图配置的控制器 */
-+ (id)defaultController
+/** 带导航栏的本控制器视图配置在自定义窗口，返回该窗口对象 */
++ (id)standardWindowWithController
 {
-    PDShowViewController *showVC = [PDShowViewController new];
-    showVC.viewController = [PDLoginViewController new];
-    __block PDShowViewController *blockObj = showVC;
-    [showVC.viewController addLeftItemWithStyle:PDLeftItemStyleBackImage
-             clickHandler:^
-     {
-         [blockObj viewWillDisappear:YES];
-     }];
-    [showVC.viewController addRightItemWithStyle:PDRightItemStyleTitle1
-                                    clickHandler:^
-    {
-        DDLogInfo(@"用户协议");
-    }];
-    
-    return showVC;
+    PDWindow *pWindow = [PDWindow standardWindow];
+    pWindow.rootViewController = [PDLoginViewController new];
+    return pWindow;
 }
 
 #pragma mark - getter
@@ -52,8 +38,10 @@
     {
         _imageView = [UIImageView new];
         [_imageView setImage:[UIImage imageNamed:@"login_bg_320x290_"]];
-        [_imageView setContentMode:UIViewContentModeScaleAspectFit];
-        _imageView.backgroundColor = [UIColor whiteColor];//设置背景色
+        [_imageView setContentMode:UIViewContentModeScaleAspectFill];
+        [_imageView setClipsToBounds:YES];
+        [_imageView setBackgroundColor:kBGDColor];
+        [_imageView setTintColor:kRGBColor(200, 201, 205)];
     }
     return _imageView;
 }
@@ -93,17 +81,25 @@
 {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor whiteColor]];
-    [self.navigationController.view setBackgroundColor:self.view.backgroundColor];
-
-    self.title = @"登录";
-    
+    [self.view setBackgroundColor:kBGDColor];
+    [self setTitle:@"登录"];
+    [self addNavigationItems];
     [self viewDidLayoutMySubviews];
 }
 
-- (void)didReceiveMemoryWarning
+/** 添加导航栏标签 */
+- (void)addNavigationItems
 {
-    [super didReceiveMemoryWarning];
+    [self addLeftItemWithStyle:PDLeftItemStyleBackImage
+                                        clickHandler:^
+     {
+         [[PDWindow standardWindow] dismiss:YES]; //推出窗口
+     }];
+    [self addRightItemWithStyle:PDRightItemStyleTitle1
+                                         clickHandler:^
+     {
+         DDLogInfo(@"用户协议");
+     }];
 }
 
 /** 自定义布局 */
@@ -113,19 +109,19 @@
     [self.view addSubview:self.imageView];
     [_imageView mas_makeConstraints:^(MASConstraintMaker *make)
      {
-         make.top.left.mas_equalTo(100*kScreenWidth/1024.0);
-         make.bottom.right.mas_equalTo(-100*kScreenWidth/1024.0);
-         
+         make.center.mas_equalTo(0);
+         make.width.mas_equalTo(350*kScale);
+         make.height.mas_equalTo(350*kScale);
      }];
     
     /** 微博登录按钮 */
     [self.view addSubview:self.wbButton];
     [_wbButton mas_makeConstraints:^(MASConstraintMaker *make)
      {
-         make.left.mas_equalTo(self.view.mas_centerX).mas_offset(-135*kScreenWidth/1024.0-5);
-         make.bottom.mas_equalTo(-10);
-         make.size.mas_equalTo(CGSizeMake(135*kScreenWidth/1024.0, 50*kScreenWidth/1024.0));
-         
+         make.left.mas_equalTo(self.view.mas_centerX).mas_offset(-135*kScale-5);
+         make.top.mas_equalTo(_imageView.mas_bottom).mas_equalTo(30*kScale);
+         make.width.mas_equalTo(135*kScale);
+         make.height.mas_equalTo(50*kScale);
      }];
     
     /** qq登录按钮 */
@@ -137,5 +133,8 @@
          make.size.mas_equalTo(_wbButton);
      }];
 }
+
+/** 重布局 */
+kLayoutView
 
 @end

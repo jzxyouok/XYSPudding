@@ -7,49 +7,61 @@
 //
 
 #import "PDDegGroupsController.h"
-#import "PDShowViewController.h"
-#import "UIViewController+NavigationItem.h"
-#import "PDDegImageViewModel.h"
+#import "PDDegGroupViewModel.h"
+#import "PDDegGroupsCell.h"
 
 @interface PDDegGroupsController ()
 
-@property (nonatomic, strong) PDDegImageViewModel *listViewModel;
+@property (nonatomic, strong) PDDegGroupViewModel *groupViewModel;
 
 @end
 
 @implementation PDDegGroupsController
 
-/** 自定义视图配置的控制器 */
-+ (id)defaultController
+/** 带导航栏的本控制器视图配置在自定义窗口，返回该窗口对象 */
++ (id)standardWindowWithController
 {
-    PDShowViewController *showVC = [PDShowViewController new];
-    showVC.viewController = [PDDegGroupsController new];
+    PDWindow *pWindow = [PDWindow standardWindow];
+    PDDegGroupsController *groupVC = [PDDegGroupsController new];
+    groupVC.style = PDDegGroupStyleNormal;
+    pWindow.rootViewController = groupVC;
     
-    __block PDShowViewController *blockObj = showVC;
-    [showVC.viewController addLeftItemWithStyle:PDLeftItemStyleBackImage
-                                   clickHandler:^
-     {
-         [blockObj viewWillDisappear:YES];
-     }];
-    [showVC.viewController addRightItemWithStyle:PDRightItemStyleSearchImage
-                                    clickHandler:^
-     {
-         DDLogInfo(@"搜索");
-     }];
-    
-    return showVC;
+    return pWindow;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self setTitle:@"图片"];
     [self.view setBackgroundColor:kBGDColor];
-    _listViewModel = [PDDegImageViewModel new];
+    _groupViewModel = [PDDegGroupViewModel defaultGroupViewModel];
     [self addRefreshView];
-    [self addHeadView];
     [self.tableView setTableFooterView:[UIView new]];
+
+    /** 为导航栏添加左侧标签 */
+    [self addLeftItemWithStyle:PDLeftItemStyleBackImage
+                                        clickHandler:^
+     {
+         [[PDWindow standardWindow] dismiss:YES];
+     }];
+    
+    if (_style == PDDegGroupStyleNormal)
+    {
+        [self addHeadView];
+        [self setTitle:@"小组"];
+    }
+    else
+    {
+        [self setTitle:@"推荐小组"];
+        __block PDDegGroupsController *blockSelf = self;
+        [self addLeftItemWithStyle:PDLeftItemStyleBackImage
+                      clickHandler:^
+        {
+            [blockSelf.navigationController popViewControllerAnimated:YES];
+        }];
+        [self addGetMoreDataView];
+        [self.tableView setTableFooterView:[UIView new]];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,33 +72,37 @@
 /** 刷新视图 */
 - (void)addRefreshView
 {
-    MJRefreshGifHeader * gifRefreshHeader = [MJRefreshGifHeader headerWithRefreshingBlock:^
-                                             {
-                                                 [_listViewModel refreshDataWithCompletionHandler:^(NSError *error)
-                                                  {
-                                                      [self.tableView reloadData];
-                                                      [self.tableView.mj_header endRefreshing];
-                                                  }];
-                                             }];
-    [gifRefreshHeader setImages:@[[UIImage imageNamed:@"pudding_anime_1_50x50_"]]
-                       forState:MJRefreshStateIdle];
-    [gifRefreshHeader setImages:@[[UIImage imageNamed:@"pudding_anime_1_50x50_"], [UIImage imageNamed:@"pudding_anime_2_50x50_"]]
-                       duration:0.5
-                       forState:MJRefreshStateRefreshing];
-    gifRefreshHeader.stateLabel.hidden = YES;
-    gifRefreshHeader.labelLeftInset = -95;
-    [gifRefreshHeader beginRefreshing];
-    self.tableView.mj_header = gifRefreshHeader;
-    [self.tableView.mj_header beginRefreshing];
-    
-    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^
-                                 {
-                                     [_listViewModel getMoreDataWithCompletionHandler:^(NSError *error)
-                                      {
-                                          [self.tableView reloadData];
-                                          [self.tableView.mj_footer endRefreshing];
-                                      }];
-                                 }];
+    self.tableView.mj_header = [self gifHeaderWithRefreshingBlock:^
+    {
+        [_groupViewModel refreshDataWithGrupStyle:(_style+1)
+                                CompletionHandler:^(NSError *error)
+         {
+             if (!error)
+             {
+                 [self.tableView reloadData];
+                 if (_style == PDDegGroupStyleNormal)
+                 {
+                     [self addFootView];
+                 }
+             }
+             [self.tableView.mj_header endRefreshing];
+         }];
+    }];
+}
+
+/** 获取更多数据视图 */
+- (void)addGetMoreDataView
+{
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^
+    {
+        [_groupViewModel getMoreDataWithCompletionHandler:^(NSError *error)
+        {
+            [self.tableView reloadData];
+            [self.tableView.mj_footer endRefreshing];
+        }];
+    }];
+    [footer setRefreshingTitleHidden:YES];
+    self.tableView.mj_footer = footer;
 }
 
 /** 添加头部视图 */
@@ -115,25 +131,84 @@
     [headView addSubview:bottomline];
 }
 
+/** 添加尾部视图 */
+- (void)addFootView
+{
+    /** 尾部视图 */
+    UIView *footView = [UIView viewWithFrame:CGRectMake(0, 0, 0, 100)];
+    [footView setBackgroundColor:kBGDColor];
+    [footView setBackgroundColor:[UIColor whiteColor]];
+    [self.tableView setTableFooterView:footView];
+    /** 顶线视图 */
+    UIView *topLine = [UIView new];
+    [topLine setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.1]];
+    [footView addSubview:topLine];
+    [topLine mas_makeConstraints:^(MASConstraintMaker *make)
+    {
+        make.top.left.right.mas_equalTo(0);
+        make.height.mas_equalTo(1);
+    }];
+    /** 文字标签 */
+    UILabel *label = [UILabel new];
+    [label setText:@"查看全部"];
+    [label setTextAlignment:NSTextAlignmentCenter];
+    [label setTextColor:[[UIColor orangeColor] colorWithAlphaComponent:0.8]];
+    [label setFont:[UIFont systemFontOfSize:15]];
+    [footView addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make)
+    {
+        make.left.right.mas_equalTo(0);
+        make.top.mas_equalTo(1);
+        make.height.mas_equalTo(40);
+    }];
+    [label setUserInteractionEnabled:YES];
+    [label bk_whenTapped:^
+    {
+        /** 推出展示所有小组的表视图 */
+        PDDegGroupsController *groupVC = [PDDegGroupsController new];
+        groupVC.style = PDDegGroupStyleAll;
+        [self.navigationController pushViewController:groupVC
+                                             animated:YES];
+    }];
+    /** 图片标签 */
+    UIImageView *imageView = [UIImageView new];
+    [imageView setImage:[UIImage imageNamed:@"loading_logo_145x89_"]];
+    [imageView setContentMode:UIViewContentModeScaleAspectFit];
+    [imageView setBackgroundColor:kBGDColor];
+    [footView addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make)
+    {
+        make.left.bottom.right.mas_equalTo(0);
+        make.top.mas_equalTo(label.mas_bottom).mas_equalTo(0);
+    }];
+}
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return _listViewModel.listNumber;
+    return _groupViewModel.groupNumber;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
  {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    PDDegGroupsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
      if (!cell)
      {
-         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+         cell = [[PDDegGroupsCell alloc] initWithStyle:UITableViewCellStyleDefault
                                        reuseIdentifier:@"Cell"];
-         [cell setBackgroundColor:[UIColor whiteColor]];
-         [cell setSeparatorInset:UIEdgeInsetsMake(0, 10, 0, -10)];
      }
+     [cell setDataWithViewModel:_groupViewModel index:indexPath.row];
     return cell;
 }
+
+- (CGFloat)   tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100*kScreenWidth/1024;
+}
+
+/** 重布局 */
+kLayoutView
 
 @end

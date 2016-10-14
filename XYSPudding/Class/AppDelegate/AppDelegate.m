@@ -13,6 +13,7 @@
 {
     [self initializeWithApplication:application]; //配置默认参数
     self.window.rootViewController = [XYSTabBarController new];
+    [self didLoadDefualtNavigationBar];
     
     return YES;
 }
@@ -56,5 +57,20 @@
         [_window makeKeyAndVisible];
     }
     return _window;
+}
+
+/** 配置全局的导航栏 */
+- (void)didLoadDefualtNavigationBar
+{
+    UINavigationBar *appearance = [UINavigationBar appearance];
+    /** 设置导航栏字体属性 */
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+    attributes[NSFontAttributeName] = [UIFont systemFontOfSize:17*kScale];
+    attributes[NSForegroundColorAttributeName] = kNaviTextColor;
+    appearance.titleTextAttributes = attributes;
+    
+    [appearance setTranslucent:NO];
+    [appearance setBackgroundImage:[UIImage imageNamed:@"bar"]
+                     forBarMetrics:UIBarMetricsDefault];
 }
 @end

@@ -14,40 +14,34 @@
 
 @implementation PDNavigationController
 
-/** 初始参数 */
+/** 导航栏初始参数设置 */
 + (void)initialize
 {
     if (self == [PDNavigationController class])
     {
         UINavigationBar *appearance = [UINavigationBar appearance];
-        
-        NSMutableDictionary *attributes = [NSMutableDictionary dictionary]; //设置导航栏标签字体属性
-        attributes[NSFontAttributeName] = [UIFont systemFontOfSize:17];
-        attributes[NSForegroundColorAttributeName] = [UIColor orangeColor];
-        appearance.titleTextAttributes = attributes;
+        /* 调整导航栏标题竖向位置 */
+        [appearance setTitleVerticalPositionAdjustment:44*(1-kScale)*0.5-2.5
+                                         forBarMetrics:UIBarMetricsDefault];
     }
 }
 
+/** 导航栏控制器视图的默认配置加载 */
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:kBGDColor];
-    [self.navigationBar setTitleVerticalPositionAdjustment:7 //调整导航栏标题竖向位置
-                                             forBarMetrics:UIBarMetricsDefault];
     
-    [self.view.layer setCornerRadius:7];
+    [self.view setBackgroundColor:kBGDColor];
+    [self.view.layer setCornerRadius:15*kScale];
     [self.view setClipsToBounds:YES];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
 }
 
 /** 视图出现动画 */
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    /** 设置上移出现动画 */
     self.view.transform = CGAffineTransformMakeTranslation(0, kScreenHeight);
     [UIView animateWithDuration:0.5
                      animations:^
@@ -61,6 +55,7 @@
 {
     [super viewWillDisappear:animated];
     
+    /** 设置下移消失动画 */
     [UIView animateWithDuration:0.5
                      animations:^
      {
@@ -68,11 +63,13 @@
      }];
 }
 
+/** 重布局导航栏高度 */
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
     
-    self.navigationBar.height = 30; //修改导航栏高度
+    /** 调整导航栏高度 */
+    self.navigationBar.height = 44*kScale;
 }
 
 @end

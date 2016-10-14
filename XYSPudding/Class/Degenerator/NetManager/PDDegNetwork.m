@@ -18,7 +18,9 @@
 /** 加载分组数据 */
 @implementation PDDegNetwork
 
-+ (id)loadGroupDataWithCompletionHandler:(void (^)(id model, NSError *error))completionHandler
++ (id)loadGroupDataWithLimit:(NSInteger)limit
+                      offset:(NSInteger)offset
+           CompletionHandler:(void (^)(id model, NSError *error))completionHandler
 {
     NSString *baseURL = @"http://pudding.cc/api/v1/discovery/recommended_group";
     
@@ -28,8 +30,12 @@
     params[@"brand"] = brand_;
     params[@"channelId"] = channelId_;
     params[@"deviceKey"] = deviceKey_;
-    params[@"limit"] = @8;
+    params[@"limit"] = @(limit);
     params[@"model"] = model_;
+    if (offset > 0)
+    {
+        params[@"offset"] = @(offset);
+    }
     params[@"os"] = os_;
     params[@"osv"] = osv_;
     params[@"timestamp"] = timestamp_;

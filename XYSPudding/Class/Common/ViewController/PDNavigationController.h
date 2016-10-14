@@ -1,10 +1,6 @@
-//
-//  PDNavigationController.h
-//  XYSPudding
-//
-//  Created by 徐玉珊 on 2016/10/11.
-//  Copyright © 2016年 XYS. All rights reserved.
-//
+/**
+ *  自制window显示的控制器视图的专用导航栏控制器视图
+ */
 
 #import <UIKit/UIKit.h>
 

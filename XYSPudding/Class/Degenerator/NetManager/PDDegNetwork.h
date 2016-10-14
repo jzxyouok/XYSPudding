@@ -11,7 +11,9 @@
 @interface PDDegNetwork : XYSBaseNetwork
 
 /** 加载分组数据 */
-+ (id)loadGroupDataWithCompletionHandler:(void (^)(id model, NSError *error))completionHandler;
++ (id)loadGroupDataWithLimit:(NSInteger)limit
+                      offset:(NSInteger)offset
+           CompletionHandler:(void (^)(id model, NSError *error))completionHandler;
 
 /** 加载图片列表数据 */
 + (id)loadImageListDataWithloadType:(XYSDataLoadType)loadType

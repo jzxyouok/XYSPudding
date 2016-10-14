@@ -12,10 +12,14 @@
 #import "PDDegGroupViewModel.h"
 #import "PDDegImageController.h"
 #import "PDDegGroupsController.h"
+#import "PDDegGroupTopicListController.h"
+#import "PDDegGroupItem.h"
 
 @interface PDDegTableController ()
 {
     PDDegGroupViewModel *_groupViewModel;
+    /** 展示分组列表的表视图尾部视图 */
+    UIView *_footView;
 }
 @end
 
@@ -25,40 +29,85 @@
 {
     [super viewDidLoad];
     
+    [self defaultConfig];
+    [self addRefreshView];
+}
+
+/** 默认配置 */
+- (void)defaultConfig
+{
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView setBackgroundColor:kBGDColor];
-    
-    UIView *headView = [UIView viewWithFrame:CGRectMake(0, 0, 0, 30)];
+    /** 头部视图拉开间距 */
+    UIView *headView = [UIView viewWithFrame:CGRectMake(0, 0, 0, 30*kScale)];
     [headView setBackgroundColor:kBGDColor];
     [self.tableView setTableHeaderView:headView];
-    
-    [self addRefreshView];
+    /** 尾部视图展示部分小组 */
+    UIView *footView = [UIView viewWithFrame:CGRectMake(0, 0, 0, 148*kScale)];
+    [footView setBackgroundColor:[UIColor whiteColor]];
+    [self.tableView setTableFooterView:footView];
+    _footView = footView;
+    /** 尾部视图的分组标签 */
+    PDDegGroupItem *lastView = nil;
+    for (int i = 0; i<8; i++)
+    {
+        PDDegGroupItem *groupItem = [PDDegGroupItem new];
+        groupItem.tag = 100+i;
+        [footView addSubview:groupItem];
+        
+        if (!lastView)
+        {
+            [groupItem mas_makeConstraints:^(MASConstraintMaker *make)
+             {
+                 make.left.top.mas_equalTo(0);
+                 make.size.mas_equalTo(CGSizeMake(kScreenWidth/8, 148*kScale));
+             }];
+        }
+        else
+        {
+            [groupItem mas_makeConstraints:^(MASConstraintMaker *make)
+             {
+                 make.left.mas_equalTo(lastView.mas_right).mas_equalTo(0);
+                 make.top.mas_equalTo(0);
+                 make.size.mas_equalTo(lastView);
+             }];
+        }
+        lastView = groupItem;
+    }
 }
 
 /** 添加上拉刷新视图 */
 - (void)addRefreshView
 {
-    _groupViewModel = [PDDegGroupViewModel new];
-    
-    MJRefreshGifHeader * gifRefreshHeader = [MJRefreshGifHeader headerWithRefreshingBlock:^
-                                             {
-                                                 [_groupViewModel refreshDataWithCompletionHandler:^(NSError *error)
-                                                  {
-                                                      [self.tableView reloadData];
-                                                      [self.tableView.mj_header endRefreshing];
-                                                  }];
-                                             }];
-    [gifRefreshHeader setImages:@[[UIImage imageNamed:@"pudding_anime_1_50x50_"]]
-                       forState:MJRefreshStateIdle];
-    [gifRefreshHeader setImages:@[[UIImage imageNamed:@"pudding_anime_1_50x50_"], [UIImage imageNamed:@"pudding_anime_2_50x50_"]]
-                       duration:0.5
-                       forState:MJRefreshStateRefreshing];
-    gifRefreshHeader.stateLabel.hidden = YES;
-    gifRefreshHeader.labelLeftInset = -80*kScreenWidth/1024;
-    [gifRefreshHeader beginRefreshing];
-    self.tableView.mj_header = gifRefreshHeader;
+    _groupViewModel = [PDDegGroupViewModel defaultGroupViewModel];
+    self.tableView.mj_header = [self gifHeaderWithRefreshingBlock:^
+    {
+        [_groupViewModel refreshDataWithGrupStyle:0
+                                CompletionHandler:^(NSError *error)
+         {
+             [self.tableView reloadData];
+             [self didLoadGroupData];
+             [self.tableView.mj_header endRefreshing];
+         }];
+    }];
 }
 
+/** 加载尾部视图上的分组数据 */
+- (void)didLoadGroupData
+{
+    NSInteger count = [_groupViewModel groupNumber];
+    for (NSInteger i = 0; i < count; i++)
+    {
+        PDDegGroupItem *groupItem = [_footView viewWithTag:100+i];
+        [groupItem setImageURL:[_groupViewModel imageURLWithIndex:i]];
+        [groupItem setTitle:[_groupViewModel nameWithIndex:i]];
+        [groupItem clickHandler:^(NSInteger tag)
+        {
+            PDDegGroupTopicListController *topicListVC = [PDDegGroupTopicListController defaultControllerWithBgdImageURL:[_groupViewModel backgroundImageURLWithIndex:tag-100]];
+                         [kKeyWindow addSubview:topicListVC.view];
+        }];
+    }
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -69,25 +118,18 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    if (section == 0)
+    {
+        return 2;
+    }
+    return 1;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    if (indexPath.section == 1 && indexPath.row == 1)
-    {
-        PDDegGroupCell *cell = [[PDDegGroupCell alloc] initWithStyle:UITableViewCellStyleValue1
-                                                     reuseIdentifier:@"GroupCell"];
-        [cell setGroupViewModel:_groupViewModel];
-        
-        return cell;
-    }
-
+    /** 通过复用cell获取cell对象 */
     PDDegNormalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NormalCell"];
-    
     if (!cell)
     {
         cell = [[PDDegNormalCell alloc] initWithStyle:UITableViewCellStyleValue1
@@ -109,51 +151,67 @@
     return cell;
 }
 
+/** cell高度 */
 - (CGFloat)   tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1 && indexPath.row == 1)
     {
-        return 130*kScreenWidth/1024.0;
+        return 148*kScale;
     }
-    return 45*kScreenWidth/1024.0;
+    return 47.5*kScale;
 }
 
+/** 分组组尾高度设置 */
 - (CGFloat)    tableView:(UITableView *)tableView
 heightForFooterInSection:(NSInteger)section
 {
-    return section == 0 ? 15 : 0;
+    return section == 0 ? 20*kScale : 0;
 }
 
+/** 分组尾部视图 */
+- (UIView *) tableView:(UITableView *)tableView
+viewForFooterInSection:(NSInteger)section
+{
+    UIView *view = [UIView viewWithFrame:CGRectZero];
+    [view setBackgroundColor:kBGDColor];
+    return view;
+}
+
+/** cell点击事件 */
 - (void)      tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath
-                             animated:YES];
+    if (indexPath.section != 1 && indexPath.row != 1)
+    {
+        [tableView deselectRowAtIndexPath:indexPath
+                                 animated:YES];
+    }
     
     if (indexPath.section == 0)
     {
         if (indexPath.row == 0)
         {
-            
+            /** 跳转到首页的视频页面 */
+            self.tabBarController.selectedIndex = 0;
         }
         else
         {
-            PDDegImageController *imageListVC = [PDDegImageController defaultController];
-            [kKeyWindow addSubview:imageListVC.view];
+            /** 推出图片主题列表视图 */
+            PDWindow *imageListVCWindow = [PDDegImageController standardWindowWithController];
+            [kKeyWindow addSubview:imageListVCWindow.view];
         }
     }
     else
     {
         if (indexPath.row == 0)
         {
-            PDDegGroupsController *groupVC = [PDDegGroupsController defaultController];
-            [kKeyWindow addSubview:groupVC.view];
+            /** 推出小组分组列表视图 */
+            PDWindow *groupVCWindow = [PDDegGroupsController standardWindowWithController];
+            [kKeyWindow addSubview:groupVCWindow.view];
         }
     }
 }
-
-
 
 - (NSArray *)imageNames
 {

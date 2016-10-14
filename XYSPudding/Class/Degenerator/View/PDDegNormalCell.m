@@ -47,6 +47,8 @@
          {
              make.left.mas_equalTo(10);
              make.centerY.mas_equalTo(0);
+             make.width.mas_equalTo(28*kScale);
+             make.height.mas_equalTo(28*kScale);
          }];
     }
     return _imageView_;
@@ -60,10 +62,11 @@
         [self.contentView addSubview:_titleLabel];
         [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make)
          {
-             make.left.mas_equalTo(self.imageView_.mas_right).mas_equalTo(10);
+             make.left.mas_equalTo(self.imageView_.mas_right).mas_equalTo(10*kScale);
              make.centerY.mas_equalTo(0);
          }];
-        [_titleLabel setTextColor:[[UIColor blackColor] colorWithAlphaComponent:0.8]];
+        [_titleLabel setTextColor:kTextColor];
+        [_titleLabel setFont:[UIFont systemFontOfSize:18*kScale]];
     }
     return _titleLabel;
 }
@@ -74,7 +77,7 @@
     {
         _describeLabel = [UILabel new];
         [_describeLabel setTextColor:[UIColor lightGrayColor]];
-        [_describeLabel setFont:[UIFont systemFontOfSize:15]];
+        [_describeLabel setFont:[UIFont systemFontOfSize:17*kScale]];
         [self.contentView addSubview:_describeLabel];
         [_describeLabel mas_makeConstraints:^(MASConstraintMaker *make)
         {
@@ -90,11 +93,14 @@
     if (!_indImageView)
     {
         _indImageView = [UIImageView new];
+        [_indImageView setContentMode:UIViewContentModeScaleAspectFit];
         [self addSubview:_indImageView];
         [_indImageView mas_makeConstraints:^(MASConstraintMaker *make)
         {
             make.centerY.mas_equalTo(0);
             make.right.mas_equalTo(0);
+            make.width.mas_equalTo(28*kScale);
+            make.height.mas_equalTo(28*kScale);
         }];
         [_indImageView setImage:[UIImage imageNamed:@"home_anime_indicator_28x28_"]];
     }

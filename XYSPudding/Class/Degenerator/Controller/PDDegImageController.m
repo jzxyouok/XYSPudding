@@ -9,7 +9,7 @@
 #import "PDDegImageController.h"
 #import "PSCollectionView.h"
 #import "PDDegImageViewModel.h"
-#import "PDShowViewController.h"
+#import "PDWindow.h"
 #import "UIViewController+NavigationItem.h"
 #import "PDImageListCell.h"
 
@@ -22,25 +22,12 @@
 
 @implementation PDDegImageController
 
-/** 自定义视图配置的控制器 */
-+ (id)defaultController
+/** 带导航栏的本控制器视图配置在自定义窗口，返回该窗口对象 */
++ (id)standardWindowWithController
 {
-    PDShowViewController *showVC = [PDShowViewController new];
-    showVC.viewController = [PDDegImageController new];
-    
-    __block PDShowViewController *blockObj = showVC;
-    [showVC.viewController addLeftItemWithStyle:PDLeftItemStyleBackImage
-                                   clickHandler:^
-     {
-         [blockObj viewWillDisappear:YES];
-     }];
-    [showVC.viewController addRightItemWithStyle:PDRightItemStyleSearchImage
-                                    clickHandler:^
-     {
-         DDLogInfo(@"搜索");
-     }];
-    
-    return showVC;
+    PDWindow *pWindow = [PDWindow standardWindow];
+    pWindow.rootViewController = [PDDegImageController new];
+    return pWindow;
 }
 
 - (void)viewDidLoad
@@ -49,6 +36,8 @@
     
     [self setTitle:@"图片"];
     [self.view setBackgroundColor:kBGDColor];
+    [self addNavigationItems];
+    
     _listViewModel = [PDDegImageViewModel new];
     [self addCollectionView];
     [self addRefreshView];
@@ -57,6 +46,22 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+/** 导航栏标签 */
+- (void)addNavigationItems
+{
+    /** 为导航栏添加侧标签 */
+    [self addLeftItemWithStyle:PDLeftItemStyleBackImage
+                                        clickHandler:^
+     {
+         [[PDWindow standardWindow] dismiss:YES];
+     }];
+    [self addRightItemWithStyle:PDRightItemStyleSearchImage
+                                         clickHandler:^
+     {
+         DDLogInfo(@"搜索");
+     }];
 }
 
 /** 瀑布流视图 */
@@ -77,23 +82,14 @@
 /** 刷新视图 */
 - (void)addRefreshView
 {
-    MJRefreshGifHeader * gifRefreshHeader = [MJRefreshGifHeader headerWithRefreshingBlock:^
-                                             {
-                                                 [_listViewModel refreshDataWithCompletionHandler:^(NSError *error)
-                                                  {
-                                                      [_collectionView reloadData];
-                                                      [_collectionView.mj_header endRefreshing];
-                                                  }];
-                                             }];
-    [gifRefreshHeader setImages:@[[UIImage imageNamed:@"pudding_anime_1_50x50_"]]
-                       forState:MJRefreshStateIdle];
-    [gifRefreshHeader setImages:@[[UIImage imageNamed:@"pudding_anime_1_50x50_"], [UIImage imageNamed:@"pudding_anime_2_50x50_"]]
-                       duration:0.5
-                       forState:MJRefreshStateRefreshing];
-    gifRefreshHeader.stateLabel.hidden = YES;
-    gifRefreshHeader.labelLeftInset = -80*kScreenWidth/1024;
-    [gifRefreshHeader beginRefreshing];
-    _collectionView.mj_header = gifRefreshHeader;
+    _collectionView.mj_header = [self gifHeaderWithRefreshingBlock:^
+    {
+        [_listViewModel refreshDataWithCompletionHandler:^(NSError *error)
+         {
+             [_collectionView reloadData];
+             [_collectionView.mj_header endRefreshing];
+         }];
+    }];
     [_collectionView.mj_header beginRefreshing];
     
     _collectionView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^
@@ -104,7 +100,6 @@
                                           [_collectionView.mj_footer endRefreshing];
                                       }];
                                  }];
-    
 }
 
 
@@ -118,7 +113,10 @@
 - (UIView *)collectionView:(PSCollectionView *)collectionView
          cellForRowAtIndex:(NSInteger)index
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wincompatible-pointer-types"
     PDImageListCell *cell = [collectionView dequeueReusableViewForClass:[PDImageListCell class]];
+#pragma clang diagnostic pop
     if (!cell)
     {
         cell = [PDImageListCell new];
@@ -134,5 +132,16 @@
     return [_listViewModel cellSizeWithIndex:index].height;
 }
 
+/** 重布局 */
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    [self.view mas_makeConstraints:^(MASConstraintMaker *make)
+    {
+        make.left.bottom.right.mas_equalTo(0);
+        make.top.mas_equalTo(44*kScale);
+    }];
+}
 
 @end

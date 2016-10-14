@@ -40,7 +40,9 @@ static NSString *const text = @"登录同步追番记录";
     [avatarView mas_makeConstraints:^(MASConstraintMaker *make)
     {
         make.centerY.mas_equalTo(0);
-        make.left.mas_equalTo(30);
+        make.left.mas_equalTo(30*kScale);
+        make.width.mas_equalTo(64*kScale);
+        make.height.mas_equalTo(64*kScale);
     }];
     _avatarView = avatarView;
 }
@@ -51,10 +53,11 @@ static NSString *const text = @"登录同步追番记录";
     UILabel *label = [UILabel new];
     [label setText:text];
     [label setTextColor:[UIColor whiteColor]];
-    [label setFont:[UIFont systemFontOfSize:16]];
+    [label setFont:[UIFont systemFontOfSize:16*kScale]];
     [self addSubview:label];
-    [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(_avatarView.mas_right).mas_equalTo(10);
+    [label mas_makeConstraints:^(MASConstraintMaker *make)
+    {
+        make.left.mas_equalTo(_avatarView.mas_right).mas_equalTo(10*kScale);
         make.topMargin.mas_equalTo(_avatarView);
     }];
     _label = label;
@@ -66,9 +69,12 @@ static NSString *const text = @"登录同步追番记录";
     UIImageView *imageLabel = [UIImageView new];
     [imageLabel setImage:[UIImage imageNamed:@"home_album_indicator_20x20_"]];
     [self addSubview:imageLabel];
-    [imageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(_label.mas_right).mas_equalTo(20);
+    [imageLabel mas_makeConstraints:^(MASConstraintMaker *make)
+     {
+        make.left.mas_equalTo(_label.mas_right).mas_equalTo(20*kScale);
         make.centerY.mas_equalTo(0);
+         make.width.mas_equalTo(20*kScale);
+         make.height.mas_equalTo(20*kScale);
     }];
     _imageLabel = imageLabel;
 }
