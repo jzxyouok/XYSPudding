@@ -67,7 +67,10 @@ static const int ddLogLevel = DDLogLevelError;
 #define model_ @"iPad"
 #define os_ @"iOS"
 #define osv_ @"9.3.2"
+
 #define sort_ @"lastCommentedTime%20DESC"
+#define sort2_ @"insertedTime%20DESC"
+
 #define version_ @"3.2.1"
 
 /** 更新参数 */

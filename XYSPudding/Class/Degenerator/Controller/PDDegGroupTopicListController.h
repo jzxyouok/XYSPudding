@@ -7,9 +7,15 @@
 @interface PDDegGroupTopicListController : UITableViewController
 
 /** 自定义视图配置的控制器 */
-+ (id)defaultControllerWithBgdImageURL:(NSURL *)bgdImageURL;
++ (id)controllerWithBgdImageURL:(NSURL *)bgdImageURL
+                             id:(NSString *)id_
+                      groupName:(NSString *)groupName;
 
 /** 接收背景图url */
 @property (nonatomic, strong) NSURL *bgdImageURL;
+/** 接收小组id */
+@property (nonatomic, strong) NSString *id_;
+/** 接收小组昵称 */
+@property (nonatomic, strong) NSString *groupName;
 
 @end

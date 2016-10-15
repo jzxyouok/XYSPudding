@@ -69,6 +69,11 @@
             [button setSize:CGSizeMake(44*kScale, 44*kScale)];
             break;
         }
+        case PDRightItemStyleMoreInfoImage:
+        {
+            [button normalImage:[UIImage imageNamed:@"global_header_btn_more_normal_44x44_"]];
+            [button setSize:CGSizeMake(44*kScale, 44*kScale)];
+        }
     }
     [button bk_addEventHandler:^(id sender)
      {

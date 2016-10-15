@@ -20,6 +20,16 @@
 
 @implementation PDDegGroupItem
 
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame])
+    {
+        self.button.hidden = NO;
+    }
+    return self;
+}
+
 #pragma mark - getter
 
 /** 图片视图 */
@@ -66,9 +76,8 @@
     if (!_button)
     {
         _button = [UIButton buttonWithType:UIButtonTypeSystem];
-        [_button setBackgroundColor:[UIColor clearColor]];
+        [_button highlightBGDImage:[UIImage imageNamed:@"hilight"]];
         [self addSubview:_button];
-    
         [_button mas_makeConstraints:^(MASConstraintMaker *make)
         {
             make.edges.mas_equalTo(0);
@@ -89,7 +98,6 @@
 - (void)setImageURL:(NSURL *)imageURL
 {
     _imageURL = imageURL;
-    [self.button setHidden:NO];
     self.userInteractionEnabled = YES;
     [self.imageView setImageWithURL:_imageURL
                    placeholderImage:[UIImage imageNamed:@"global_thumb_60x60_"]];

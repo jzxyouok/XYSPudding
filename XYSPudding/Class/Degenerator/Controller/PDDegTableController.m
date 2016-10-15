@@ -8,10 +8,9 @@
 
 #import "PDDegTableController.h"
 #import "PDDegNormalCell.h"
-#import "PDDegGroupCell.h"
 #import "PDDegGroupViewModel.h"
-#import "PDDegImageController.h"
-#import "PDDegGroupsController.h"
+#import "PDDegImageListController.h"
+#import "PDDegGroupListController.h"
 #import "PDDegGroupTopicListController.h"
 #import "PDDegGroupItem.h"
 
@@ -54,6 +53,18 @@
         PDDegGroupItem *groupItem = [PDDegGroupItem new];
         groupItem.tag = 100+i;
         [footView addSubview:groupItem];
+        [groupItem clickHandler:^(NSInteger tag)
+         {
+             if (_groupViewModel.groupNumber<=0)
+             {
+                 return ;
+             }
+             PDWindow *topicListVCWindow = [PDDegGroupTopicListController
+                                            controllerWithBgdImageURL:[_groupViewModel backgroundImageURLWithIndex:tag-100]
+                                                                   id:[_groupViewModel groupIDWithIndex:tag-100]
+                                                            groupName:[_groupViewModel nameWithIndex:tag-100]];
+             [kKeyWindow addSubview:topicListVCWindow.view];
+         }];
         
         if (!lastView)
         {
@@ -101,11 +112,6 @@
         PDDegGroupItem *groupItem = [_footView viewWithTag:100+i];
         [groupItem setImageURL:[_groupViewModel imageURLWithIndex:i]];
         [groupItem setTitle:[_groupViewModel nameWithIndex:i]];
-        [groupItem clickHandler:^(NSInteger tag)
-        {
-            PDDegGroupTopicListController *topicListVC = [PDDegGroupTopicListController defaultControllerWithBgdImageURL:[_groupViewModel backgroundImageURLWithIndex:tag-100]];
-                         [kKeyWindow addSubview:topicListVC.view];
-        }];
     }
 }
 #pragma mark - Table view data source
@@ -182,11 +188,8 @@ viewForFooterInSection:(NSInteger)section
 - (void)      tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section != 1 && indexPath.row != 1)
-    {
-        [tableView deselectRowAtIndexPath:indexPath
-                                 animated:YES];
-    }
+    [tableView deselectRowAtIndexPath:indexPath
+                                animated:YES];
     
     if (indexPath.section == 0)
     {
@@ -198,7 +201,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         else
         {
             /** 推出图片主题列表视图 */
-            PDWindow *imageListVCWindow = [PDDegImageController standardWindowWithController];
+            PDWindow *imageListVCWindow = [PDDegImageListController standardWindowWithController];
             [kKeyWindow addSubview:imageListVCWindow.view];
         }
     }
@@ -207,8 +210,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         if (indexPath.row == 0)
         {
             /** 推出小组分组列表视图 */
-            PDWindow *groupVCWindow = [PDDegGroupsController standardWindowWithController];
-            [kKeyWindow addSubview:groupVCWindow.view];
+            PDWindow *groupListVCWindow = [PDDegGroupListController standardWindowWithController];
+            [kKeyWindow addSubview:groupListVCWindow.view];
         }
     }
 }

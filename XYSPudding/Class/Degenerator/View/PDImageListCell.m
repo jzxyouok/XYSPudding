@@ -55,6 +55,11 @@
         _imageView = [UIImageView new];
         [self addSubview:_imageView];
         [_imageView setContentMode:UIViewContentModeScaleAspectFill];
+        [_imageView setClipsToBounds:YES];
+        [self.imageView mas_remakeConstraints:^(MASConstraintMaker *make)
+         {
+             make.top.left.right.mas_equalTo(0);
+         }];
     }
     return _imageView;
 }
@@ -67,9 +72,9 @@
         [self addSubview:_avatar];
         [_avatar mas_makeConstraints:^(MASConstraintMaker *make)
         {
-            make.left.mas_equalTo(15);
-            make.top.mas_equalTo(self.imageView.mas_bottom).mas_equalTo(-10);
-            make.size.mas_equalTo(CGSizeMake(50*kScreenWidth/1024, 50*kScreenWidth/1024));
+            make.left.mas_equalTo(15*kScale);
+            make.top.mas_equalTo(self.imageView.mas_bottom).mas_equalTo(-10*kScale);
+            make.size.mas_equalTo(CGSizeMake(50*kScale, 50*kScale));
         }];
     }
     return _avatar;
@@ -83,10 +88,11 @@
         [self addSubview:_userNameLabel];
         [_userNameLabel mas_makeConstraints:^(MASConstraintMaker *make)
         {
-            make.left.mas_equalTo(self.avatar.mas_right).mas_equalTo(10);
-            make.top.mas_equalTo(self.avatar.mas_centerY).mas_offset(-5);;
+            make.left.mas_equalTo(self.avatar.mas_right).mas_equalTo(10*kScale);
+            make.top.mas_equalTo(self.imageView.mas_bottom).mas_equalTo(10*kScale);
+            make.width.mas_equalTo(80*kScale);
         }];
-        [_userNameLabel setFont:[UIFont systemFontOfSize:12]];
+        [_userNameLabel setFont:[UIFont systemFontOfSize:12*kScale]];
         [_userNameLabel setTextColor:[UIColor lightGrayColor]];
     }
     return _userNameLabel;
@@ -102,8 +108,9 @@
         {
             make.leftMargin.mas_equalTo(self.userNameLabel.mas_leftMargin);
             make.bottomMargin.mas_equalTo(self.avatar.mas_bottomMargin);
+            make.top.mas_equalTo(self.userNameLabel.mas_bottom).mas_equalTo(5*kScale);
         }];
-        [_timeLabel setFont:[UIFont systemFontOfSize:10]];
+        [_timeLabel setFont:[UIFont systemFontOfSize:10*kScale]];
         [_timeLabel setTextColor:[UIColor lightGrayColor]];
     }
     return _timeLabel;
@@ -117,13 +124,13 @@
         [self addSubview:_contentLabel];
         [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make)
          {
-             make.left.mas_equalTo(10);
-             make.right.mas_equalTo(-10);
-             make.top.mas_equalTo(self.avatar.mas_bottom).mas_equalTo(10);
+            make.top.mas_equalTo(self.avatar.mas_bottom).mas_equalTo(13*kScale);
+             make.left.mas_equalTo(15*kScale);
+             make.right.mas_equalTo(-10*kScale);
          }];
         [_contentLabel setNumberOfLines:3];
-        [_contentLabel setFont:[UIFont systemFontOfSize:14]];
-        [_contentLabel setTextColor:[[UIColor blackColor] colorWithAlphaComponent:0.8]];
+        [_contentLabel setFont:[UIFont systemFontOfSize:15*kScale]];
+        [_contentLabel setTextColor:kTextColor];
     }
     return _contentLabel;
 }
@@ -138,7 +145,7 @@
         {
             make.left.right.mas_equalTo(0);
             make.height.mas_equalTo(1);
-            make.top.mas_equalTo(self.contentLabel.mas_bottom).mas_equalTo(10);
+            make.bottom.mas_equalTo(-45*kScale);
         }];
         [_lineView setBackgroundColor:kBGDColor];
     }
@@ -154,11 +161,16 @@
         [_voteButton mas_makeConstraints:^(MASConstraintMaker *make)
         {
             make.left.mas_equalTo(0);
-            make.top.mas_equalTo(self.lineView.mas_bottom);
-            make.size.mas_equalTo(CGSizeMake(79.5*kScreenWidth/1024, 45*kScreenWidth/1024));
+            make.top.mas_equalTo(self.lineView.mas_bottom).mas_equalTo(0);
+            make.size.mas_equalTo(CGSizeMake(80*kScale, 45*kScale));
         }];
         [_voteButton normalImage:[UIImage imageNamed:@"global_icon_digg_normal_23x23_"]];
         [_voteButton normalTitleColor:[UIColor lightGrayColor]];
+        [_voteButton setImageEdgeInsets:UIEdgeInsetsMake(10*kScale, 28*kScale - 7*kScale, 10*kScale, 28*kScale + 7*kScale)];
+        [_voteButton.titleLabel setFont:[UIFont systemFontOfSize:13*kScale]];
+        [_voteButton setTitleEdgeInsets:UIEdgeInsetsMake(0, - 7*kScale, 0, 7*kScale)];
+        
+        self.centerLineView.hidden = NO;
     }
     return _voteButton;
 }
@@ -168,14 +180,15 @@
     if (!_centerLineView)
     {
         _centerLineView = [UIView new];
-        [self addSubview:_lineView];
-        [_lineView mas_makeConstraints:^(MASConstraintMaker *make)
+        [self addSubview:_centerLineView];
+        [_centerLineView mas_makeConstraints:^(MASConstraintMaker *make)
          {
              make.centerX.mas_equalTo(0);
-             make.height.mas_equalTo(20);
-             make.bottom.mas_equalTo(-10);
+             make.bottom.mas_equalTo(-15*kScale);
+             make.height.mas_equalTo(20*kScale);
+             make.width.mas_equalTo(1);
          }];
-        [_lineView setBackgroundColor:kBGDColor];
+        [_centerLineView setBackgroundColor:kBGDColor];
     }
     return _centerLineView;
 }
@@ -194,25 +207,26 @@
         }];
         [_replyButton normalImage:[UIImage imageNamed:@"global_icon_reply_23x23_"]];
         [_replyButton normalTitleColor:[UIColor lightGrayColor]];
+        [_replyButton setImageEdgeInsets:UIEdgeInsetsMake(10*kScale, 28*kScale - 7*kScale, 10*kScale, 28*kScale + 7*kScale)];
+        [_replyButton.titleLabel setFont:[UIFont systemFontOfSize:13*kScale]];
+        [_replyButton setTitleEdgeInsets:UIEdgeInsetsMake(0, - 7*kScale, 0, 7*kScale)];
     }
     return _replyButton;
 }
 
 /** 获取视图模型来设置界面数据 */
-- (void)setDataWithViewModel:(PDDegImageViewModel *)viewModel
+- (void)setDataWithViewModel:(PDDegImageListViewModel *)viewModel
                        index:(NSInteger)index
 {
     _viewModel = viewModel;
     _index_ = index;
     
-    [self.imageView mas_remakeConstraints:^(MASConstraintMaker *make)
-     {
-         make.left.top.mas_equalTo(0);
-         make.size.mas_equalTo([_viewModel imageSizeWithIndex:_index_]);
-     }];
+    [self.imageView mas_updateConstraints:^(MASConstraintMaker *make)
+    {
+        make.height.mas_equalTo([_viewModel imageSizeWithIndex:_index_].height);
+    }];
     [self.imageView sd_setImageWithURL:[_viewModel imageURLWithIndex:_index_]
-                    placeholderImage:[UIImage imageNamed:@"global_thumb_60x60_"]];
-    
+                      placeholderImage:[UIImage imageNamed:@"global_thumb_60x60_"]];
     [self.avatar setCircleAvatarWithURL:[_viewModel avatarURLWithImdex:_index_]
                        placeholderImage:[UIImage imageNamed:@"default_avatar_64x64_"]];
     [self.userNameLabel setText:[_viewModel userNameWithIndex:_index_]];

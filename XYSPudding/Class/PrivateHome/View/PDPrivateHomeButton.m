@@ -108,8 +108,8 @@
 /** 添加按钮 */
 - (void)addButton
 {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setBackgroundColor:[UIColor clearColor]];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    [button highlightBGDImage:[UIImage imageNamed:@"hilight"]];
     [self addSubview:button];
     [button mas_makeConstraints:^(MASConstraintMaker *make)
     {

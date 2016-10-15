@@ -4,4 +4,6 @@
 
 -(UIImage *)zoomOutToSize:(CGSize)size;
 
+-(UIImage *)zoomOutAndClipToSize:(CGSize)size;
+
 @end

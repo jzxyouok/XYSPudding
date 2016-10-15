@@ -11,7 +11,7 @@
 @optional
 
 #pragma mark - 数据获取方式1
-/*!
+/**
  *  获取当前页面的模型对象数据
  *
  *  @param loadType          数据获取方式
@@ -22,15 +22,15 @@
           completionHandler:(void(^)(NSError *error))completionHandler;
 
 #pragma mark - 数据获取方式2
-/*!
+/**
  *  获取页面模型对象数据
  */
 - (void)getDataWithCompletionHandler:(void(^)(NSError *error))completionHandler;
-/*!
+/**
  *  刷新当前页面的模型对象数据
  */
 - (void)refreshDataWithCompletionHandler:(void(^)(NSError *error))completionHandler;
-/*!
+/**
  *  获取更多当前页面的模型对象数据
  */
 - (void)getMoreDataWithCompletionHandler:(void(^)(NSError *error))completionHandler;

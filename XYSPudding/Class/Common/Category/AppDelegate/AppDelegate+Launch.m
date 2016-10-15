@@ -1,5 +1,6 @@
 #import "AppDelegate+Launch.h"
 #import "AFNetworkActivityIndicatorManager.h"
+#import "NSObject+Factory.h"
 
 
 /** 记录wifi状态下是否联网 */
@@ -41,7 +42,7 @@ static NSNumber *isOnlineWifi = nil;
     /** 监测当前的网络状态 */
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status)
      {
-         DDLogVerbose(@"当前网络状态: %@", AFStringFromNetworkReachabilityStatus(status));
+        DDLogVerbose(@"当前网络状态: %@", AFStringFromNetworkReachabilityStatus(status));
          switch (status)
          {
              case AFNetworkReachabilityStatusReachableViaWWAN: //手机内部网络
@@ -50,6 +51,7 @@ static NSNumber *isOnlineWifi = nil;
                  isOnlineWifi = [NSNumber numberWithBool:YES];
                  break;
              case AFNetworkReachabilityStatusNotReachable: //无网络
+                 [self showAlertForDisconnectNetwork]; //提示框
                  break;
              case AFNetworkReachabilityStatusUnknown: //未知网络
                  break;

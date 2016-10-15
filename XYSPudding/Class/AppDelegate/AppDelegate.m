@@ -1,6 +1,7 @@
 #import "AppDelegate.h"
 #import "AppDelegate+Launch.h"
 #import "XYSTabBarController.h"
+#import "PDDegNetwork.h"
 
 @interface AppDelegate ()
 

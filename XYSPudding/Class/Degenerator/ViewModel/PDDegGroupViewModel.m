@@ -70,7 +70,7 @@
     {
         [self.dataTask cancel];
     }
-    self.dataTask = [PDDegNetwork loadGroupDataWithLimit:_limit
+    self.dataTask = [PDDegNetwork loadGroupListDataWithLimit:_limit
                                                   offset:_offset
                                        CompletionHandler:^(NSArray *model, NSError *error)
                      {
@@ -108,6 +108,11 @@
 - (NSURL *)backgroundImageURLWithIndex:(NSInteger)index
 {
     return [NSURL URLWithString:[self getGroupModelWithIndex:index].background.url];
+}
+/** 分组详情页的小组id */
+- (NSString *)groupIDWithIndex:(NSInteger)index
+{
+    return [self getGroupModelWithIndex:index]._id;
 }
 
 /** 小组成员数目 */

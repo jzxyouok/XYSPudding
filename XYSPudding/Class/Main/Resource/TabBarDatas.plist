@@ -34,7 +34,7 @@
 	</dict>
 	<dict>
 		<key>viewController</key>
-		<string>PrivateHomeTableController</string>
+		<string>PDPropController</string>
 		<key>normalImage</key>
 		<string>global_footer_btn_shop_normal_80x49_</string>
 		<key>selectedImage</key>

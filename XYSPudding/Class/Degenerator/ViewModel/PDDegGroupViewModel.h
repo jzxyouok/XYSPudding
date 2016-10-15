@@ -22,6 +22,9 @@
 
 /** 分组详情展示背景图URL */
 - (NSURL *)backgroundImageURLWithIndex:(NSInteger)index;
+/** 分组详情页的小组id */
+- (NSString *)groupIDWithIndex:(NSInteger)index;
+
 
 /** 小组成员数目 */
 - (NSString *)memberCountWithIndex:(NSInteger)index;

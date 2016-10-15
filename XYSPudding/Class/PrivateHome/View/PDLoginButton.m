@@ -27,6 +27,7 @@ static NSString *const text = @"登录同步追番记录";
         [self addAvatarView];
         [self addLabel];
         [self addImageTag];
+        [self highlightBGDImage:[UIImage imageNamed:@"hilight"]];
     }
     return self;
 }

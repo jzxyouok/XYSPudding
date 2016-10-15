@@ -43,19 +43,27 @@
 		5C1C3DAC1DACAA980030ACCA /* PDTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C3DAB1DACAA980030ACCA /* PDTitleView.m */; };
 		5C8871461DADB41600842D23 /* PDDegNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871451DADB41600842D23 /* PDDegNetwork.m */; };
 		5C8871491DADB9F000842D23 /* PDDegGroupViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871481DADB9F000842D23 /* PDDegGroupViewModel.m */; };
-		5C88714C1DADC6DA00842D23 /* PDDegGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88714B1DADC6DA00842D23 /* PDDegGroupCell.m */; };
 		5C88714F1DADCDC700842D23 /* PDDegGroupItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88714E1DADCDC700842D23 /* PDDegGroupItem.m */; };
-		5C88715C1DADED1400842D23 /* PDDegImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88715B1DADED1400842D23 /* PDDegImageModel.m */; };
-		5C8871821DAE03B300842D23 /* PDDegImageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871811DAE03B300842D23 /* PDDegImageViewModel.m */; };
+		5C88715C1DADED1400842D23 /* PDDegImageListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88715B1DADED1400842D23 /* PDDegImageListModel.m */; };
+		5C8871821DAE03B300842D23 /* PDDegImageListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871811DAE03B300842D23 /* PDDegImageListViewModel.m */; };
 		5C8871911DAE23AA00842D23 /* PDImageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871901DAE23AA00842D23 /* PDImageListCell.m */; };
-		5C8871981DAE579F00842D23 /* PDDegImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871971DAE579F00842D23 /* PDDegImageController.m */; };
+		5C8871981DAE579F00842D23 /* PDDegImageListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871971DAE579F00842D23 /* PDDegImageListController.m */; };
 		5C88719D1DAE586800842D23 /* PSCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88719A1DAE586800842D23 /* PSCollectionView.m */; };
 		5C88719E1DAE586800842D23 /* PSCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88719C1DAE586800842D23 /* PSCollectionViewCell.m */; };
-		5C8871A11DAE65F900842D23 /* PDDegGroupsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871A01DAE65F900842D23 /* PDDegGroupsController.m */; };
-		5C8871A41DAE8D2200842D23 /* PDDegGroupsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871A31DAE8D2200842D23 /* PDDegGroupsCell.m */; };
+		5C8871A11DAE65F900842D23 /* PDDegGroupListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871A01DAE65F900842D23 /* PDDegGroupListController.m */; };
+		5C8871A41DAE8D2200842D23 /* PDDegGroupListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8871A31DAE8D2200842D23 /* PDDegGroupListCell.m */; };
 		5C9B8B2D1DAF328D002BFE2E /* PDDegGroupTopicListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9B8B2C1DAF328D002BFE2E /* PDDegGroupTopicListController.m */; };
 		5C9B8B301DAF4A9A002BFE2E /* PDPrivSetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9B8B2F1DAF4A9A002BFE2E /* PDPrivSetController.m */; };
 		5C9B8B591DAFAFB6002BFE2E /* PDPrivSetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9B8B581DAFAFB6002BFE2E /* PDPrivSetCell.m */; };
+		5CA227AA1DB0A8B80087D329 /* PDDegGroupDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA227A91DB0A8B80087D329 /* PDDegGroupDetailModel.m */; };
+		5CA227AD1DB0B4D80087D329 /* PDDegGroupDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA227AC1DB0B4D80087D329 /* PDDegGroupDetailViewModel.m */; };
+		5CA227B01DB0BCFB0087D329 /* PDDegGroupDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA227AF1DB0BCFB0087D329 /* PDDegGroupDetailView.m */; };
+		5CA227B31DB0C4800087D329 /* PDPropController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA227B21DB0C4800087D329 /* PDPropController.m */; };
+		5CA227B61DB0CD430087D329 /* PDDegGroupTopicListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA227B51DB0CD430087D329 /* PDDegGroupTopicListCell.m */; };
+		5CA227BF1DB0EA6B0087D329 /* PDUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA227BE1DB0EA6B0087D329 /* PDUserModel.m */; };
+		5CA227C21DB0EC260087D329 /* PDDegGroupTopicListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA227C11DB0EC260087D329 /* PDDegGroupTopicListModel.m */; };
+		5CA227C51DB0F4670087D329 /* PDDegGroupTopicListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA227C41DB0F4670087D329 /* PDDegGroupTopicListViewModel.m */; };
+		5CACAA361DB1AED5007AA0FF /* NSObject+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CACAA351DB1AED5007AA0FF /* NSObject+Factory.m */; };
 		AADCEEEDCCB5E402AD124978 /* Pods_XYSPudding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9485070025555F7E3D49F7A5 /* Pods_XYSPudding.framework */; };
 /* End PBXBuildFile section */
 
@@ -138,26 +146,24 @@
 		5C8871451DADB41600842D23 /* PDDegNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegNetwork.m; sourceTree = "<group>"; };
 		5C8871471DADB9F000842D23 /* PDDegGroupViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupViewModel.h; sourceTree = "<group>"; };
 		5C8871481DADB9F000842D23 /* PDDegGroupViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupViewModel.m; sourceTree = "<group>"; };
-		5C88714A1DADC6DA00842D23 /* PDDegGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupCell.h; sourceTree = "<group>"; };
-		5C88714B1DADC6DA00842D23 /* PDDegGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupCell.m; sourceTree = "<group>"; };
 		5C88714D1DADCDC700842D23 /* PDDegGroupItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupItem.h; sourceTree = "<group>"; };
 		5C88714E1DADCDC700842D23 /* PDDegGroupItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupItem.m; sourceTree = "<group>"; };
-		5C88715A1DADED1400842D23 /* PDDegImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegImageModel.h; sourceTree = "<group>"; };
-		5C88715B1DADED1400842D23 /* PDDegImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegImageModel.m; sourceTree = "<group>"; };
-		5C8871801DAE03B300842D23 /* PDDegImageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegImageViewModel.h; sourceTree = "<group>"; };
-		5C8871811DAE03B300842D23 /* PDDegImageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegImageViewModel.m; sourceTree = "<group>"; };
+		5C88715A1DADED1400842D23 /* PDDegImageListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegImageListModel.h; sourceTree = "<group>"; };
+		5C88715B1DADED1400842D23 /* PDDegImageListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegImageListModel.m; sourceTree = "<group>"; };
+		5C8871801DAE03B300842D23 /* PDDegImageListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegImageListViewModel.h; sourceTree = "<group>"; };
+		5C8871811DAE03B300842D23 /* PDDegImageListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegImageListViewModel.m; sourceTree = "<group>"; };
 		5C88718F1DAE23AA00842D23 /* PDImageListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDImageListCell.h; sourceTree = "<group>"; };
 		5C8871901DAE23AA00842D23 /* PDImageListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDImageListCell.m; sourceTree = "<group>"; };
-		5C8871961DAE579F00842D23 /* PDDegImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegImageController.h; sourceTree = "<group>"; };
-		5C8871971DAE579F00842D23 /* PDDegImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegImageController.m; sourceTree = "<group>"; };
+		5C8871961DAE579F00842D23 /* PDDegImageListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegImageListController.h; sourceTree = "<group>"; };
+		5C8871971DAE579F00842D23 /* PDDegImageListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegImageListController.m; sourceTree = "<group>"; };
 		5C8871991DAE586800842D23 /* PSCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSCollectionView.h; sourceTree = "<group>"; };
 		5C88719A1DAE586800842D23 /* PSCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSCollectionView.m; sourceTree = "<group>"; };
 		5C88719B1DAE586800842D23 /* PSCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSCollectionViewCell.h; sourceTree = "<group>"; };
 		5C88719C1DAE586800842D23 /* PSCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSCollectionViewCell.m; sourceTree = "<group>"; };
-		5C88719F1DAE65F900842D23 /* PDDegGroupsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupsController.h; sourceTree = "<group>"; };
-		5C8871A01DAE65F900842D23 /* PDDegGroupsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupsController.m; sourceTree = "<group>"; };
-		5C8871A21DAE8D2200842D23 /* PDDegGroupsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupsCell.h; sourceTree = "<group>"; };
-		5C8871A31DAE8D2200842D23 /* PDDegGroupsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupsCell.m; sourceTree = "<group>"; };
+		5C88719F1DAE65F900842D23 /* PDDegGroupListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupListController.h; sourceTree = "<group>"; };
+		5C8871A01DAE65F900842D23 /* PDDegGroupListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupListController.m; sourceTree = "<group>"; };
+		5C8871A21DAE8D2200842D23 /* PDDegGroupListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupListCell.h; sourceTree = "<group>"; };
+		5C8871A31DAE8D2200842D23 /* PDDegGroupListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupListCell.m; sourceTree = "<group>"; };
 		5C9B8B291DAF1E94002BFE2E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5C9B8B2B1DAF328D002BFE2E /* PDDegGroupTopicListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupTopicListController.h; sourceTree = "<group>"; };
 		5C9B8B2C1DAF328D002BFE2E /* PDDegGroupTopicListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupTopicListController.m; sourceTree = "<group>"; };
@@ -165,6 +171,24 @@
 		5C9B8B2F1DAF4A9A002BFE2E /* PDPrivSetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPrivSetController.m; sourceTree = "<group>"; };
 		5C9B8B571DAFAFB6002BFE2E /* PDPrivSetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPrivSetCell.h; sourceTree = "<group>"; };
 		5C9B8B581DAFAFB6002BFE2E /* PDPrivSetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPrivSetCell.m; sourceTree = "<group>"; };
+		5CA227A81DB0A8B80087D329 /* PDDegGroupDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupDetailModel.h; sourceTree = "<group>"; };
+		5CA227A91DB0A8B80087D329 /* PDDegGroupDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupDetailModel.m; sourceTree = "<group>"; };
+		5CA227AB1DB0B4D80087D329 /* PDDegGroupDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupDetailViewModel.h; sourceTree = "<group>"; };
+		5CA227AC1DB0B4D80087D329 /* PDDegGroupDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupDetailViewModel.m; sourceTree = "<group>"; };
+		5CA227AE1DB0BCFB0087D329 /* PDDegGroupDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupDetailView.h; sourceTree = "<group>"; };
+		5CA227AF1DB0BCFB0087D329 /* PDDegGroupDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupDetailView.m; sourceTree = "<group>"; };
+		5CA227B11DB0C4800087D329 /* PDPropController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPropController.h; sourceTree = "<group>"; };
+		5CA227B21DB0C4800087D329 /* PDPropController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPropController.m; sourceTree = "<group>"; };
+		5CA227B41DB0CD430087D329 /* PDDegGroupTopicListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupTopicListCell.h; sourceTree = "<group>"; };
+		5CA227B51DB0CD430087D329 /* PDDegGroupTopicListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupTopicListCell.m; sourceTree = "<group>"; };
+		5CA227BD1DB0EA6B0087D329 /* PDUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUserModel.h; sourceTree = "<group>"; };
+		5CA227BE1DB0EA6B0087D329 /* PDUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUserModel.m; sourceTree = "<group>"; };
+		5CA227C01DB0EC260087D329 /* PDDegGroupTopicListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupTopicListModel.h; sourceTree = "<group>"; };
+		5CA227C11DB0EC260087D329 /* PDDegGroupTopicListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupTopicListModel.m; sourceTree = "<group>"; };
+		5CA227C31DB0F4670087D329 /* PDDegGroupTopicListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDegGroupTopicListViewModel.h; sourceTree = "<group>"; };
+		5CA227C41DB0F4670087D329 /* PDDegGroupTopicListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDegGroupTopicListViewModel.m; sourceTree = "<group>"; };
+		5CACAA341DB1AED5007AA0FF /* NSObject+Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Factory.h"; sourceTree = "<group>"; };
+		5CACAA351DB1AED5007AA0FF /* NSObject+Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Factory.m"; sourceTree = "<group>"; };
 		9485070025555F7E3D49F7A5 /* Pods_XYSPudding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XYSPudding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA20ED9A354F228259B89D52 /* Pods-XYSPudding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYSPudding.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XYSPudding/Pods-XYSPudding.debug.xcconfig"; sourceTree = "<group>"; };
 		DF586045B22D060146DD5CED /* Pods-XYSPudding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYSPudding.release.xcconfig"; path = "Pods/Target Support Files/Pods-XYSPudding/Pods-XYSPudding.release.xcconfig"; sourceTree = "<group>"; };
@@ -213,6 +237,8 @@
 			children = (
 				5C1013741DACE7C0001C5D9C /* UIViewController+NavigationItem.h */,
 				5C1013751DACE7C0001C5D9C /* UIViewController+NavigationItem.m */,
+				5CACAA341DB1AED5007AA0FF /* NSObject+Factory.h */,
+				5CACAA351DB1AED5007AA0FF /* NSObject+Factory.m */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -406,6 +432,8 @@
 			children = (
 				5C1C3D541DAC648A0030ACCA /* XYSBaseModel.h */,
 				5C1C3D551DAC648A0030ACCA /* XYSBaseModel.m */,
+				5CA227BD1DB0EA6B0087D329 /* PDUserModel.h */,
+				5CA227BE1DB0EA6B0087D329 /* PDUserModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -444,8 +472,8 @@
 				5C1C3D631DAC648A0030ACCA /* NetManager */,
 				5C1C3D611DAC648A0030ACCA /* Controller */,
 				5C1C3D621DAC648A0030ACCA /* Model */,
-				5C1C3D641DAC648A0030ACCA /* View */,
 				5C1C3D651DAC648A0030ACCA /* ViewModel */,
+				5C1C3D641DAC648A0030ACCA /* View */,
 			);
 			path = Degenerator;
 			sourceTree = "<group>";
@@ -455,10 +483,10 @@
 			children = (
 				5C1013811DAD19D3001C5D9C /* PDDegTableController.h */,
 				5C1013821DAD19D3001C5D9C /* PDDegTableController.m */,
-				5C8871961DAE579F00842D23 /* PDDegImageController.h */,
-				5C8871971DAE579F00842D23 /* PDDegImageController.m */,
-				5C88719F1DAE65F900842D23 /* PDDegGroupsController.h */,
-				5C8871A01DAE65F900842D23 /* PDDegGroupsController.m */,
+				5C8871961DAE579F00842D23 /* PDDegImageListController.h */,
+				5C8871971DAE579F00842D23 /* PDDegImageListController.m */,
+				5C88719F1DAE65F900842D23 /* PDDegGroupListController.h */,
+				5C8871A01DAE65F900842D23 /* PDDegGroupListController.m */,
 				5C9B8B2B1DAF328D002BFE2E /* PDDegGroupTopicListController.h */,
 				5C9B8B2C1DAF328D002BFE2E /* PDDegGroupTopicListController.m */,
 			);
@@ -470,8 +498,12 @@
 			children = (
 				5C1013AA1DAD3691001C5D9C /* PDDegGroupModel.h */,
 				5C1013AB1DAD3691001C5D9C /* PDDegGroupModel.m */,
-				5C88715A1DADED1400842D23 /* PDDegImageModel.h */,
-				5C88715B1DADED1400842D23 /* PDDegImageModel.m */,
+				5C88715A1DADED1400842D23 /* PDDegImageListModel.h */,
+				5C88715B1DADED1400842D23 /* PDDegImageListModel.m */,
+				5CA227A81DB0A8B80087D329 /* PDDegGroupDetailModel.h */,
+				5CA227A91DB0A8B80087D329 /* PDDegGroupDetailModel.m */,
+				5CA227C01DB0EC260087D329 /* PDDegGroupTopicListModel.h */,
+				5CA227C11DB0EC260087D329 /* PDDegGroupTopicListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -490,14 +522,16 @@
 			children = (
 				5C1013841DAD1B90001C5D9C /* PDDegNormalCell.h */,
 				5C1013851DAD1B90001C5D9C /* PDDegNormalCell.m */,
-				5C88714A1DADC6DA00842D23 /* PDDegGroupCell.h */,
-				5C88714B1DADC6DA00842D23 /* PDDegGroupCell.m */,
 				5C88714D1DADCDC700842D23 /* PDDegGroupItem.h */,
 				5C88714E1DADCDC700842D23 /* PDDegGroupItem.m */,
 				5C88718F1DAE23AA00842D23 /* PDImageListCell.h */,
 				5C8871901DAE23AA00842D23 /* PDImageListCell.m */,
-				5C8871A21DAE8D2200842D23 /* PDDegGroupsCell.h */,
-				5C8871A31DAE8D2200842D23 /* PDDegGroupsCell.m */,
+				5C8871A21DAE8D2200842D23 /* PDDegGroupListCell.h */,
+				5C8871A31DAE8D2200842D23 /* PDDegGroupListCell.m */,
+				5CA227AE1DB0BCFB0087D329 /* PDDegGroupDetailView.h */,
+				5CA227AF1DB0BCFB0087D329 /* PDDegGroupDetailView.m */,
+				5CA227B41DB0CD430087D329 /* PDDegGroupTopicListCell.h */,
+				5CA227B51DB0CD430087D329 /* PDDegGroupTopicListCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -507,8 +541,12 @@
 			children = (
 				5C8871471DADB9F000842D23 /* PDDegGroupViewModel.h */,
 				5C8871481DADB9F000842D23 /* PDDegGroupViewModel.m */,
-				5C8871801DAE03B300842D23 /* PDDegImageViewModel.h */,
-				5C8871811DAE03B300842D23 /* PDDegImageViewModel.m */,
+				5C8871801DAE03B300842D23 /* PDDegImageListViewModel.h */,
+				5C8871811DAE03B300842D23 /* PDDegImageListViewModel.m */,
+				5CA227AB1DB0B4D80087D329 /* PDDegGroupDetailViewModel.h */,
+				5CA227AC1DB0B4D80087D329 /* PDDegGroupDetailViewModel.m */,
+				5CA227C31DB0F4670087D329 /* PDDegGroupTopicListViewModel.h */,
+				5CA227C41DB0F4670087D329 /* PDDegGroupTopicListViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -652,6 +690,8 @@
 		5C1C3D7A1DAC648A0030ACCA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5CA227B11DB0C4800087D329 /* PDPropController.h */,
+				5CA227B21DB0C4800087D329 /* PDPropController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -892,19 +932,23 @@
 				5C9B8B2D1DAF328D002BFE2E /* PDDegGroupTopicListController.m in Sources */,
 				5C1013831DAD19D3001C5D9C /* PDDegTableController.m in Sources */,
 				5C1C3D881DAC648A0030ACCA /* NSObject+XYSFactory.m in Sources */,
+				5CA227AA1DB0A8B80087D329 /* PDDegGroupDetailModel.m in Sources */,
 				5C10136D1DACE123001C5D9C /* PDLoginViewController.m in Sources */,
 				5C8871911DAE23AA00842D23 /* PDImageListCell.m in Sources */,
 				5C1C3D901DAC648A0030ACCA /* UIView+Frame.m in Sources */,
 				5C88714F1DADCDC700842D23 /* PDDegGroupItem.m in Sources */,
-				5C8871821DAE03B300842D23 /* PDDegImageViewModel.m in Sources */,
-				5C88714C1DADC6DA00842D23 /* PDDegGroupCell.m in Sources */,
-				5C8871A41DAE8D2200842D23 /* PDDegGroupsCell.m in Sources */,
+				5C8871821DAE03B300842D23 /* PDDegImageListViewModel.m in Sources */,
+				5CA227C21DB0EC260087D329 /* PDDegGroupTopicListModel.m in Sources */,
+				5C8871A41DAE8D2200842D23 /* PDDegGroupListCell.m in Sources */,
+				5CA227C51DB0F4670087D329 /* PDDegGroupTopicListViewModel.m in Sources */,
 				5C9B8B591DAFAFB6002BFE2E /* PDPrivSetCell.m in Sources */,
+				5CA227BF1DB0EA6B0087D329 /* PDUserModel.m in Sources */,
 				5C1C3D8E1DAC648A0030ACCA /* UIImage+Size.m in Sources */,
 				5C1C3D8C1DAC648A0030ACCA /* UIImage+Circle.m in Sources */,
 				5C1C3DAC1DACAA980030ACCA /* PDTitleView.m in Sources */,
-				5C88715C1DADED1400842D23 /* PDDegImageModel.m in Sources */,
-				5C8871A11DAE65F900842D23 /* PDDegGroupsController.m in Sources */,
+				5C88715C1DADED1400842D23 /* PDDegImageListModel.m in Sources */,
+				5C8871A11DAE65F900842D23 /* PDDegGroupListController.m in Sources */,
+				5CA227B31DB0C4800087D329 /* PDPropController.m in Sources */,
 				5C1013671DACBD70001C5D9C /* PDPrivateHomeCell.m in Sources */,
 				5C1C3D941DAC648A0030ACCA /* XYSBaseViewModel.m in Sources */,
 				5C10137D1DAD08DF001C5D9C /* PDWindow.m in Sources */,
@@ -913,19 +957,23 @@
 				5C1C3D961DAC648A0030ACCA /* XYSTabBarController.m in Sources */,
 				5C1C3D861DAC648A0030ACCA /* AppDelegate+Launch.m in Sources */,
 				5C1C3D921DAC648A0030ACCA /* XYSBaseNetwork.m in Sources */,
+				5CA227B61DB0CD430087D329 /* PDDegGroupTopicListCell.m in Sources */,
 				5C1013AC1DAD3691001C5D9C /* PDDegGroupModel.m in Sources */,
 				5C8871491DADB9F000842D23 /* PDDegGroupViewModel.m in Sources */,
 				5C1013761DACE7C0001C5D9C /* UIViewController+NavigationItem.m in Sources */,
 				5C1C3D8D1DAC648A0030ACCA /* UIImage+QRCode.m in Sources */,
+				5CACAA361DB1AED5007AA0FF /* NSObject+Factory.m in Sources */,
 				5C8871461DADB41600842D23 /* PDDegNetwork.m in Sources */,
 				5C1C3D8A1DAC648A0030ACCA /* UIColor+Hex_255.m in Sources */,
 				5C1C3D131DAC631F0030ACCA /* main.m in Sources */,
 				5C1C3D911DAC648A0030ACCA /* XYSBaseModel.m in Sources */,
 				5C1C3D971DAC648A0030ACCA /* XYSTabBarModel.m in Sources */,
-				5C8871981DAE579F00842D23 /* PDDegImageController.m in Sources */,
+				5C8871981DAE579F00842D23 /* PDDegImageListController.m in Sources */,
 				5C88719E1DAE586800842D23 /* PSCollectionViewCell.m in Sources */,
 				5C88719D1DAE586800842D23 /* PSCollectionView.m in Sources */,
+				5CA227B01DB0BCFB0087D329 /* PDDegGroupDetailView.m in Sources */,
 				5C1C3D951DAC648A0030ACCA /* XYSNavigationController.m in Sources */,
+				5CA227AD1DB0B4D80087D329 /* PDDegGroupDetailViewModel.m in Sources */,
 				5C1C3DA81DACA06E0030ACCA /* PrivateHomeTableController.m in Sources */,
 				5C1013801DAD1076001C5D9C /* PDNavigationController.m in Sources */,
 			);

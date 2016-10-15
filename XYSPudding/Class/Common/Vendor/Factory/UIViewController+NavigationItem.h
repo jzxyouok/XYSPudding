@@ -20,7 +20,9 @@ typedef NS_ENUM(NSInteger, PDRightItemStyle)
     /** 标题：用户协议 */
     PDRightItemStyleTitle1,
     /** 搜索框按钮 */
-    PDRightItemStyleSearchImage
+    PDRightItemStyleSearchImage,
+    /** 更多信息按钮 */
+    PDRightItemStyleMoreInfoImage
 };
 
 @interface UIViewController (NavigationItem)
