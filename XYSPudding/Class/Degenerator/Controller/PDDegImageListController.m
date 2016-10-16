@@ -9,8 +9,6 @@
 #import "PDDegImageListController.h"
 #import "PSCollectionView.h"
 #import "PDDegImageListViewModel.h"
-#import "PDWindow.h"
-#import "UIViewController+NavigationItem.h"
 #import "PDImageListCell.h"
 
 @interface PDDegImageListController ()<UIScrollViewDelegate, PSCollectionViewDelegate, PSCollectionViewDataSource>
@@ -199,6 +197,14 @@
 {
     return [_imagelistVM cellSizeWithIndex:index].height;
 }
+
+- (void)collectionView:(PSCollectionView *)collectionView
+         didSelectCell:(PSCollectionViewCell *)cell
+               atIndex:(NSInteger)index
+{
+    DDLogInfo(@"图片话题");
+}
+
 
 /** 重布局 */
 kLayoutView

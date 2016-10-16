@@ -72,6 +72,30 @@
 {
     return self.datas.count;
 }
+/** cell大小 */
+- (CGFloat)heightOfCellWithIndex:(NSInteger)index
+{
+    CGFloat height = (15 + 13 + 40 + 13 + 44)*kScale + 1;
+    
+    
+    CGFloat contentH = [[self contentWithIndex:index]
+                        boundingRectWithSize:CGSizeMake((540 - 26)*kScale, MAXFLOAT)
+                        options:NSStringDrawingUsesLineFragmentOrigin
+                        attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15*kScale]}
+                        context:nil].size.height; //文本内容高度
+    if (contentH>0)
+    {
+        height += contentH + 13*kScale;
+    }
+ 
+    if ([self isContainImageWithIndex:index])
+    {
+        NSInteger row = ([self imageNumberWithIndex:index]+2)/3;
+        
+        height += (164 + 13)*row*kScale;
+    }
+    return height;
+}
 /** 头像url */
 - (NSURL *)avatarURLWithIndex:(NSInteger)index
 {

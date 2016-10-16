@@ -36,7 +36,7 @@
     topicListVC.id_ = id_;
     topicListVC.groupName = groupName;
     pWindow.rootViewController = topicListVC;
-        
+    
     return pWindow;
 }
 
@@ -68,11 +68,19 @@
 /** 导航栏标签 */
 - (void)addNavigationItem
 {
+    __block PDDegGroupTopicListController *blockSelf = self;
     /** 为导航栏添加左侧标签 */
     [self addLeftItemWithStyle:PDLeftItemStyleBackImage
-                                        clickHandler:^
+                         clickHandler:^
      {
-         [[PDWindow standardWindow] dismiss:YES];
+         if (!blockSelf.isPushed)
+         {
+             [[PDWindow standardWindow] dismiss:YES];
+         }
+         else
+         {
+             [blockSelf.navigationController popViewControllerAnimated:YES];
+         }
      }];
     /** 为导航栏添加右侧标签 */
     [self addRightItemWithStyle:PDRightItemStyleMoreInfoImage
@@ -211,20 +219,14 @@
     return cell;
 }
 
-//- (CGFloat)   tableView:(UITableView *)tableView
-//heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (indexPath.section == 1)
-//    {
-//        return 200;
-//    }
-//    return 10;
-//}
-
-- (CGFloat) tableView:(UITableView *)tableView
-estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)   tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return UITableViewAutomaticDimension;
+    if (indexPath.section == 1)
+    {
+        return [_groupTopicListVM heightOfCellWithIndex:indexPath.row];
+    }
+    return 10;
 }
 
 /** 取消cell侧边距 */

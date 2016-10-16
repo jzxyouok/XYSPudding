@@ -12,6 +12,8 @@
 
 /** 主题数目 */
 @property (nonatomic, assign) NSInteger listNumber;
+/** cell高度 */
+- (CGFloat)heightOfCellWithIndex:(NSInteger)index;
 /** 头像url */
 - (NSURL *)avatarURLWithIndex:(NSInteger)index;
 /** 昵称 */

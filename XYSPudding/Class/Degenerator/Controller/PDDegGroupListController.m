@@ -9,6 +9,7 @@
 #import "PDDegGroupListController.h"
 #import "PDDegGroupViewModel.h"
 #import "PDDegGroupListCell.h"
+#import "PDDegGroupTopicListController.h"
 
 @interface PDDegGroupListController ()
 
@@ -226,6 +227,20 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 /** 取消cell侧边间距 */
 kRemoveCellSideSpace
+
+- (void)      tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    /** 跳转到小组话题列表页面 */
+    PDDegGroupTopicListController *groupTopiclistVC = [PDDegGroupTopicListController new];
+    [groupTopiclistVC setBgdImageURL:[_groupViewModel backgroundImageURLWithIndex:indexPath.row]];
+    [groupTopiclistVC setId_:[_groupViewModel groupIDWithIndex:indexPath.row]];
+    [groupTopiclistVC setGroupName:[_groupViewModel nameWithIndex:indexPath.row]];
+    [groupTopiclistVC setPushed:YES];
+    [self.navigationController pushViewController:groupTopiclistVC animated:YES];
+}
 
 /** 重布局 */
 kLayoutView

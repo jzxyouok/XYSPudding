@@ -16,6 +16,7 @@
 {
     [super viewDidLoad];
     
+    [self.tabBar setTranslucent:NO];
     [self didLoadChildrenViewControllers]; //载入子控制器
 }
 
@@ -29,6 +30,7 @@
         UIViewController *vc = [NSClassFromString(model.viewController) new];
         /** 自定义导航栏标题 */
         UILabel *titleLabel = [UILabel viewWithFrame:CGRectMake(0, 0, 100, 30)];
+        [titleLabel setTag:100];
         [titleLabel setText:model.title];
         [titleLabel setFont:[UIFont systemFontOfSize:16]];
         [titleLabel setTextColor:[UIColor orangeColor]];

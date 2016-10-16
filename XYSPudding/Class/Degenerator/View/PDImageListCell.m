@@ -8,6 +8,7 @@
 
 #import "PDImageListCell.h"
 #import "UIImageView+WebCache.h"
+#import "PDTopicButton.h"
 
 @interface PDImageListCell ()
 
@@ -21,14 +22,16 @@
 @property (nonatomic, strong) UILabel *contentLabel;
 /** 发布时间标签 */
 @property (nonatomic, strong) UILabel *timeLabel;
+/** 交互按钮底层视图 */
+@property (nonatomic, strong) UIView *buttonBgdView;
 /** 线条 */
 @property (nonatomic, strong) UIView *lineView;
 /** 收藏按钮 */
-@property (nonatomic, strong) UIButton *voteButton;
+@property (nonatomic, strong) PDTopicButton *voteButton;
 /** 按钮中线 */
 @property (nonatomic, strong) UIView *centerLineView;
 /** 回复按钮 */
-@property (nonatomic, strong) UIButton *replyButton;
+@property (nonatomic, strong) PDTopicButton *replyButton;
 
 @end
 
@@ -121,18 +124,34 @@
     if (!_contentLabel)
     {
         _contentLabel = [UILabel new];
+        [_contentLabel setNumberOfLines:0];
+        [_contentLabel setFont:[UIFont systemFontOfSize:15*kScale]];
+        [_contentLabel setTextColor:kTextColor];
         [self addSubview:_contentLabel];
         [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make)
          {
             make.top.mas_equalTo(self.avatar.mas_bottom).mas_equalTo(13*kScale);
-             make.left.mas_equalTo(15*kScale);
-             make.right.mas_equalTo(-10*kScale);
+            make.left.mas_equalTo(15*kScale);
+            make.width.mas_equalTo((160 - 25)*kScale);
          }];
-        [_contentLabel setNumberOfLines:3];
-        [_contentLabel setFont:[UIFont systemFontOfSize:15*kScale]];
-        [_contentLabel setTextColor:kTextColor];
     }
     return _contentLabel;
+}
+/** 交互按钮底层视图 */
+- (UIView *)buttonBgdView
+{
+    if (!_buttonBgdView)
+    {
+        _buttonBgdView = [UIView new];
+        [self addSubview:_buttonBgdView];
+        [_buttonBgdView mas_makeConstraints:^(MASConstraintMaker *make)
+        {
+            make.left.bottom.right.mas_equalTo(0);
+            make.height.mas_equalTo(45*kScale + 1);
+        }];
+        self.lineView.hidden = NO;
+    }
+    return _buttonBgdView;
 }
 /** 线条 */
 - (UIView *)lineView
@@ -140,36 +159,30 @@
     if (!_lineView)
     {
         _lineView = [UIView new];
-        [self addSubview:_lineView];
+        [self.buttonBgdView addSubview:_lineView];
         [_lineView mas_makeConstraints:^(MASConstraintMaker *make)
         {
-            make.left.right.mas_equalTo(0);
+            make.left.top.right.mas_equalTo(0);
             make.height.mas_equalTo(1);
-            make.bottom.mas_equalTo(-45*kScale);
         }];
         [_lineView setBackgroundColor:kBGDColor];
     }
     return _lineView;
 }
 /** 收藏按钮 */
-- (UIButton *)voteButton
+- (PDTopicButton *)voteButton
 {
     if (!_voteButton)
     {
-        _voteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self addSubview:_voteButton];
+        _voteButton = [PDTopicButton buttonWithType:UIButtonTypeCustom];
+        [self.buttonBgdView addSubview:_voteButton];
         [_voteButton mas_makeConstraints:^(MASConstraintMaker *make)
         {
             make.left.mas_equalTo(0);
-            make.top.mas_equalTo(self.lineView.mas_bottom).mas_equalTo(0);
+            make.top.mas_equalTo(1);
             make.size.mas_equalTo(CGSizeMake(80*kScale, 45*kScale));
         }];
         [_voteButton normalImage:[UIImage imageNamed:@"global_icon_digg_normal_23x23_"]];
-        [_voteButton normalTitleColor:[UIColor lightGrayColor]];
-        [_voteButton setImageEdgeInsets:UIEdgeInsetsMake(10*kScale, 28*kScale - 7*kScale, 10*kScale, 28*kScale + 7*kScale)];
-        [_voteButton.titleLabel setFont:[UIFont systemFontOfSize:13*kScale]];
-        [_voteButton setTitleEdgeInsets:UIEdgeInsetsMake(0, - 7*kScale, 0, 7*kScale)];
-        
         self.centerLineView.hidden = NO;
     }
     return _voteButton;
@@ -180,7 +193,7 @@
     if (!_centerLineView)
     {
         _centerLineView = [UIView new];
-        [self addSubview:_centerLineView];
+        [self.buttonBgdView addSubview:_centerLineView];
         [_centerLineView mas_makeConstraints:^(MASConstraintMaker *make)
          {
              make.centerX.mas_equalTo(0);
@@ -193,23 +206,19 @@
     return _centerLineView;
 }
 /** 回复按钮 */
-- (UIButton *)replyButton
+- (PDTopicButton *)replyButton
 {
     if (!_replyButton)
     {
-        _replyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self addSubview:_replyButton];
+        _replyButton = [PDTopicButton buttonWithType:UIButtonTypeCustom];
+        [self.buttonBgdView addSubview:_replyButton];
         [_replyButton mas_makeConstraints:^(MASConstraintMaker *make)
         {
-            make.top.mas_equalTo(self.lineView.mas_bottom);
+            make.top.mas_equalTo(1);
             make.right.mas_equalTo(0);
             make.size.mas_equalTo(self.voteButton);
         }];
         [_replyButton normalImage:[UIImage imageNamed:@"global_icon_reply_23x23_"]];
-        [_replyButton normalTitleColor:[UIColor lightGrayColor]];
-        [_replyButton setImageEdgeInsets:UIEdgeInsetsMake(10*kScale, 28*kScale - 7*kScale, 10*kScale, 28*kScale + 7*kScale)];
-        [_replyButton.titleLabel setFont:[UIFont systemFontOfSize:13*kScale]];
-        [_replyButton setTitleEdgeInsets:UIEdgeInsetsMake(0, - 7*kScale, 0, 7*kScale)];
     }
     return _replyButton;
 }

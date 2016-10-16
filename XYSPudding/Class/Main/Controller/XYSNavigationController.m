@@ -14,6 +14,8 @@
         attributes[NSForegroundColorAttributeName] = [UIColor blackColor];
         barAppearance.titleTextAttributes = attributes;
         [barAppearance setTranslucent:NO];
+        
+        [barAppearance setBackgroundColor:[UIColor whiteColor]];
     }
 }
 

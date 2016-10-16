@@ -45,6 +45,8 @@ static const int ddLogLevel = DDLogLevelError;
 
 /** 按比例适配的比例 */
 #define kScale  kScreenHeight/736
+/** 按比例适配的比例 */
+#define kScaleW kScreenWidth/1024
 
 /** 导航栏高度 */
 #define kNavigationBarH 44*kScale

@@ -4,23 +4,23 @@
 <array>
 	<dict>
 		<key>viewController</key>
-		<string>PrivateHomeTableController</string>
+		<string>PDHomeViewController</string>
 		<key>normalImage</key>
 		<string>global_footer_btn_new_normal_80x49_</string>
 		<key>selectedImage</key>
 		<string>global_footer_btn_new_selected_80x49_</string>
 		<key>title</key>
-		<string>首页</string>
+		<string></string>
 	</dict>
 	<dict>
 		<key>viewController</key>
-		<string>PrivateHomeTableController</string>
+		<string>PDTLController</string>
 		<key>normalImage</key>
 		<string>global_footer_btn_timeline_normal_80x49_</string>
 		<key>selectedImage</key>
 		<string>global_footer_btn_timeline_selected_80x49_</string>
 		<key>title</key>
-		<string>时间线</string>
+		<string>热门</string>
 	</dict>
 	<dict>
 		<key>viewController</key>

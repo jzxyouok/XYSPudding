@@ -59,6 +59,7 @@
              {
                  return ;
              }
+              /** 跳转到小组话题列表页面 */
              PDWindow *topicListVCWindow = [PDDegGroupTopicListController
                                             controllerWithBgdImageURL:[_groupViewModel backgroundImageURLWithIndex:tag-100]
                                                                    id:[_groupViewModel groupIDWithIndex:tag-100]

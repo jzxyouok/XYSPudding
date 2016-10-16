@@ -64,14 +64,7 @@
                                           context:nil].size.height; //文本内容高度
     if (contentH>0)
     {
-        if (contentH >45)
-        {
-             height += 45*kScale + 45*kScale;
-        }
-       else
-       {
-            height += contentH*kScale + 25*kScale;
-       }
+        height += contentH + 25*kScale;
     }
     return CGSizeMake(160*kScale, height);
 }

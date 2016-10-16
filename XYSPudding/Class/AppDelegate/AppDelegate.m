@@ -1,7 +1,6 @@
 #import "AppDelegate.h"
 #import "AppDelegate+Launch.h"
 #import "XYSTabBarController.h"
-#import "PDDegNetwork.h"
 
 @interface AppDelegate ()
 
@@ -15,7 +14,7 @@
     [self initializeWithApplication:application]; //配置默认参数
     self.window.rootViewController = [XYSTabBarController new];
     [self didLoadDefualtNavigationBar];
-    
+
     return YES;
 }
 

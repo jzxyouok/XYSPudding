@@ -7,6 +7,7 @@
 //
 
 #import "PDDegGroupTopicListCell.h"
+#import "PDTopicButton.h"
 
 @interface PDDegGroupTopicListCell ()
 
@@ -28,14 +29,15 @@
 /** 交互按钮底层视图 */
 @property (nonatomic, strong) UIView *buttonBgdView;
 /** 转发按钮 */
-@property (nonatomic, strong) UIButton *repostButton;
+@property (nonatomic, strong) PDTopicButton *repostButton;
 /** 回复按钮 */
-@property (nonatomic, strong) UIButton *replyButton;
+@property (nonatomic, strong) PDTopicButton *replyButton;
 /** 点赞按钮 */
-@property (nonatomic, strong) UIButton *praiseButton;
+@property (nonatomic, strong) PDTopicButton *praiseButton;
 
 @end
 
+/** 边距：左侧13，右侧15 */
 @implementation PDDegGroupTopicListCell
 
 /** 调整frame */
@@ -79,7 +81,6 @@
         {
             make.left.mas_equalTo(self.avatar.mas_right).mas_equalTo(15*kScale);
             make.top.mas_equalTo(20*kScale);
-            
         }];
     }
     return _nickNameLabel;
@@ -120,7 +121,7 @@
         [_concernButton mas_makeConstraints:^(MASConstraintMaker *make)
         {
             make.top.mas_equalTo(10*kScale);
-            make.right.mas_equalTo(-20*kScale);
+            make.right.mas_equalTo(-15*kScale);
             make.size.mas_equalTo(CGSizeMake(45*kScale, 45*kScale));
         }];
         [_concernButton normalImage:[UIImage imageNamed:@"timeline_btn_follow_48x48_"]];
@@ -154,7 +155,7 @@
         {
             make.left.mas_equalTo(13*kScale);
             make.right.mas_equalTo(-13*kScale);
-            make.top.mas_equalTo(self.avatar.mas_bottom).mas_equalTo(10*kScale);
+            make.top.mas_equalTo(self.avatar.mas_bottom).mas_equalTo(13*kScale);
         }];
     }
     return _contentLabel;
@@ -169,12 +170,13 @@
         [_imageBgdView mas_makeConstraints:^(MASConstraintMaker *make)
         {
             make.top.mas_equalTo(self.contentLabel.mas_bottom).mas_equalTo(0);
-            make.left.right.mas_equalTo(0);
-//            make.bottom.mas_equalTo(self.buttonBgdView.mas_top).mas_equalTo(10*kScale);
+            make.left.mas_equalTo(0);
+            make.right.mas_equalTo(0);
         }];
     }
     return _imageBgdView;
 }
+
 /** 交互按钮底层视图 */
 - (UIView *)buttonBgdView
 {
@@ -184,70 +186,109 @@
         [self addSubview:_buttonBgdView];
         [_buttonBgdView mas_makeConstraints:^(MASConstraintMaker *make)
         {
-            make.top.mas_equalTo(self.imageBgdView.mas_bottom).mas_equalTo(10*kScale);
-            make.left.bottom.right.mas_equalTo(0);
-            make.height.mas_equalTo(40*kScale);
+//            make.top.mas_equalTo(self.imageBgdView.mas_bottom).mas_equalTo(13*kScale);
+            make.left.right.mas_equalTo(0);
+            make.height.mas_equalTo(44*kScale+1);
+            make.bottom.mas_equalTo(0);
         }];
+        
+        /** 按钮视图顶线 */
+        UIView *lineView = [UIView new];
+        [lineView setBackgroundColor:kRGBColor(232, 233, 232)];
+        [_buttonBgdView addSubview:lineView];
+        [lineView mas_makeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.top.right.mas_equalTo(0);
+             make.height.mas_equalTo(1);
+         }];        
     }
     return _buttonBgdView;
 }
-
 /** 转发按钮 */
-- (UIButton *)repostButton
+- (PDTopicButton *)repostButton
 {
     if (!_repostButton)
     {
-        _repostButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _repostButton = [PDTopicButton buttonWithType:UIButtonTypeCustom];
         [self.buttonBgdView addSubview:_repostButton];
         [_repostButton mas_makeConstraints:^(MASConstraintMaker *make)
         {
-            make.left.top.bottom.mas_equalTo(0);
+            make.top.mas_equalTo(1);
+            make.left.bottom.mas_equalTo(0);
             make.right.mas_equalTo(self.replyButton.mas_left).mas_equalTo(0);
         }];
         [_repostButton normalImage:[UIImage imageNamed:@"timeline_icon_repost_23x23_"]];
-        [_repostButton normalTitleColor:[UIColor lightGrayColor]];
-        [_repostButton.titleLabel setFont:[UIFont systemFontOfSize:13*kScale]];
-//        [_repostButton setImageEdgeInsets:UIEdgeInsetsMake(5, 50, 5, 50)];
-//        [_repostButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+        
+        /** 中线 */
+        UIView *centerLineView = [UIView new];
+        [_repostButton addSubview:centerLineView];
+        [centerLineView mas_makeConstraints:^(MASConstraintMaker *make)
+         {
+             make.right.mas_equalTo(0);
+             make.centerY.mas_equalTo(0);
+             make.height.mas_equalTo(20*kScale);
+             make.width.mas_equalTo(1);
+         }];
+        [centerLineView setBackgroundColor:kBGDColor];
     }
     return _repostButton;
 }
 /** 回复按钮 */
-- (UIButton *)replyButton
+- (PDTopicButton *)replyButton
 {
     if (!_replyButton)
     {
-        _replyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _replyButton = [PDTopicButton buttonWithType:UIButtonTypeCustom];
         [self.buttonBgdView addSubview:_replyButton];
         [_replyButton mas_makeConstraints:^(MASConstraintMaker *make)
          {
-             make.top.bottom.mas_equalTo(0);
+             make.top.mas_equalTo(1);
+             make.bottom.mas_equalTo(0);
              make.left.mas_equalTo(self.repostButton.mas_right).mas_equalTo(0);
              make.right.mas_equalTo(self.praiseButton.mas_left).mas_equalTo(0);
              make.size.mas_equalTo(self.repostButton);
          }];
-        [_replyButton normalTitleColor:[UIColor lightGrayColor]];
         [_replyButton normalImage:[UIImage imageNamed:@"timeline_icon_reply_23x23_"]];
-        [_replyButton.titleLabel setFont:[UIFont systemFontOfSize:13*kScale]];
+        /** 中线 */
+        UIView *centerLineView = [UIView new];
+        [_replyButton addSubview:centerLineView];
+        [centerLineView mas_makeConstraints:^(MASConstraintMaker *make)
+         {
+             make.right.mas_equalTo(0);
+             make.centerY.mas_equalTo(0);
+             make.height.mas_equalTo(20*kScale);
+             make.width.mas_equalTo(1);
+         }];
+        [centerLineView setBackgroundColor:kBGDColor];
     }
     return _replyButton;
 }
 /** 点赞按钮 */
-- (UIButton *)praiseButton
+- (PDTopicButton *)praiseButton
 {
     if (!_praiseButton)
     {
-        _praiseButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _praiseButton = [PDTopicButton buttonWithType:UIButtonTypeCustom];
         [self.buttonBgdView addSubview:_praiseButton];
         [_praiseButton mas_makeConstraints:^(MASConstraintMaker *make)
          {
-             make.right.top.bottom.mas_equalTo(0);
+             make.top.mas_equalTo(1);
+             make.right.bottom.mas_equalTo(0);
              make.left.mas_equalTo(self.replyButton.mas_right).mas_equalTo(0);
              make.size.mas_equalTo(self.repostButton);
          }];
         [_praiseButton normalImage:[UIImage imageNamed:@"timeline_icon_vote_23x23_"]];
-        [_praiseButton normalTitleColor:[UIColor lightGrayColor]];
-        [_praiseButton.titleLabel setFont:[UIFont systemFontOfSize:13*kScale]];
+        /** 中线 */
+        UIView *centerLineView = [UIView new];
+        [_praiseButton addSubview:centerLineView];
+        [centerLineView mas_makeConstraints:^(MASConstraintMaker *make)
+         {
+             make.right.mas_equalTo(0);
+             make.centerY.mas_equalTo(0);
+             make.height.mas_equalTo(20*kScale);
+             make.width.mas_equalTo(1);
+         }];
+        [centerLineView setBackgroundColor:kBGDColor];
     }
     return _praiseButton;
 }
@@ -258,7 +299,7 @@
 {
     [super prepareForReuse];
     
-    for (UIView *view in self.backgroundView.subviews)
+    for (UIView *view in self.imageBgdView.subviews)
     {
         [view removeFromSuperview];
     }
@@ -276,11 +317,7 @@
     [self.presentTimeLabel setText:[_viewModel presentTimeWithIndex:_index]];
     self.concernButton.tag = 0;
     [self.contentLabel setText:[_viewModel contentWithIndex:_index]];
-    
-    [self.repostButton normalTitle:[NSString stringWithFormat:@"%@", @([_viewModel repostCountWithIndex:_index])]];
-    [self.replyButton normalTitle:[NSString stringWithFormat:@"%@", @([_viewModel replyCountWithIndex:_index])]];
-    [self.praiseButton normalTitle:[NSString stringWithFormat:@"%@", @([_viewModel praiseCountWithIndex:_index])]];
-    
+
     if ([_viewModel isContainImageWithIndex:_index])
     {
         NSInteger count = [_viewModel imageNumberWithIndex:_index];
@@ -290,23 +327,51 @@
             NSInteger row = i / 3;
             NSInteger col = i % 3;
             UIImageView *imageView = [UIImageView new];
+            [imageView setContentMode:UIViewContentModeScaleAspectFill];
+            [imageView setClipsToBounds:YES];
             [self.imageBgdView addSubview:imageView];
             [imageView mas_makeConstraints:^(MASConstraintMaker *make)
             {
-                make.left.mas_equalTo(10*kScale*col + 165*kScale*col);
-                make.top.mas_equalTo(10*kScale*row + 165*kScale*row);
-                make.size.mas_equalTo(CGSizeMake(165*kScale, 165*kScale));
-                
-                if (i == count - 1)
-                {
-                    make.bottom.mas_equalTo(0);
-                }
+                make.left.mas_equalTo(13*kScale*(col+1) + 164*kScale*col);
+                make.top.mas_equalTo(13*kScale*(row+1) + 164*kScale*row);
+                make.size.mas_equalTo(CGSizeMake(164*kScale, 164*kScale));
             }];
             [imageView setImageWithURL:[_viewModel imageURLWithRowIndex:_index
                                                              imageIndex:i]
                       placeholderImage:[UIImage imageNamed:@"global_thumb_60x60_"]];
+            if (i == count -1)
+            {
+                [imageView mas_updateConstraints:^(MASConstraintMaker *make)
+                {
+                    make.bottom.mas_equalTo(-13*kScale);
+                }];
+            }
         }
     }
+    
+    if ([_viewModel repostCountWithIndex:_index] != 0)
+    {
+        [self.repostButton normalTitle:[NSString stringWithFormat:@"%@", @([_viewModel repostCountWithIndex:_index])]];
+    }
+    else
+    {
+        [self.repostButton normalTitle:@"转发"];
+    }
+    if ([_viewModel replyCountWithIndex:_index] != 0)
+    {
+        [self.replyButton normalTitle:[NSString stringWithFormat:@"%@", @([_viewModel replyCountWithIndex:_index])]];
+    }
+    else
+    {
+        [self.repostButton normalTitle:@"回复"];
+    }
+    if ([_viewModel praiseCountWithIndex:_index] != 0)
+    {
+        [self.praiseButton normalTitle:[NSString stringWithFormat:@"%@", @([_viewModel praiseCountWithIndex:_index])]];
+    }
+    else
+    {
+        [self.repostButton normalTitle:@"点赞"];
+    }
 }
-
 @end
