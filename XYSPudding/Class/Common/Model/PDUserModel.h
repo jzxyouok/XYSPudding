@@ -3,20 +3,14 @@
  */
 
 #import "XYSBaseModel.h"
+#import "PDImageModel.h"
 
-@class PDAvatarModel, PDBackgroundModel;
-
-#pragma mark - 第一层
-
-/**
- *  用户模型
- */
 @interface PDUserModel : XYSBaseModel
 
 /** 头像模型 */
-@property (nonatomic, strong) PDAvatarModel *avatar;
+@property (nonatomic, strong) PDImageModel *avatar;
 /** 信息展示详情背景图模型 */
-@property (nonatomic, strong) PDBackgroundModel *background;
+@property (nonatomic, strong) PDImageModel *background;
 /** 授权信息数组 */
 @property (nonatomic, strong) NSArray *authorities;
 /** 个人简介 */
@@ -64,26 +58,8 @@
 
 @property (nonatomic, assign) NSInteger followingCount;
 
-@end
+@property (nonatomic, assign) NSInteger birthday;
 
-#pragma mark - 第二层
-
-/**
- *  用户头像模型
- */
-@interface PDAvatarModel : XYSBaseModel
-
-/** 头像url地址 */
-@property (nonatomic, copy) NSString *url;
-
-@end
-
-/**
- *  信息展示背景图模型
- */
-@interface PDBackgroundModel : XYSBaseModel
-
-/** 背景图url地址 */
-@property (nonatomic, copy) NSString *url;
+@property (nonatomic, strong) PDImageModel *icon;
 
 @end

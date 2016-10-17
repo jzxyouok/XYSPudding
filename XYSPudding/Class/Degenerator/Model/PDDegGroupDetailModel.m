@@ -14,12 +14,8 @@
 {
     return @{@"creator" : @"PDUserModel",
              @"viceOwners" : @"PDUserModel",
-             @"icon" : @"IconModel"};
+             @"icon" : @"PDImageModel"};
 }
-
-@end
-
-@implementation IconModel
 
 @end
 

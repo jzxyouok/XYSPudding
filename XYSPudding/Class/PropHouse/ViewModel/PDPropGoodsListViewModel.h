@@ -23,5 +23,9 @@
 /** 浏览人数 */
 - (NSInteger)numberOfVisitorsWithIndex:(NSInteger)index;
 
+/** 分类商品数目 */
+@property (nonatomic, assign) NSInteger catogryGoodsNumber;
+/** 分类商品图标 */
+- (NSURL *)catogryIconURLWithIndex:(NSInteger)index;
 
 @end

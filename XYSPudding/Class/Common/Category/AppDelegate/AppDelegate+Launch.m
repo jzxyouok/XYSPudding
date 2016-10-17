@@ -2,7 +2,6 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import "NSObject+Factory.h"
 
-
 /** 记录wifi状态下是否联网 */
 static NSNumber *isOnlineWifi = nil;
 
@@ -13,9 +12,14 @@ static NSNumber *isOnlineWifi = nil;
 /** app启动时的初始化设置 */
 - (void)initializeWithApplication:(UIApplication *)application
 {
-    [self didRegisterSDK]; //注册第三方SDK
-    [self detectNetwork]; //实时监测网络
+    /** 实时监测网络 */
+    [self detectNetwork];
+    /** 推送服务 */
+    [self didRegisterPushServiceWithApplication:application];
+    /** 注册第三方SDK */
+    [self didRegisterSDK];
 }
+
 
 #pragma mark - 首次启动、版本更新配置
 
@@ -128,6 +132,73 @@ static NSNumber *isOnlineWifi = nil;
   supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
     return UIInterfaceOrientationMaskLandscape;
+}
+
+#pragma mark - 推送服务
+
+/** 注册推送服务 */
+- (void)didRegisterPushServiceWithApplication:(UIApplication *)application
+{
+    /** 推送服务ios8特殊处理 */
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0)
+    {
+        UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert |
+                                                                                           UIUserNotificationTypeBadge |
+                                                                                           UIUserNotificationTypeSound
+                                                                                categories:nil];
+        [application registerUserNotificationSettings:setting];
+    }
+    else
+    {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert|
+         UIRemoteNotificationTypeBadge|UIUserNotificationTypeSound];
+#pragma clang diagnostic pop
+    }
+    
+    /** 本地推送 */
+    UILocalNotification *localNotification = [UILocalNotification new];
+    [localNotification setAlertTitle:@"布丁娘"];
+    [localNotification setAlertBody:@"更新提醒"];
+    [localNotification setUserInfo:@{@"push" : @"推送"}];
+    /** 小于30s的声音文件名名称 */
+    [localNotification setSoundName:UILocalNotificationDefaultSoundName];
+    /** 触发时间(10s后触发) */
+    [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:10.0]];
+    /** 推送消息的未读数目 */
+    [localNotification setApplicationIconBadgeNumber:100];
+    /** 注册 */
+    [application scheduleLocalNotification:localNotification];
+    
+    /** 消除未读数目 */
+    [application setApplicationIconBadgeNumber:0];
+}
+
+/** 接收苹果回传的推送验证信息 */
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    DDLogInfo(@"苹果远程推送验证信息");
+}
+
+/** 接收远程推送消息 */
+- (void)         application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    
+}
+/** 接收本地推送消息 */
+- (void)        application:(UIApplication *)application
+didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    DDLogInfo(@"%@", notification);
+}
+/** 证书错误、模拟器调试等会导致注册失败 */
+- (void)                             application:(UIApplication *)application
+didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    DDLogInfo(@"未注册证书，无法远程推送");
 }
 
 @end

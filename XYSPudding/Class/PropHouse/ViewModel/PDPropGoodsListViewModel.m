@@ -16,10 +16,14 @@
 @property (nonatomic, strong) NSDictionary *parameters;
 /** 偏移量 */
 @property (nonatomic, assign) NSInteger offset;
+/** 储存分类商品数据 */
+@property (nonatomic, strong) NSArray *catogryGoods;
+
 @end
 
 @implementation PDPropGoodsListViewModel
 
+/** 修改获取更多数据的请求参数 */
 - (NSMutableDictionary *)parametersWithOffset
 {
         NSMutableArray *allkeys = [NSMutableArray arrayWithArray:_parameters.allKeys];
@@ -31,27 +35,50 @@
      return [NSMutableDictionary dictionaryWithObjects:allValues
                                                            forKeys:allkeys];
 }
+/** 刷新数据 */
 - (void)refreshDataWithCompletionHandler:(void (^)(NSError *error))completionHandler
 {
     /** 首先获取请求参数 */
-    [PDPropNetwork loadParametersDataWithCompletionHandler:^(PDPropGroodsListModel *model, NSError *error)
+    if (self.dataTask)
     {
-        if (!error)
-        {
-            _goodsNumber = 0;
-            _offset = 0;
-            _parameters = [model.parameters copy];
-            [self.datas removeAllObjects];
-            [self getDataWithloadType:XYSDataLoadTypeNew
-                    completionHandler:completionHandler];
-        }
-        else
-        {
-            completionHandler(error);
-        }
-    }];
+        [self.dataTask cancel];
+    }
+    self.dataTask = [PDPropNetwork loadParametersDataWithCompletionHandler:^(PDPropGroodsListModel *model, NSError *error)
+                     {
+                         if (!error)
+                         {
+                             _goodsNumber = 0;
+                             _offset = 0;
+                             _parameters = [model.parameters copy];
+                             [self.datas removeAllObjects];
+                             
+                             /** 获取分类商品数据 */
+                             if (self.dataTask)
+                             {
+                                 [self.dataTask cancel];
+                             }
+                             self.dataTask = [PDPropNetwork loadCatogryGoodsDataWithParameters:_parameters
+                                                                             CompletionHandler:^(PDPropGroodsListModel *model,
+                                                                                                 NSError *error)
+                                              {
+                                                  if (!error)
+                                                  {
+                                                      _catogryGoods = [model.result.goodsList copy];
+                                                  }
+                                                  
+                                                  /** 获取商品列表数据 */
+                                                  [self getDataWithloadType:XYSDataLoadTypeNew
+                                                          completionHandler:completionHandler];
+                                              }];
+                         }
+                         else
+                         {
+                             completionHandler(error);
+                         }
+                     }];
 }
 
+/** 获取更多数据 */
 - (void)getMoreDataWithCompletionHandler:(void (^)(NSError *error))completionHandler
 {
     _offset += 20;
@@ -60,6 +87,7 @@
             completionHandler:completionHandler];
 }
 
+/** 获取数据 */
 - (void)getDataWithloadType:(XYSDataLoadType)loadType
           completionHandler:(void (^)(NSError *error))completionHandler
 {
@@ -73,7 +101,7 @@
     {
         if (!error)
         {
-            [self.datas addObjectsFromArray:model.result.list];
+            [self.datas addObjectsFromArray:model.result.goodsList];
             _goodsNumber += model.result.total;
         }
         completionHandler(error);
@@ -81,10 +109,10 @@
 }
 
 
-#pragma mark - 获取数据
+#pragma mark - 获取商品列表数据
 
-
-- (PDPropGroodsListResultListModel *)getModelWithIndex:(NSInteger)index
+/** 获取商品数据模型对象 */
+- (PDGoodsModel *)getModelWithIndex:(NSInteger)index
 {
     return self.datas[index];
 }
@@ -102,6 +130,10 @@
 /** 标题信息 */
 - (NSString *)titleWithIndex:(NSInteger)index
 {
+    if ([self labelWithIndex:index] && ![[self labelWithIndex:index] isEqualToString:@""])
+    {
+        return [@"         " stringByAppendingString:[self getModelWithIndex:index].title];
+    }
     return [self getModelWithIndex:index].title;
 }
 /** 价格 */
@@ -113,6 +145,25 @@
 - (NSInteger)numberOfVisitorsWithIndex:(NSInteger)index
 {
     return [self getModelWithIndex:index].viewCount;
+}
+
+#pragma mark - 分类商品列表数据
+
+/** 获取商品数据模型对象 */
+- (PDGoodsModel *)getCModelWithIndex:(NSInteger)index
+{
+    return _catogryGoods[index];
+}
+
+/** 分类商品数目 */
+- (NSInteger)catogryGoodsNumber
+{
+    return _catogryGoods.count;
+}
+/** 分类商品图标 */
+- (NSURL *)catogryIconURLWithIndex:(NSInteger)index
+{
+    return [NSURL URLWithString:[self getCModelWithIndex:index].iosImage.url];
 }
 
 @end

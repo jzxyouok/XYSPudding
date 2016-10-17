@@ -12,18 +12,9 @@
 
 + (NSDictionary *)specialClasses
 {
-    return @{@"ownerObject" : @"Ownerobject",
-             @"relatedObject" : @"Relatedobject"};
-}
-
-@end
-
-@implementation Ownerobject
-
-+ (NSDictionary *)specialClasses
-{
-    return @{@"background" : @"Background",
-             @"avatar" : @"Avatar"};
+    return @{@"ownerObject" : @"PDUserModel",
+             @"relatedObject" : @"Relatedobject",
+             @"subject" : @"Subject"};
 }
 
 @end
@@ -33,41 +24,24 @@
 + (NSDictionary *)specialClasses
 {
     return @{@"group" : @"Group",
-             @"images" : @"Images"};
+             @"images" : @"PDImageModel",
+             @"subject" : @"Subject"};
 }
 
 @end
 
-
-@implementation Avatar
-
-@end
-
-
-@implementation Background
+@implementation Subject
 
 @end
-
-
 
 @implementation Group
 
 + (NSDictionary *)specialClasses
 {
-    return @{@"background" : @"Background"};
+    return @{@"background" : @"PDImageModel"};
 }
 
 @end
 
-
-@implementation Icon
-
-@end
-
-
-
-@implementation Images
-
-@end
 
 

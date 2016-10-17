@@ -7,9 +7,10 @@
 //
 
 #import "XYSBaseModel.h"
+#import "PDImageModel.h"
 
-@class PDDegGroupIconModel, PDDegGroupBackgroundModel;
 @interface PDDegGroupModel : XYSBaseModel
+
 /** 分组标识 */
 @property (nonatomic, copy) NSString *_id;
 /** 分组发布的总主题数目 */
@@ -21,28 +22,13 @@
 /** 分组信息描述 */
 @property (nonatomic, copy) NSString *intro;
 /** 异次元分组详情背景图模型对象 */
-@property (nonatomic, strong) PDDegGroupBackgroundModel *background;
+@property (nonatomic, strong) PDImageModel *background;
 /** 分组中今日发布的主题数目 */
 @property (nonatomic, assign) NSInteger todayTopicCount;
 /** 分组名称 */
 @property (nonatomic, copy) NSString *name;
 /** 异次元分组展示图片模型对象 */
-@property (nonatomic, strong) PDDegGroupIconModel *icon;
-
-@end
-
-
-/** 异次元分组展示图片模型 */
-@interface PDDegGroupIconModel : XYSBaseModel
-
-@property (nonatomic, copy) NSString *url;
-
-@end
-
-/** 异次元分组详情背景图模型 */
-@interface PDDegGroupBackgroundModel : XYSBaseModel
-
-@property (nonatomic, copy) NSString *url;
+@property (nonatomic, strong) PDImageModel *icon;
 
 @end
 

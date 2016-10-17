@@ -5,8 +5,6 @@
 #import "XYSBaseModel.h"
 #import "PDUserModel.h"
 
-@class IconModel;
-
 #pragma mark - 第一层
 
 @interface PDDegGroupDetailModel : XYSBaseModel
@@ -21,7 +19,7 @@
 /** 小组组长信息模型 */
 @property (nonatomic, strong) PDUserModel *creator;
 /** 小组图标 */
-@property (nonatomic, strong) IconModel *icon;
+@property (nonatomic, strong) PDImageModel *icon;
 /** 今日话题数目 */
 @property (nonatomic, assign) NSInteger todayTopicCount;
 /** 用户是否加入该小组 */
@@ -37,11 +35,3 @@
 //@property (nonatomic, strong) NSArray *administrators;
 
 @end
-
-@interface IconModel : XYSBaseModel
-
-/** 小组图标url地址 */
-@property (nonatomic, copy) NSString *url;
-
-@end
-

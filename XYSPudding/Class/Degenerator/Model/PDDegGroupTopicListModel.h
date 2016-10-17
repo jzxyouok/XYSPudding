@@ -5,7 +5,7 @@
 #import "XYSBaseModel.h"
 #import "PDUserModel.h"
 
-@class PDDegGroupTopicListActivityModel, PDDegGroupTopicListImagesModel;
+@class PDDegGroupTopicListActivityModel;
 
 @interface PDDegGroupTopicListModel : XYSBaseModel
 
@@ -28,7 +28,7 @@
 /** 活动模型 */
 @property (nonatomic, strong) PDDegGroupTopicListActivityModel *activity;
 /** 图片模型 */
-@property (nonatomic, strong) NSArray<PDDegGroupTopicListImagesModel *> *images;
+@property (nonatomic, strong) NSArray<PDImageModel *> *images;
 /** 回复数目 */
 @property (nonatomic, assign) NSInteger replyCount;
 /** 文本内容 */
@@ -60,14 +60,4 @@
 
 @end
 
-@interface PDDegGroupTopicListImagesModel : XYSBaseModel
-
-/** 图片url地址 */
-@property (nonatomic, copy) NSString *url;
-/** 图片高度 */
-@property (nonatomic, assign) NSInteger height;
-/** 图片宽度 */
-@property (nonatomic, assign) NSInteger width;
-
-@end
 

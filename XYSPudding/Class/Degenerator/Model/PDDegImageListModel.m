@@ -14,16 +14,9 @@
 
 + (NSDictionary *)specialClasses
 {
-    return @{@"image" : @"PDDegImageListImageModel",
+    return @{@"image" : @"PDImageModel",
              @"user" : @"PDUserModel"};
 }
 
 @end
-
-#pragma mark - 第二层
-
-@implementation PDDegImageListImageModel
-
-@end
-
 

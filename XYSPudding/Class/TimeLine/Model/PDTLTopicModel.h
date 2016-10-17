@@ -7,98 +7,33 @@
 //
 
 #import "XYSBaseModel.h"
+#import "PDUserModel.h"
 
-
-
-@class Ownerobject,Avatar,Background,Relatedobject,Group,Icon,Background,Images;
+@class Relatedobject,Subject, Group;
 
 @interface PDTLTopicModel : XYSBaseModel
 
+/** id标识 */
 @property (nonatomic, copy) NSString *_id;
-
-@property (nonatomic, strong) Ownerobject *ownerObject;
-
+/** 回复数目 */
 @property (nonatomic, assign) NSInteger replyCount;
-
+/** 状态码 */
 @property (nonatomic, assign) NSInteger status;
-
+/** 发布时间 */
 @property (nonatomic, assign) NSInteger postedTime;
-
+/** 主题类型 */
 @property (nonatomic, assign) NSInteger type;
-
-@property (nonatomic, strong) Relatedobject *relatedObject;
-
+/** 收藏数目 */
 @property (nonatomic, assign) NSInteger voteCount;
+/** 相关对象 */
+@property (nonatomic, strong) Relatedobject *relatedObject;
+/** 用户对象 */
+@property (nonatomic, strong) PDUserModel *ownerObject;
+
+@property (nonatomic, strong) Subject *subject;
 
 @end
 
-@interface Ownerobject : XYSBaseModel
-
-@property (nonatomic, strong) NSArray<NSString *> *authorityDes;
-
-@property (nonatomic, assign) CGFloat coinCount;
-
-@property (nonatomic, assign) NSInteger birthday;
-
-@property (nonatomic, assign) NSInteger followingCount;
-
-@property (nonatomic, assign) BOOL strangerChatEnabled;
-
-@property (nonatomic, strong) NSArray<NSString *> *authorities;
-
-@property (nonatomic, copy) NSString *nickname;
-
-@property (nonatomic, assign) NSInteger picCount;
-
-@property (nonatomic, strong) NSArray *roleIntro;
-
-@property (nonatomic, copy) NSString *_id;
-
-@property (nonatomic, strong) Background *background;
-
-@property (nonatomic, assign) NSInteger epCount;
-
-@property (nonatomic, copy) NSString *intro;
-
-@property (nonatomic, assign) NSInteger topicCount;
-
-@property (nonatomic, assign) NSInteger followingBoardCount;
-
-@property (nonatomic, assign) BOOL blocked;
-
-@property (nonatomic, assign) NSInteger gender;
-
-@property (nonatomic, assign) BOOL isAdmin;
-
-@property (nonatomic, strong) NSArray *roles;
-
-@property (nonatomic, assign) NSInteger audioCount;
-
-@property (nonatomic, assign) NSInteger commentCount;
-
-@property (nonatomic, strong) Avatar *avatar;
-
-@property (nonatomic, assign) BOOL rongCloudActivated;
-
-@property (nonatomic, assign) NSInteger followerCount;
-
-@property (nonatomic, assign) NSInteger epPlayCount;
-
-@property (nonatomic, assign) NSInteger boardCount;
-
-@end
-
-@interface Avatar : XYSBaseModel
-
-@property (nonatomic, copy) NSString *url;
-
-@end
-
-@interface Background : XYSBaseModel
-
-@property (nonatomic, copy) NSString *url;
-
-@end
 
 @interface Relatedobject : XYSBaseModel
 
@@ -120,7 +55,7 @@
 
 @property (nonatomic, assign) BOOL stick;
 
-@property (nonatomic, strong) NSArray<Images *> *images;
+@property (nonatomic, strong) NSArray<PDImageModel *> *images;
 
 @property (nonatomic, assign) BOOL selected;
 
@@ -128,7 +63,26 @@
 
 @property (nonatomic, copy) NSString *content;
 
+@property (nonatomic, strong) Subject *subject;
 @end
+
+
+@interface Subject : XYSBaseModel
+
+@property (nonatomic, strong) NSString *_id;
+
+@property (nonatomic, strong) NSString *userId;
+
+@property (nonatomic, strong) NSString *name;
+
+@property (nonatomic, assign) NSInteger followCount;
+
+@property (nonatomic, assign) NSInteger postCount;
+
+@property (nonatomic, strong) PDImageModel *icon;
+
+@end
+
 
 @interface Group : XYSBaseModel
 
@@ -142,28 +96,12 @@
 
 @property (nonatomic, copy) NSString *intro;
 
-@property (nonatomic, strong) Background *background;
+@property (nonatomic, strong) PDImageModel *background;
 
 @property (nonatomic, copy) NSString *name;
 
-@property (nonatomic, strong) Icon *icon;
+@property (nonatomic, strong) PDImageModel *icon;
 
 @end
 
-@interface Icon : XYSBaseModel
-
-@property (nonatomic, copy) NSString *url;
-
-@end
-
-
-@interface Images : XYSBaseModel
-
-@property (nonatomic, assign) NSInteger width;
-
-@property (nonatomic, copy) NSString *url;
-
-@property (nonatomic, assign) NSInteger height;
-
-@end
 

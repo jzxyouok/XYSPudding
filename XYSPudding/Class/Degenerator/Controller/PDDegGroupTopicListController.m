@@ -31,7 +31,7 @@
                       groupName:(NSString *)groupName
 {
     PDWindow *pWindow = [PDWindow standardWindow];
-    PDDegGroupTopicListController *topicListVC = [PDDegGroupTopicListController new];
+    PDDegGroupTopicListController *topicListVC = [[PDDegGroupTopicListController alloc] initWithStyle:UITableViewStylePlain];
     topicListVC.bgdImageURL = bgdImageURL;
     topicListVC.id_ = id_;
     topicListVC.groupName = groupName;

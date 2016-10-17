@@ -9,10 +9,13 @@
 #import "PDTLController.h"
 #import "PSCollectionView.h"
 #import "PDImageListCell.h"
+#import "PDTLTopicViewModel.h"
+#import "PDTLTopicCell.h"
 
 @interface PDTLController ()<UIScrollViewDelegate, PSCollectionViewDelegate, PSCollectionViewDataSource>
 
 @property (nonatomic, strong) PSCollectionView *collectionView;
+@property (nonatomic, strong) PDTLTopicViewModel *topicVM;
 
 @end
 
@@ -22,6 +25,9 @@
 {
     [super viewDidLoad];
 
+    [self.view setBackgroundColor:kBGDColor];
+    [self addCollectionView];
+    [self addRefreshView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,7 +43,7 @@
     _collectionView.delegate = self;
     _collectionView.collectionViewDelegate = self;
     _collectionView.collectionViewDataSource = self;
-    _collectionView.numColsLandscape = 3;
+    _collectionView.numColsLandscape = 2;
     [self.view addSubview:_collectionView];
     [_collectionView mas_makeConstraints:^(MASConstraintMaker *make)
      {
@@ -45,33 +51,64 @@
      }];
 }
 
+/** 刷新视图 */
+- (void)addRefreshView
+{
+    _topicVM = [PDTLTopicViewModel new];
+    _collectionView.mj_header = [self gifHeaderWithRefreshingBlock:^
+                                 {
+                                     [_topicVM refreshDataWithCompletionHandler:^(NSError *error)
+                                     {
+                                         if (!error)
+                                         {
+                                             [_collectionView reloadData];
+                                         }
+                                         [_collectionView.mj_header endRefreshing];
+                                     }];
+                                 }];
+    
+    _collectionView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^
+                                 {
+                                    [_topicVM getMoreDataWithCompletionHandler:^(NSError *error)
+                                    {
+                                        if (!error)
+                                        {
+                                            [_collectionView reloadData];
+                                        }
+                                        [_collectionView.mj_footer endRefreshing];
+                                    }];
+                                 }];
+}
+
 #pragma mark -  PSCollectionView协议方法
 
-//- (NSInteger)numberOfRowsInCollectionView:(PSCollectionView *)collectionView
-//{
-//    return _imagelistVM.listNumber;
-//}
-//
-//- (UIView *)collectionView:(PSCollectionView *)collectionView
-//         cellForRowAtIndex:(NSInteger)index
-//{
-//#pragma clang diagnostic push
-//#pragma clang diagnostic ignored "-Wincompatible-pointer-types"
-//    PDImageListCell *cell = [collectionView dequeueReusableViewForClass:[PDImageListCell class]];
-//#pragma clang diagnostic pop
-//    if (!cell)
-//    {
-//        cell = [PDImageListCell new];
-//    }
-//
-//    return cell;
-//}
-//
-///** cell高度 **/
-//- (CGFloat)collectionView:(PSCollectionView *)collectionView
-//      heightForRowAtIndex:(NSInteger)index
-//{
-//    return [_imagelistVM cellSizeWithIndex:index].height;
-//}
+- (NSInteger)numberOfRowsInCollectionView:(PSCollectionView *)collectionView
+{
+    return _topicVM.listNumber;
+}
+
+- (UIView *)collectionView:(PSCollectionView *)collectionView
+         cellForRowAtIndex:(NSInteger)index
+{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wincompatible-pointer-types"
+    PDTLTopicCell *cell = [collectionView dequeueReusableViewForClass:[PDTLTopicCell class]];
+#pragma clang diagnostic pop
+    if (!cell)
+    {
+        cell = [PDTLTopicCell new];
+        [cell setBackgroundColor:[UIColor whiteColor]];
+    }
+    [cell setDataWithViewModel:_topicVM index:index];
+
+    return cell;
+}
+
+/** cell高度 **/
+- (CGFloat)collectionView:(PSCollectionView *)collectionView
+      heightForRowAtIndex:(NSInteger)index
+{
+    return [_topicVM heightOfCellWithIndex:index];
+}
 
 @end

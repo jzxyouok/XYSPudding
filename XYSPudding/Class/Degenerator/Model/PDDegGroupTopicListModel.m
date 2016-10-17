@@ -13,17 +13,13 @@
 + (NSDictionary *)specialClasses
 {
     return @{@"activity" : @"PDDegGroupTopicListActivityModel",
-             @"images" : @"PDDegGroupTopicListImagesModel",
+             @"images" : @"PDImageModel",
              @"user" : @"PDUserModel"};
 }
 
 @end
 
 @implementation PDDegGroupTopicListActivityModel
-
-@end
-
-@implementation PDDegGroupTopicListImagesModel
 
 @end
 

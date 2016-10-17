@@ -12,71 +12,49 @@
 #import "Masonry.h"
 
 @interface XYSTitleBar : UIView
-/**
- *  工厂方法实例化对象
- */
+
+/** 唯一的工厂方法实例化对象 */
 + (id)barWithTitles:(NSArray *)titles;
-/**
- *  记录标签名称
- */
+/** 记录标签名称  */
 @property (nonatomic, readonly) NSArray *titles;
 
-/**
- *  头部间距, 默认0
- */
+/** 修改头部间距, 默认0 */
 @property (nonatomic, assign) CGFloat headSpace;
-/**
- *  尾部间距, 默认0
- */
+/** 修改尾部间距, 默认0 */
 @property (nonatomic, assign) CGFloat trailSpace;
-/**
- *  标题标签的大小, 默认(60,35)
- */
-@property (nonatomic, assign) CGSize size;
-/**
- *  标签间距, 默认0
- */
+/** 修改标题标签的大小, 默认(80,35) */
+@property (nonatomic, assign) CGSize itemSize;
+/** 修改标签间距, 默认0 */
 @property (nonatomic, assign) CGFloat space;
 
-/**
- *  normal状态的字体，默认大小为系统样式15号
- */
+/** 修改normal状态的字体，默认大小为系统样式15号 */
 @property (nonatomic, strong) UIFont *normalFont;
-/**
- *  selected状态的字体，默认大小为系统样式16号
- */
+/** 修改selected状态的字体，默认大小为系统样式15号 */
 @property (nonatomic, strong) UIFont *selectedFont;
-/**
- *  normal状态的字体颜色，默认为黑色 (可动画)
- */
+/** 修改normal状态的字体颜色，默认为黑色 */
 @property (nonatomic, strong) UIColor *normalColor;
-/**
- *  selected状态的字体颜色，默认为红色 (可动画)
- */
+/** 修改selected状态的字体颜色，默认为红色 */
 @property (nonatomic, strong) UIColor *selectedColor;
-/**
- *  记录选中的标签索引(默认0), 修改选中的标签索引,
- */
-@property (nonatomic, assign) NSInteger selectedItem;
-/**
- *  自动滑动，默认为NO
- */
-@property (nonatomic, assign) BOOL autoScroll;
-/**
- *  显示底线，默认显示底线
- */
+
+/** 通过修改索引值来修改选中的标签(索引值从0开始递增) */
+@property (nonatomic, assign) NSInteger selectedIndex;
+/** 设置标签自动滑动，默认为不自动滑动(NO) */
+@property (nonatomic, assign, getter=isAutoScroll) BOOL autoScroll;
+/** 设置标签缩放动画, 默认不开启缩放动画(NO) */
+@property (nonatomic, assign, getter=isScale) BOOL scale;
+/** 设置边缘弹性效果,默认(NO) */
+@property (nonatomic, assign, getter=isBounces) BOOL bounces;
+/** 修改线条显示状态，默认不显示(NO) */
 @property (nonatomic, assign, getter=isShowLine) BOOL showLine;
-/**
- *  底线颜色，默认蓝色
- */
+/** 修改线条颜色，默认蓝色 */
 @property (nonatomic, strong) UIColor *lineColor;
+
 @end
 
-/**
- *  标签点击回调事件处理
- */
-typedef void(^ClickHandler)(NSInteger index);
-@interface XYSTitleBar ()
-@property (nonatomic, strong) ClickHandler clickHandler;
-- (void)clickHandler:(ClickHandler)handler;
+/** 标签点击的回调事件代码块 */
+typedef void(^ClickHandler)(NSInteger tag);
+@interface XYSTitleBar()
+@property (nonatomic, copy) ClickHandler clickHandler;
+/** 用户通过调用此函数获取标签点击时回传的tag值 */
+- (void)clickHandler:(ClickHandler)clickHandler;
 @end

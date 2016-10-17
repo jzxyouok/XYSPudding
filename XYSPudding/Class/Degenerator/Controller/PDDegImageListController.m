@@ -156,8 +156,6 @@
              [_collectionView.mj_header endRefreshing];
          }];
     }];
-    [_collectionView.mj_header beginRefreshing];
-    
     _collectionView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^
                                  {
                                      [_imagelistVM getMoreDataWithCompletionHandler:^(NSError *error)
@@ -167,7 +165,6 @@
                                       }];
                                  }];
 }
-
 
 #pragma mark -  PSCollectionView协议方法
 

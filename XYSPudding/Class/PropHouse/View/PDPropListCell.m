@@ -12,8 +12,8 @@
 
 /** 图片 */
 @property (nonatomic, strong) UIImageView *imageView;
-/** 图片标签（new\hot\无） */
-@property (nonatomic, strong) UIImageView *imageLabel;
+/** 文字标签（new\hot\无） */
+@property (nonatomic, strong) UILabel *label;
 /** 标题信息 */
 @property (nonatomic, strong) UILabel *titleLabel;
 /** 价格 */
@@ -55,20 +55,24 @@
 }
 
 /** 图片标签（new\hot\无） */
-- (UIImageView *)imageLabel
+- (UILabel *)label
 {
-    if (!_imageLabel)
+    if (!_label)
     {
-        _imageLabel = [UIImageView new];
-        [self addSubview:_imageLabel];
-        [_imageLabel mas_makeConstraints:^(MASConstraintMaker *make)
+        _label = [UILabel new];
+        [_label setTextColor:[UIColor whiteColor]];
+        [_label setTextAlignment:NSTextAlignmentCenter];
+        [_label setFont:[UIFont systemFontOfSize:15*kScaleW]];
+        [_label setClipsToBounds:YES];
+        [_label.layer setCornerRadius:5*kScaleW];
+        [self addSubview:_label];
+        [_label mas_makeConstraints:^(MASConstraintMaker *make)
         {
-            make.left.mas_equalTo(15*kScale);
-            make.top.mas_equalTo(self.imageView.mas_bottom).mas_equalTo(15*kScale);
-            
+            make.left.mas_equalTo(15*kScaleW);
+            make.top.mas_equalTo(self.imageView.mas_bottom).mas_equalTo(15*kScaleW);
         }];
     }
-    return _imageLabel;
+    return _label;
 }
 
 /** 标题信息 */
@@ -77,8 +81,8 @@
     if (!_titleLabel)
     {
         _titleLabel = [UILabel new];
-        [_titleLabel setFont:[UIFont systemFontOfSize:16*kScale]];
-        [_titleLabel setNumberOfLines:0];
+        [_titleLabel setFont:[UIFont systemFontOfSize:16*kScaleW]];
+        [_titleLabel setNumberOfLines:2];
         [_titleLabel setTextColor:kTextColor];
         [self addSubview:_titleLabel];
         [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make)
@@ -96,7 +100,7 @@
     if (!_priceLabel)
     {
         _priceLabel = [UILabel new];
-        [_priceLabel setFont:[UIFont systemFontOfSize:13*kScale]];
+        [_priceLabel setFont:[UIFont systemFontOfSize:13*kScaleW]];
         [_priceLabel setTextColor:kNaviTextColor];
         [self addSubview:_priceLabel];
         [_priceLabel mas_makeConstraints:^(MASConstraintMaker *make)
@@ -114,16 +118,18 @@
     if (!_visitorsLabel)
     {
         _visitorsLabel = [UILabel new];
-        [_visitorsLabel setFont:[UIFont systemFontOfSize:13*kScale]];
+        [_visitorsLabel setFont:[UIFont systemFontOfSize:13*kScaleW]];
         [_visitorsLabel setTextColor:[UIColor lightGrayColor]];
         [self addSubview:_visitorsLabel];
         [_visitorsLabel mas_makeConstraints:^(MASConstraintMaker *make)
         {
-            make.right.bottom.mas_equalTo(-14*kScale);
+            make.right.bottom.mas_equalTo(-14*kScaleW);
         }];
     }
     return _visitorsLabel;
 }
+
+#pragma mark - 数据设置
 
 - (void)setDataWithViewModel:(PDPropGoodsListViewModel *)viewModel
                        index:(NSInteger)index
@@ -133,9 +139,22 @@
     
     [self.imageView setImageWithURL:[_viewModel imageURLWithIndex:_index]
                    placeholderImage:[UIImage imageNamed:@"global_thumb_60x60_"]];
+    NSString *labelStr = [_viewModel labelWithIndex:_index];
+    if (labelStr)
+    {
+        if ([labelStr isEqualToString:@"NEW"])
+        {
+            [self.label setBackgroundColor:[UIColor greenColor]];
+        }
+        else if ([labelStr isEqualToString:@"HOT"])
+        {
+            [self.label setBackgroundColor:[UIColor redColor]];
+        }
+    }
+    [self.label setText:labelStr];
     [self.titleLabel setText:[_viewModel titleWithIndex:_index]];
     [self.priceLabel setText:[NSString stringWithFormat:@"￥%.2lf", [_viewModel priceWithIndex:_index]]];
-    [self.visitorsLabel setText:[NSString stringWithFormat:@"%@人看过", @([_viewModel numberOfVisitorsWithIndex:_index])]];
+    [self.visitorsLabel setText:[NSString stringWithFormat:@"%@ 人看过", @([_viewModel numberOfVisitorsWithIndex:_index])]];
 }
 
 

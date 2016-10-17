@@ -1,6 +1,7 @@
 #import "AppDelegate.h"
 #import "AppDelegate+Launch.h"
 #import "XYSTabBarController.h"
+#import "PDHPNetwork.h"
 
 @interface AppDelegate ()
 
@@ -15,6 +16,7 @@
     self.window.rootViewController = [XYSTabBarController new];
     [self didLoadDefualtNavigationBar];
 
+    
     return YES;
 }
 

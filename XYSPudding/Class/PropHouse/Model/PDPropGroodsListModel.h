@@ -6,46 +6,16 @@
 //  Copyright © 2016年 XYS. All rights reserved.
 //
 
-#import "XYSBaseModel.h"
+#import "PDReceiveModel.h"
+#import "PDImageModel.h"
 
-@class PDPropGroodsListResultModel,PDPropGroodsListResultListModel,PDImageModel;
-
-#pragma mark - 第一层
-
-@interface PDPropGroodsListModel : XYSBaseModel
-
-/** 数据请求参数 */
-@property (nonatomic, strong) NSDictionary *parameters;
-/** 错误编码 */
-@property (nonatomic, assign) NSInteger errorCode;
-/** 请求数据结果存储数组 */
-@property (nonatomic, strong) PDPropGroodsListResultModel *result;
-/** 错误信息 */
-@property (nonatomic, copy) NSString *errorMessage;
+@interface PDPropGroodsListModel : PDReceiveModel
 
 @end
 
-#pragma mark - 第二层
 
-/**
- *  商品结果数据模型
- */
-@interface PDPropGroodsListResultModel : XYSBaseModel
-/** 反馈信息 */
-@property (nonatomic, copy) NSString *message;
-/** 结果数目 */
-@property (nonatomic, assign) NSInteger total;
-/** 结果列表 */
-@property (nonatomic, strong) NSArray<PDPropGroodsListResultListModel *> *list;
-
-@end
-
-#pragma mark - 第三层
-
-/**
- *  存储商品信息模型
- */
-@interface PDPropGroodsListResultListModel : XYSBaseModel
+/** 商品模型 */
+@interface PDGoodsModel : XYSBaseModel
 
 /** 状态码 */
 @property (nonatomic, assign) NSInteger status;
@@ -79,15 +49,6 @@
 @property (nonatomic, copy) NSString *relatedId;
 /** 相关类型 */
 @property (nonatomic, assign) NSInteger relatedType;
-
-@end
-
-/** 展示图片模型对象 */
-@interface PDImageModel : XYSBaseModel
-
-@property (nonatomic, copy) NSString *url;
-@property (nonatomic, assign) NSInteger height;
-@property (nonatomic, assign) NSInteger width;
 
 @end
 

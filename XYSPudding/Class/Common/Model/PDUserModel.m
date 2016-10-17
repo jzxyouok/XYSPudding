@@ -12,16 +12,9 @@
 
 + (NSDictionary *)specialClasses
 {
-    return @{@"avatar" : @"PDAvatarModel",
-             @"background" : @"PDBackgroundModel"};
+    return @{@"avatar" : @"PDImageModel",
+             @"background" : @"PDImageModel",
+             @"icon" : @"PDImageModel"};
 }
-
-@end
-
-@implementation PDAvatarModel
-
-@end
-
-@implementation PDBackgroundModel
 
 @end

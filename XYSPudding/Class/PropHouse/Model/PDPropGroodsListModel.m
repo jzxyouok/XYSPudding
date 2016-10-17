@@ -10,24 +10,9 @@
 
 @implementation PDPropGroodsListModel
 
-+ (NSDictionary *)specialClasses
-{
-    return @{@"result" : @"PDPropGroodsListResultModel"};
-}
-
 @end
 
-@implementation PDPropGroodsListResultModel
-
-+ (NSDictionary *)specialClasses
-{
-    return @{@"list" : @"PDPropGroodsListResultListModel"};
-}
-
-@end
-
-
-@implementation PDPropGroodsListResultListModel
+@implementation PDGoodsModel
 
 + (NSDictionary *)specialClasses
 {
@@ -38,10 +23,6 @@
 
 @end
 
-
-@implementation PDImageModel
-
-@end
 
 
 

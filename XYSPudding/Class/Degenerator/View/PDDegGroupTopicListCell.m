@@ -37,7 +37,7 @@
 
 @end
 
-/** 边距：左侧13，右侧15 */
+/** 边距：左侧13，右侧13 */
 @implementation PDDegGroupTopicListCell
 
 /** 调整frame */

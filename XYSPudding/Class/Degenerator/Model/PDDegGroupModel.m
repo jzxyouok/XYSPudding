@@ -12,15 +12,9 @@
 
 + (NSDictionary *)specialClasses
 {
-    return @{@"background" : @"PDDegGroupBackgroundModel", @"icon" : @"PDDegGroupIconModel"};
+    return @{@"background" : @"PDImageModel",
+             @"icon" : @"PDImageModel"};
 }
-@end
-
-@implementation PDDegGroupBackgroundModel
-
-@end
-@implementation PDDegGroupIconModel
-
 @end
 
 

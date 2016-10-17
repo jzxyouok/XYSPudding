@@ -26,6 +26,10 @@
     params[@"model"] = model_;
     params[@"os"] = os_;
     params[@"osv"] = osv_;
+    if (loadType == XYSDataLoadTypeMore)
+    {
+        params[@"offset"] = userInfo[@"offset"];
+    }
     params[@"timestamp"] = timestamp_;
     params[@"types"] = @"10001%2C10002%2C10009%2C10010%2C10011";
     params[@"version"] = version_;

@@ -1,9 +1,21 @@
 #import "XYSTitleItem.h"
 
-#define kSelectedColor [UIColor colorWithRed:168/255.0 green:20/255.0 blue:4/255.0 alpha:1] //默认selected颜色
-#define kNormalColor [UIColor colorWithRed:0 green:0 blue:0 alpha:1] //默认normal颜色
-#define kNormalFont [UIFont systemFontOfSize:15] //默认normal字体
-#define kSelectedFont [UIFont systemFontOfSize:16] //默认selected字体
+/** 定义快速设置RGB颜色的宏定义 */
+#define kRGBColor(R,G,B) [UIColor colorWithRed:(R)/255.0 green:(G)/255.0 blue:(B)/255.0 alpha:1.0]
+
+/** 默认normal颜色 */
+#define kNormalColor kRGBColor(80, 80, 80)
+/** 默认selected颜色 */
+#define kSelectedColor kRGBColor(168, 20, 4)
+/** 默认normal字体 */
+#define kNormalFont [UIFont systemFontOfSize:15]
+/** 默认selected字体 */
+#define kSelectedFont [UIFont systemFontOfSize:15]
+
+/** 默认缩放比 */
+#define kScaling 1.1
+/** 默认动画时长 */
+#define kAnimationDuration 0.3
 
 @implementation XYSTitleItem
 
@@ -14,41 +26,58 @@
 {
     if (self = [super initWithFrame:frame])
     {
-        _normalColor   = kNormalColor;
         _selectedColor = kSelectedColor;
-        self.normalFont = kNormalFont;
         _selectedFont  = kSelectedFont;
         _canScale = YES;
-        _scaleStyle = XYSScaleStyleCenter;
-        
-        self.userInteractionEnabled = YES;
-        self.textAlignment = NSTextAlignmentCenter; //文字居中
-        self.scaleStyle = XYSScaleStyleCenter;
+        _scale = kScaling;
 
+        [self setNormalColor:kNormalColor];
+        [self setNormalFont:kNormalFont];
+        [self setUserInteractionEnabled:YES]; //开启交互功能
+        [self setTextAlignment:NSTextAlignmentCenter]; //文字居中
+        [self setScaleStyle:XYSScaleStyleCenter]; //缩放动画样式
     }
     return self;
 }
 
 #pragma mark - 参数配置
 
+/** 未选中标签时的字体 */
 - (void)setNormalFont:(UIFont *)normalFont
 {
     _normalFont = normalFont;
     if (!_selected)
     {
-        self.font = _normalFont;
+        [self setFont:_normalFont];
     }
 }
-
+/** 选中标签时的字体 */
 - (void)setSelectedFont:(UIFont *)selectedFont
 {
     _selectedFont = selectedFont;
-    if (_selected)
+    if (_selected && !_disabled)
     {
-        self.font = _selectedFont;
+        [self setFont:_selectedFont];
     }
 }
-
+/** 未选中标签时的字体颜色 */
+- (void)setNormalColor:(UIColor *)normalColor
+{
+    _normalColor = normalColor;
+    if (!_selected)
+    {
+        [self setTextColor:_normalColor];
+    }
+}
+/** 选中标签时的字体颜色 */
+- (void)setSelectedColor:(UIColor *)selectedColor
+{
+    _selectedColor = selectedColor;
+    if (_selected && !_disabled)
+    {
+        [self setTextColor:_selectedColor];
+    }
+}
 /** 缩放动画的样式 */
 - (void)setScaleStyle:(XYSScaleStyle)scaleStyle
 {
@@ -83,69 +112,62 @@
         }
     }
 }
-
-/** 动画缩放比 */
-- (CGFloat)scale
-{
-    if (!_canScale)
-    {
-        return 1;
-    }
-    return _selectedFont.pointSize/_normalFont.pointSize;
-}
-
+/** 选中状态设置 */
 - (void)setSelected:(BOOL)selected
 {
-    if (_selected == selected)
-    {
-        return;
-    }
+    /** 规避重复操作,无用操作 */
+    if (_disabled || _selected == selected){return;}
+    
+    /** 配置标签参数 */
     _selected = selected;
     [self configItem];
 }
 
-/** 标签字体的缩放与还原动画 （scale：缩放比）*/
-- (void)animationWithScale:(CGFloat)scale
+#pragma mark - 点击事件
+
+/** 响应点击事件 */
+- (void)touchesEnded:(NSSet *)touches
+           withEvent:(UIEvent *)event
 {
-    [UIView animateWithDuration:0.3 animations:^
+    /** 当前状态不可点击 */
+    if (_disabled) {return;}
+    
+    /** 当前状态可以点击, 设置选中状态, 回传点击事件 */
+    [self setSelected:!_selected];
+    if (_clickHandler){_clickHandler(self.tag);}
+}
+
+/** 标签字体的缩放与还原动画 （scale：缩放比）*/
+- (void)startScaleAnimation
+{
+    [UIView animateWithDuration:kAnimationDuration animations:^
      {
         self.textColor = _selected ? _selectedColor : _normalColor;
         self.font = _selected ? _selectedFont : _normalFont;
-        self.transform = _selected ? CGAffineTransformMake(scale, 0, 0, scale, 0, 0) : CGAffineTransformIdentity;
+        self.transform = _selected ? CGAffineTransformMake(_scale, 0, 0, _scale, 0, 0) : CGAffineTransformIdentity;
      }];
 }
 
-/** 配置标签 */
+/** 配置标签参数 */
 - (void)configItem
 {
-     _selected && _clickHandler ?  _clickHandler(self.tag) : nil;
     if (!_canScale)
     {
+        /** 无缩放动画 */
         self.textColor = _selected ? _selectedColor : _normalColor;
         self.font = _selected ? _selectedFont : _normalFont;
     }
     else
     {
-        [self animationWithScale:self.scale];
+        /** 开始缩放动画 */
+        [self startScaleAnimation];
     }
-}
-
-/** 标签的点击响应事件 */
-- (void)touchesEnded:(NSSet *)touches
-           withEvent:(UIEvent *)event
-{
-    if (_disabled)
-    {
-        return;
-    }
-    
-    _selected = !_selected;
-    [self configItem];
 }
 
 #pragma mark - 点击回调
 
-- (void)clickHandler:(ClickHandler_)clickHandler
+/** 用户通过调用此函数获取标签点击时回传的tag值 */
+- (void)clickHandler:(ClickHandler)clickHandler
 {
     _clickHandler = clickHandler;
 }

@@ -9,8 +9,6 @@
 #import "XYSBaseModel.h"
 #import "PDUserModel.h"
 
-@class PDDegImageListImageModel;
-
 #pragma mark - 第一层
 
 /**
@@ -39,30 +37,13 @@
 /** 标题内容 */
 @property (nonatomic, copy) NSString *content;
 /** 图片模型对象 */
-@property (nonatomic, strong) PDDegImageListImageModel *image;
+@property (nonatomic, strong) PDImageModel *image;
 /** 图片主题发布的用户模型对象 */
 @property (nonatomic, strong) PDUserModel *user;
 
 @property (nonatomic, assign) NSInteger boardCount;
 //@property (nonatomic, strong) NSArray<> *tagRelations;
 //@property (nonatomic, strong) NSArray<> *animes;
-
-@end
-
-#pragma mark - 第二层
-
-/**
- *  主题中的图片模型
- */
-@interface PDDegImageListImageModel : XYSBaseModel
-/** 是否是Gif图片 */
-@property (nonatomic, assign) BOOL isGif;
-/** 图片高度 */
-@property (nonatomic, assign) NSInteger height;
-/** 图片宽度 */
-@property (nonatomic, assign) NSInteger width;
-/** 图片网络地址 */
-@property (nonatomic, copy) NSString *url;
 
 @end
 
